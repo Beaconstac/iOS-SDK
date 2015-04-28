@@ -43,7 +43,7 @@ Checkout Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.com/
 		
 		[beaconstacInstance startRangingBeaconsWithUUIDString:@"Enter valid beacon UUID" beaconIdentifier:@"mobstacRegion" filterOptions:nil];
 		
-9. Implement delegate methods to recieve callbacks when beacons are ranged:
+9. Implement delegate methods to receive callbacks when beacons are ranged:
 		
 		- (void)beaconstac:(Beaconstac *)beaconstac rangedBeacons:(NSDictionary *)beaconsDictionary
 		{
