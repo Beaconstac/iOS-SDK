@@ -42,7 +42,9 @@
 typedef NS_ENUM (NSUInteger, MSEventType){
     MSEventTypeNone = 0,
     MSEventTypeCampOn = 1,
-    MSEventTypeExitBeacon = 2
+    MSEventTypeExitBeacon = 2,
+    MSEventTypeEnterRegion = 3,
+    MSEventTypeExitRegion = 4
 };
 
 /**

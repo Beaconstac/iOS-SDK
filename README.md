@@ -14,11 +14,11 @@ Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.c
 
 ## Integration with your existing project in XCode
 
-1. Download Beaconstac SDK from the link you receive in your email.
+1. Download or clone this repo on your system.
 2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destination's Group Folder" is checked.
 <img src="images/frameworkdrop.png" alt="Build Phases" width="600">
 
-3. Navigate to Beaconstac_v_0_9_15.framework/Resources folder in Finder and drop the Beaconstac.bundle into Project navigator area. Make sure that "Copy Items to Destination's Group Folder" checked.
+3. Navigate to Beaconstac_v_0_9_xx.framework/Resources folder in Finder and drop the Beaconstac.bundle into Project navigator area. Make sure that "Copy Items to Destination's Group Folder" checked.
 <img src="images/bundledrop.png" alt="Build Phases" width="600">
 
 4. In Build Phases under Target, add the following frameworks in “Link Binary With Libraries” section:
@@ -32,7 +32,7 @@ Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.c
 
 6. Import the framework header in your class and make sure the  class conforms to BeaconstacDelegate protocol
 
-		#import <Beaconstac_v_0_9_15/Beaconstac.h>
+		#import <Beaconstac_v_0_9_xx/Beaconstac.h>
 
 7. Initialize Beaconstac using the factory method:
 		

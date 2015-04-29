@@ -1,5 +1,5 @@
 //
-//  MSAnalytics.h
+//  MSConstants.h
 //  BeaconstacSDK
 //
 //  Copyright© 2014, MobStac Inc. All rights reserved.
@@ -20,26 +20,31 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#ifndef BeaconstacSDK_MSConstants_h
+#define BeaconstacSDK_MSConstants_h
+
+#ifdef USE_QA_SERVER
+    #define URL_BASE @"https://beaconstac.qa.mobstac.com/api/1.0/"
+#else
+    #define URL_BASE @"https://beaconstac.mobstac.com/api/1.0/"
+#endif
+#define URL_RULE_PATH @"rules/"
+#define URL_EVENTLOGGER_PATH @"eventlogger/"
+#define URL_BEACON_PATH @"beacons/"
 
 /**
- * Provides a mechanism to send events to the analytics backend
+ * SDK properties
  */
-@interface MSAnalytics : NSObject
+#define SDK_VERSION @"0.9.16"
+#define EVENT_LOG_VERSION @1.1
 
 /**
- * Log an event
- * @param eventType A String that describes the type of the event. For instance, an event can be
- * ruleTriggeredEvent, ActionClicked event etc.
- * @param eventDictionary A dictionary associated to the event. This contains information that needs to be logged
- * with the associated eventType.
+ * Beacon thresholds
+ * @todo : These values should be fetched form a table based on the device type
+ * iPhone shows a lower RSSI than iPod value under same condition
  */
-- (void)logEventWithEventType:(NSString*)eventType andEventDictionary:(NSDictionary*)eventDictionary;
 
-/**
- * Shared instance of MSAnalytics class
- */
-+ (MSAnalytics*)sharedInstance;
+#define RSSI_ENTRY_THRESHOLD -75  // Defines entry criteria
+#define RSSI_EXIT_THRESHOLD -90   // Defines exit criteria
 
-
-@end
+#endif

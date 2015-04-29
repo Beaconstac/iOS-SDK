@@ -1,3 +1,7 @@
+### v0.9.16 released on April 29, 2015
+
+* Added ability to track sessions based on change in time and location
+
 ### v0.9.15 released on April 27, 2015
 
 * Added ability to reset a Beaconstac sharedInstance in case of switching user accounts
