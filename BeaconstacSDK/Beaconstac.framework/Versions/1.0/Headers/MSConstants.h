@@ -29,13 +29,14 @@
     #define URL_BASE @"https://beaconstac.mobstac.com/api/1.0/"
 #endif
 #define URL_RULE_PATH @"rules/"
+#define URL_PLACE_PATH @"places/"
 #define URL_EVENTLOGGER_PATH @"eventlogger/"
 #define URL_BEACON_PATH @"beacons/"
 
 /**
  * SDK properties
  */
-#define SDK_VERSION @"0.9.16"
+#define SDK_VERSION @"1.0"
 #define EVENT_LOG_VERSION @1.1
 
 /**

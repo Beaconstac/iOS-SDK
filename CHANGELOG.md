@@ -1,3 +1,9 @@
+### v1.0 released on June 4, 2015
+
+* Added MSPlace class to enable grouping beacons by places
+* Ability to add Geo-fences around MSPlace with entry/exit callbacks 
+* Version number dropped from framework name
+
 ### v0.9.16 released on April 29, 2015
 
 * Added ability to track sessions based on change in time and location

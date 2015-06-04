@@ -68,11 +68,6 @@
 @property (nonatomic) int stale;
 
 /**
- * Beacon details in the format UUID:Major:Minor RSSI
- */
-@property (nonatomic, copy, readonly) NSString *description;
-
-/**
  * The designated initializer for MSBeacon class.
  *
  * @param beaconUUID Represents beacon proximity UUID
@@ -97,5 +92,10 @@
  * Returns the mean of previous three RSSI values associated to the beacon object.
  */
 - (int)getMeanRssi;
+
+/**
+ * Returns a dictionary of Beacons associated with the account.
+ */
++ (void)fetchAllBeaconsWithCompletionBlock:(void (^)(NSDictionary *beaconsDictionary, NSError *error))completionBlock;
 
 @end

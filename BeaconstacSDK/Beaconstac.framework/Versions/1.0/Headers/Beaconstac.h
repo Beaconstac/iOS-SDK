@@ -76,18 +76,32 @@
 - (void)beaconstac:(Beaconstac*)beaconstac triggeredRuleWithRuleName:(NSString*)ruleName actionArray:(NSArray*)actionArray;
 
 /**
- * Invoked when the user enters a monitored region.
+ * Invoked when the user enters a monitored beacon region.
  * @param beaconstac Beaconstac instance which is the sender of this message
  * @param region Beacon region
  */
-- (void)beaconstac:(Beaconstac*)beaconstac didEnterBeaconRegion:(CLRegion*)region;
+- (void)beaconstac:(Beaconstac*)beaconstac didEnterBeaconRegion:(CLBeaconRegion*)region;
 
 /**
- * Invoked when the user exits a monitored region.
+ * Invoked when the user exits a monitored beacon region.
  * @param beaconstac Beaconstac instance which is the sender of this message
  * @param region Beacon region
  */
-- (void)beaconstac:(Beaconstac*)beaconstac didExitBeaconRegion:(CLRegion*)region;
+- (void)beaconstac:(Beaconstac*)beaconstac didExitBeaconRegion:(CLBeaconRegion*)region;
+
+/**
+ * Invoked when the user enters a monitored geofence region.
+ * @param beaconstac Beaconstac instance which is the sender of this message
+ * @param region Geofence region
+ */
+- (void)beaconstac:(Beaconstac*)beaconstac didEnterGeofenceRegion:(CLRegion*)region;
+
+/**
+ * Invoked when the user exits a monitored geofence region.
+ * @param beaconstac Beaconstac instance which is the sender of this message
+ * @param region Geofence region
+ */
+- (void)beaconstac:(Beaconstac*)beaconstac didExitGeofenceRegion:(CLRegion*)region;
 
 /**
  * Reports if the GPS location changed
@@ -201,6 +215,16 @@ typedef NS_ENUM (NSUInteger, MSUIAction){
  * Stops ranging beacons.
  */
 - (void)stopRangingBeacons;
+
+/**
+ * Start monitoring geofences around list of places in account.
+ */
+- (void)startMonitoringGeofences;
+
+/**
+ * Stop monitoring all geofences.
+ */
+- (void)stopMonitoringGeofences;
 
 /**
  * Updates the primary facts dictionary which is used by MSRuleProcessor to evaluate rules.
