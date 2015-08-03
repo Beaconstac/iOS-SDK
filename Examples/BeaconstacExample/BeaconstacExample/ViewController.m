@@ -26,7 +26,7 @@
     
     self.title = @"Beaconstac";
     
-    [[MSLogger sharedInstance]setLoglevel:MSLogLevelError];
+    [[MSLogger sharedInstance] setLoglevel:MSLogLevelVerbose];
     
     // Setup and initialize the Beaconstac SDK
     beaconstac = [Beaconstac sharedInstanceWithOrganizationId:<org_id> developerToken:<dev_token>];

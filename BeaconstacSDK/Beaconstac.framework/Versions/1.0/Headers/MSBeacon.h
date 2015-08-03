@@ -48,7 +48,7 @@
 @property (nonatomic, strong) NSNumber *minor;
 
 /**
- * Latest value of RSSI, Reverse strength Index as registered by the receiver from the beacon
+ * Latest value of RSSI, Received Signal Strength Indicator as registered by the receiver from the beacon
  */
 @property (nonatomic, strong) NSNumber *latestRssi;
 

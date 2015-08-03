@@ -111,6 +111,11 @@
  */
 - (void)beaconstac:(Beaconstac*)beaconstac didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 
+/**
+ * Called when SDK fails to sync rule with the server.
+ */
+- (void)beaconstac:(Beaconstac*)beaconstac failedToSyncRulesWithError:(NSError *)error;
+
 @end
 
 /**

@@ -1,3 +1,10 @@
+### v1.1 released on August 4, 2015
+
+* Added MSTags class to enable grouping beacons by tags
+* Start/Stop Geo-fence api changed 
+* Added delegate callback if SDK fails to sync rule with the server
+* Shows error in Console if an invalid UUID is entered
+
 ### v1.0 released on June 4, 2015
 
 * Added MSPlace class to enable grouping beacons by places

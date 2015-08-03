@@ -34,6 +34,12 @@
  * Called when a rule was triggered.
  */
 - (void)ruleProcessor:(MSRuleProcessor*)ruleProcessor triggeredRuleWithRuleName:(NSString*)ruleName andActionArray:(NSArray*)actionArray;
+
+/**
+ * Called when SDK fails to sync rule with the server.
+ */
+- (void)ruleProcessor:(MSRuleProcessor*)ruleProcessor failedToSyncRulesWithError:(NSError*)error;
+
 @end
 
 /**

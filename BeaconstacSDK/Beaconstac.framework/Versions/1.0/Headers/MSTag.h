@@ -1,5 +1,5 @@
 //
-//  MSPlace.h
+//  MSTag.h
 //  Beaconstac
 //
 //  Copyright© 2014, MobStac Inc. All rights reserved.
@@ -21,12 +21,8 @@
 //  THE SOFTWARE.
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
 
-/**
- * Represents a place in the system.
- */
-@interface MSPlace : NSObject
+@interface MSTag : NSObject
 
 /**
  * Represents place name assigned by user
@@ -34,68 +30,48 @@
 @property (nonatomic, strong) NSString *name;
 
 /**
- * Represents place address
+ * Represents array of beacons attached to this Tag
  */
-@property (nonatomic, strong) NSString *address;
+@property (nonatomic, strong, readonly) NSArray *beaconsArray;
 
 /**
- * Represents geographical longitude of the place
+ * Represents the place ID of the Tag
  */
-@property (nonatomic) CLLocationDegrees longitude;
+@property (nonatomic, strong, readonly) NSNumber *tagID;
 
 /**
- * Represents geographical latitude of the place
+ * Represents the date when the Tag was created
  */
-@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic, strong) NSDate *created;
 
 /**
- * Represents geographical radius of the geofence
+ * Represents the date when the Tag was last modified
  */
-@property (nonatomic) CLLocationDistance radius;
+@property (nonatomic, strong) NSDate *modified;
 
 /**
- * Represents the place ID of the place
- */
-@property (nonatomic, strong, readonly) NSNumber *placeID;
-
-/**
- * Updates the changes to the place object and syncs with the server
+ * Updates the changes to the Tag object and syncs with the server
  * @param completionBlock This block is invoked when the sync is complete. It takes two arguments: succeeded - if the operation was successful, error - which is a NSError object describing the failure.
  */
 - (void)saveInBackgroundWithCompletionBlock:(void (^)(BOOL succeeded, NSError *error))completionBlock;
 
 /**
- * Deletes the place object from server
+ * Deletes the Tag object from server
  * @param completionBlock This block is invoked when the deletion operation is complete. It takes two arguments: succeeded - if the operation was successful, error - which is a NSError object describing the failure.
  */
 - (void)deleteInBackgroundWithCompletionBlock:(void (^)(BOOL succeeded, NSError *error))completionBlock;
 
 /**
- * Creates a place object with the provided parameters
- *
+ * Creates a Tag object with the provided parameters
  * @param name Represents name of place
- * @param address Represents address of place
- * @param latitude Represents latitude of place
- * @param longitude Represents longitude of place
- * @param radius Represents radius of geofence in meters around the place
  * @param completionBlock This block is invoked when the server responds. It takes two arguments: place - The place object whcih got created on the server, error - which is a NSError object describing the failure
  */
-+ (void)createPlaceWithName:(NSString*)name address:(NSString*)address latitude:(CLLocationDegrees)latitude longitude:(CLLocationDegrees)longitude radius:(CLLocationDistance)radius withCompletionBlock:(void (^)(MSPlace *place, NSError *error))completionBlock;
++ (void)createTagWithName:(NSString*)name beacons:(NSArray*)beacons withCompletionBlock:(void (^)(MSTag *tag, NSError *error))completionBlock;
 
 /**
- * Returns an array of MSPlaces associated with the account
+ * Returns an array of MSTags associated with the account
  * @param completionBlock This block is invoked when the server responds. It takes two arguments: places - An array of places associated with the account, error - which is a NSError object describing the failure
  */
-+ (void)fetchAllPlacesWithCompletionBlock:(void (^)(NSArray *places, NSError *error))completionBlock;
-
-/**
- * Starts monitoring for Geofence entry and exit for all places in the account.
- */
-+ (void)startMonitoringGeofences;
-
-/**
- * Stops monitoring all Geofence entry and exit.
- */
-+ (void)stopMonitoringGeofences;
++ (void)fetchAllTagsWithCompletionBlock:(void (^)(NSArray *tags, NSError *error))completionBlock;
 
 @end

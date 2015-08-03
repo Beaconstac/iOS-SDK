@@ -36,12 +36,12 @@ Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.c
 
 7. Initialize Beaconstac using the factory method:
 		
-		beaconstacInstance = [Beaconstac sharedInstanceWithOrganizationId:<organizationId: Int> developerToken:<developerToken: String!>];
-        beaconstacInstance.delegate = self;`
+		beaconstacInstance = [Beaconstac sharedInstanceWithOrganizationId:<organizationId: Int> developerToken:<developerToken: String>];
+        beaconstacInstance.delegate = self;
 
 8. To start ranging beacons:
 		
-		[beaconstacInstance startRangingBeaconsWithUUIDString:@"Enter valid beacon UUID" beaconIdentifier:@"mobstacRegion" filterOptions:nil];
+		[beaconstacInstance startRangingBeaconsWithUUIDString:@"F94DBB23-2266-7822-3782-57BEAC0952AC" beaconIdentifier:@"MobstacRegion" filterOptions:nil];
 		
 9. Implement delegate methods to receive callbacks when beacons are ranged:
 		
