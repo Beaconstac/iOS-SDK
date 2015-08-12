@@ -95,7 +95,7 @@ typedef NS_ENUM (NSUInteger, MSBeaconAffinity)
 /**
  * Beacon identification string. e.g. com.mobstac.foo
  */
-@property (strong, nonatomic) NSString *beaconIdentifier;
+@property (strong, nonatomic) NSString *regionIdentifier;
 
 /**
  * UUID of the beacon.
@@ -112,6 +112,11 @@ typedef NS_ENUM (NSUInteger, MSBeaconAffinity)
  * as the key and MSBeacon object as the value
  */
 @property (strong, nonatomic) NSMutableDictionary *rangedBeacons;
+
+/**
+ * MSBeacon which is currently camped on
+ */
+@property (strong, nonatomic) MSBeacon *campedOnBeacon;
 
 /**
  * Initializes a MSBeaconManager to monitor all beacons with the

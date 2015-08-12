@@ -13,13 +13,13 @@
 		7DDF9EA81B2EE5D0001C142B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7DDF9EA61B2EE5D0001C142B /* Main.storyboard */; };
 		7DDF9EAA1B2EE5D0001C142B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7DDF9EA91B2EE5D0001C142B /* Images.xcassets */; };
 		7DDF9EAD1B2EE5D0001C142B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7DDF9EAB1B2EE5D0001C142B /* LaunchScreen.xib */; };
-		7DDF9EC31B2EE6A8001C142B /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDF9EC21B2EE6A8001C142B /* Beaconstac.framework */; };
 		7DDF9EC61B2EE6C4001C142B /* BeaconstacData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7DDF9EC51B2EE6C4001C142B /* BeaconstacData.bundle */; };
 		7DDF9EC81B2EE7FA001C142B /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDF9EC71B2EE7FA001C142B /* CoreLocation.framework */; };
 		7DDF9ECA1B2EE801001C142B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDF9EC91B2EE801001C142B /* CoreData.framework */; };
 		7DDF9ECC1B2EE81E001C142B /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDF9ECB1B2EE81E001C142B /* CoreBluetooth.framework */; };
 		7DDF9ECE1B2EE82C001C142B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DDF9ECD1B2EE82C001C142B /* SystemConfiguration.framework */; };
 		7DDF9ED81B2EF190001C142B /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF9ED71B2EF190001C142B /* WebViewController.m */; };
+		7DEE3CEA1B74AF8E0002C2D2 /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DEE3CE91B74AF8E0002C2D2 /* Beaconstac.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,7 +33,6 @@
 		7DDF9EA71B2EE5D0001C142B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7DDF9EA91B2EE5D0001C142B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		7DDF9EAC1B2EE5D0001C142B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		7DDF9EC21B2EE6A8001C142B /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../../../BeaconstacSDK/Beaconstac.framework; sourceTree = "<group>"; };
 		7DDF9EC51B2EE6C4001C142B /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../BeaconstacSDK/Beaconstac.framework/Versions/1.0/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 		7DDF9EC71B2EE7FA001C142B /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		7DDF9EC91B2EE801001C142B /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -43,6 +42,7 @@
 		7DDF9ED11B2EE845001C142B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		7DDF9ED61B2EF190001C142B /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
 		7DDF9ED71B2EF190001C142B /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
+		7DEE3CE91B74AF8E0002C2D2 /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../../../BeaconstacSDK/Beaconstac.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +54,7 @@
 				7DDF9ECC1B2EE81E001C142B /* CoreBluetooth.framework in Frameworks */,
 				7DDF9ECA1B2EE801001C142B /* CoreData.framework in Frameworks */,
 				7DDF9EC81B2EE7FA001C142B /* CoreLocation.framework in Frameworks */,
-				7DDF9EC31B2EE6A8001C142B /* Beaconstac.framework in Frameworks */,
+				7DEE3CEA1B74AF8E0002C2D2 /* Beaconstac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +107,7 @@
 		7DDF9EC41B2EE6B0001C142B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7DEE3CE91B74AF8E0002C2D2 /* Beaconstac.framework */,
 				7DDF9ED11B2EE845001C142B /* MediaPlayer.framework */,
 				7DDF9ECF1B2EE83F001C142B /* AVFoundation.framework */,
 				7DDF9ECD1B2EE82C001C142B /* SystemConfiguration.framework */,
@@ -114,7 +115,6 @@
 				7DDF9EC71B2EE7FA001C142B /* CoreLocation.framework */,
 				7DDF9EC91B2EE801001C142B /* CoreData.framework */,
 				7DDF9EC51B2EE6C4001C142B /* BeaconstacData.bundle */,
-				7DDF9EC21B2EE6A8001C142B /* Beaconstac.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -311,7 +311,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/kdeo/Dropbox/Mobstac/Github-iOS-SDK/BeaconstacSDK",
+					../../BeaconstacSDK,
 				);
 				INFOPLIST_FILE = BeaconstacExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -326,7 +326,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/kdeo/Dropbox/Mobstac/Github-iOS-SDK/BeaconstacSDK",
+					../../BeaconstacSDK,
 				);
 				INFOPLIST_FILE = BeaconstacExample/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -353,6 +353,7 @@
 				7DDF9EBE1B2EE5D0001C142B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

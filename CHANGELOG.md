@@ -1,3 +1,9 @@
+### v1.1.1 released on August 12, 2015
+
+* Rules assigned to Tags will trigger callbacks when camped on the tagged beacon
+* Added a property in MSBeaconManager to get the currently campedOnBeacon
+* Fixed a bug which prevented Exit Rules to not trigger if there were multiple Exit Rules on same beacon
+
 ### v1.1 released on August 4, 2015
 
 * Added MSTags class to enable grouping beacons by tags

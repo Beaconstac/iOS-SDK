@@ -37,7 +37,7 @@
 /**
  * SDK properties
  */
-#define SDK_VERSION @"1.1"
+#define SDK_VERSION @"1.1.1"
 #define EVENT_LOG_VERSION @1.1
 
 /**
