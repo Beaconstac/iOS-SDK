@@ -1,0 +1,10 @@
+PODS:
+  - youtube-ios-player-helper (0.1.5)
+
+DEPENDENCIES:
+  - youtube-ios-player-helper
+
+SPEC CHECKSUMS:
+  youtube-ios-player-helper: 8706bb155ffee74fbe5f2f5cf41c2dafe60dc155
+
+COCOAPODS: 0.39.0

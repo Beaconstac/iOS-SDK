@@ -2,19 +2,21 @@
 //  ViewController.m
 //  BeaconstacExample
 //
-//  Created by Kshitij-Deo on 15/06/15.
 //  Copyright (c) 2015 Mobstac. All rights reserved.
 //
 
 #import "ViewController.h"
 #import <Beaconstac/Beaconstac.h>
 #import "WebViewController.h"
+#import "MusicCardView.h"
 
-@interface ViewController ()<BeaconstacDelegate>
+@interface ViewController ()<BeaconstacDelegate, MusicCardDelegate,YTPlayerViewDelegate>
 {
     NSString *mediaType;
     NSURL *mediaUrl;
     Beaconstac *beaconstac;
+    MSCard *visibleCard;
+    MusicCardView *musicCardView;
 }
 @end
 
@@ -26,17 +28,21 @@
     
     self.title = @"Beaconstac";
     
-    [[MSLogger sharedInstance] setLoglevel:MSLogLevelVerbose];
-    
     // Setup and initialize the Beaconstac SDK
     beaconstac = [Beaconstac sharedInstanceWithOrganizationId:<org_id> developerToken:<dev_token>];
-    
+    [beaconstac setDelegate:self];
+    [[MSLogger sharedInstance] setLoglevel:MSLogLevelError];
+
     // Start ranging beacons with the given UUID
     [beaconstac startRangingBeaconsWithUUIDString:@"F94DBB23-2266-7822-3782-57BEAC0952AC" beaconIdentifier:@"MobstacRegion" filterOptions:nil];
-    [beaconstac setDelegate:self];
     
     // Demonstrates Custom Attributes functionality.
     [self customAttributeDemo];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    self.navigationController.navigationBarHidden = NO;
 }
 
 //
@@ -57,6 +63,9 @@
 
 - (void)beaconstac:(Beaconstac *)beaconstac rangedBeacons:(NSDictionary *)beaconsDictionary
 {
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        return;
+    }
 }
 
 - (void)beaconstac:(Beaconstac *)beaconstac didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
@@ -66,31 +75,52 @@
 
 - (void)beaconstac:(Beaconstac*)beaconstac campedOnBeacon:(MSBeacon*)beacon amongstAvailableBeacons:(NSDictionary *)beaconsDictionary
 {
-    NSLog(@"CampedOnBeacon: %@ \n visible beacons: %@", beacon, beaconsDictionary);
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        NSLog(@"CampedOnBeacon: %@", beacon);
+    }
     UILocalNotification *notification = [[UILocalNotification alloc] init];
     notification.alertBody = [NSString stringWithFormat:@"Camped on to Beacon: %@, %@", beacon.major, beacon.minor];
-    [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
+    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
+    
 }
 
 - (void)beaconstac:(Beaconstac*)beaconstac exitedBeacon:(MSBeacon*)beacon
 {
-    NSLog(@"ExitedBeacon: %@", beacon);
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        NSLog(@"ExitedBeacon: %@", beacon);
+        return;
+    }
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = [NSString stringWithFormat:@"Exited Beacon: %@, %@", beacon.major, beacon.minor];
+    [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
 }
 
 - (void)beaconstac:(Beaconstac*)beaconstac didEnterBeaconRegion:(CLRegion*)region
 {
-    NSLog(@"Entered beacon region :%@", region.identifier);
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        NSLog(@"Entered beacon region :%@", region.identifier);
+        return;
+    }
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = [NSString stringWithFormat:@"Entered beacon region: %@", region.identifier];
+    [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
 }
 
 - (void)beaconstac:(Beaconstac*)beaconstac didExitBeaconRegion:(CLRegion *)region
 {
-    NSLog(@"Exited beacon region :%@", region.identifier);
+    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
+        NSLog(@"Exited beacon region :%@", region.identifier);
+        return;
+    }
+    UILocalNotification *notification = [[UILocalNotification alloc] init];
+    notification.alertBody = [NSString stringWithFormat:@"Exited beacon region: %@", region.identifier];
+    [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
 }
 
     // Tells the delegate that a rule is triggered with corresponding list of actions.
 - (void)beaconstac:(Beaconstac *)beaconstac triggeredRuleWithRuleName:(NSString *)ruleName actionArray:(NSArray *)actionArray
 {
-    NSLog(@"Action Array: %@", actionArray);
+    NSLog(@"triggeredRuleWithRuleName: %@", ruleName);
     // actionArray contains the list of actions to trigger for the rule that matched.
     
     for (MSAction *action in actionArray) {
@@ -118,13 +148,71 @@
                 
             case MSActionTypeCard:
             {
-                MSCard *card = action.message;
-                NSLog (@"Id: %@, title: %@, body: %@, cardMeta: %@", card.cardID, card.title, card.body, card.cardMeta);
+                visibleCard = action.message;
+                switch (visibleCard.type) {
+                        
+                    case MSCardTypeMedia:
+                    {
+                        if (!musicCardView) {
+                            musicCardView = [[[NSBundle mainBundle] loadNibNamed:@"MusicCardView"
+                                                                           owner:self
+                                                                         options:nil] firstObject];
+                        }
+                        
+                        [self.view addSubview:musicCardView];
+                        musicCardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+                        musicCardView.layer.masksToBounds = YES;
+                        musicCardView.delegate = self;
+                        musicCardView.titleLabel.text = visibleCard.title;
+                        self.navigationController.navigationBarHidden = YES;
+
+                        [UIView animateWithDuration:0.35 animations:^{
+                            musicCardView.frame = self.view.frame;
+                        } completion:^(BOOL finished) {
+
+                            for (MSMedia *media in visibleCard.mediaArray) {
+                                if ([media.contentType containsString:@"video"]) {
+                                    if ([[media.mediaUrl absoluteString] containsString:@"vimeo"]) {
+                                        NSString *videoId = [self extractVimeoID:[media.mediaUrl absoluteString]];
+                                        [musicCardView loadVimeoWithUrl:videoId];
+                                    } else if ([media.contentType containsString:@"youtube"] || [media.contentType containsString:@"video"]) {
+                                        musicCardView.ytPlayerView.delegate = self;
+                                        [musicCardView.ytPlayerView setHidden:NO];
+                                        
+                                        NSDictionary *playerVars = @{
+                                                                     @"controls" : @1,
+                                                                     @"playsinline" : @0,
+                                                                     @"autohide" : @1,
+                                                                     @"showinfo" : @1,
+                                                                     @"modestbranding" : @1,
+                                                                     @"suggestedQuality" : @"large"
+                                                                     };
+                                        NSString *videoId = [self extractYoutubeID:[media.mediaUrl absoluteString]];
+                                        [musicCardView.ytPlayerView loadWithVideoId:videoId playerVars:playerVars];
+                                    } else {
+                                        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Only Youtube and Vimeo url are supported in video" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                                    }
+                                } else if ([media.contentType containsString:@"audio"]) {
+                                    [musicCardView loadSoundCloudWithUrl:[media.mediaUrl absoluteString]];
+                                } else {
+                                    continue;
+                                }
+                                break;
+                            }
+                        }];
+                    }
+                    break;
                 
-                for (int i=0; i< card.mediaArray.count; i++) {
-                    MSMedia *media = card.mediaArray[i];
-                    NSLog(@"Media 1: Id: %@, name: %@", media.mediaID, media.name);
+                    default:
+                    {
+                        for (int i=0; i< visibleCard.mediaArray.count; i++) {
+                            MSMedia *media = visibleCard.mediaArray[i];
+                            NSLog(@"Media 1: Id: %@, name: %@", media.mediaID, media.name);
+                        }
+                    }
+                    break;
                 }
+            
             }
                 break;
                 
@@ -154,6 +242,87 @@
                 break;
         }
     }
+}
+
+- (void)beaconstac:(Beaconstac *)beaconstac didSyncRules:(NSDictionary *)ruleDict withError:(NSError *)error
+{
+    NSLog(@"didSyncRules with error %@",error);
+}
+
+#pragma mark - Music Card delegate
+- (void)mediaCardButtonClickedAtIndex:(int)index
+{
+    switch (index) {
+        case 0:
+        {
+            [UIView animateWithDuration:0.35 animations:^{
+                musicCardView.frame = CGRectMake(0, musicCardView.frame.size.height,musicCardView.frame.size.width, musicCardView.frame.size.height);
+            } completion:^(BOOL finished) {
+                [musicCardView removeFromSuperview];
+                self.navigationController.navigationBarHidden = NO;
+            }];
+            [musicCardView setMode:@"pause"];
+            [musicCardView.ytPlayerView stopVideo];
+        }
+            break;
+            
+        case 2:
+        {
+            for (MSMedia *media in visibleCard.mediaArray) {
+                if ([media.contentType containsString:@"video"] && [[media.mediaUrl absoluteString] containsString:@"vimeo"]) {
+                    NSString *videoId = [self extractVimeoID:[media.mediaUrl absoluteString]];
+                    [musicCardView loadVimeoWithUrl:videoId];
+                    break;
+                } else if ([media.contentType containsString:@"youtube"]) {
+                        //musicCardView.ytPlayerView.delegate = self;
+                    [musicCardView.ytPlayerView setHidden:NO];
+                    
+                    NSDictionary *playerVars = @{
+                                                 @"controls" : @1,
+                                                 @"playsinline" : @1,
+                                                 @"autohide" : @1,
+                                                 @"showinfo" : @1,
+                                                 @"modestbranding" : @1,
+                                                 @"suggestedQuality" : @"large"
+                                                 };
+                    NSString *videoId = [self extractYoutubeID:[media.mediaUrl absoluteString]];
+                    [musicCardView.ytPlayerView loadWithVideoId:videoId playerVars:playerVars];
+                    break;
+                }
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+}
+
+
+#pragma mark - Extract video id form URL
+
+- (NSString *)extractYoutubeID:(NSString *)youtubeURL
+{
+    NSError *error = NULL;
+    NSString *regexString = @"(?<=v(=|/))([-a-zA-Z0-9_]+)|(?<=youtu.be/)([-a-zA-Z0-9_]+)";
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionCaseInsensitive error:&error];
+    NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:youtubeURL options:0 range:NSMakeRange(0, [youtubeURL length])];
+    if(!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0)))
+    {
+        NSString *substringForFirstMatch = [youtubeURL substringWithRange:rangeOfFirstMatch];
+        return substringForFirstMatch;
+    }
+    return nil;
+}
+
+- (NSString *)extractVimeoID:(NSString *)vimeoURL
+{
+    NSRange range = [vimeoURL rangeOfString:@"vimeo.com/"];
+    if (range.location !=NSNotFound) {
+        NSString *str = [vimeoURL substringFromIndex:(range.location+range.length)];
+        return str;
+    }
+    return nil;
 }
 
 - (void)didReceiveMemoryWarning
