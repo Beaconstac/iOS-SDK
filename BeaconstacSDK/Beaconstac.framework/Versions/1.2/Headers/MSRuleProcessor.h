@@ -40,6 +40,11 @@
  */
 - (void)ruleProcessor:(MSRuleProcessor*)ruleProcessor failedToSyncRulesWithError:(NSError*)error;
 
+/**
+ * Called when SDK successfully syncs rules with the server.
+ */
+- (void)ruleProcessor:(MSRuleProcessor*)ruleProcessor didSyncRules:(NSDictionary*)ruleDict;
+
 @end
 
 /**
@@ -73,6 +78,11 @@ typedef NS_ENUM (NSUInteger, MSEventType){
  * Dictionary containing all rules, downloaded from the Beaconstac server
  */
 @property (nonatomic, strong) NSMutableDictionary *ruleDict;
+
+/**
+ * Array of all rules downloaded from the Beaconstac server
+ */
+@property (nonatomic, strong) NSMutableArray *rulesArray;
 
 /**
  * Array of timers that will be fired?

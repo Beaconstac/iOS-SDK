@@ -24,7 +24,8 @@ typedef NS_ENUM (NSUInteger, MSActionType) {
     MSActionTypeWebpage = 2,
     MSActionTypeCard = 3,
     MSActionTypeWebhook = 4,
-    MSActionTypeCustom = 5
+    MSActionTypeCustom = 5,
+    MSActionTypeNotification = 6
 };
 
 @interface MSAction : NSObject 
@@ -47,7 +48,7 @@ typedef NS_ENUM (NSUInteger, MSActionType) {
 
 /**
  * Represents the message of the action. This can have 
- * text, url, JSON depending on the type of action
+ * text, url, JSON, MSCard or MSNotification depending on the type of action
  */
 @property (nonatomic, strong) id message;
 

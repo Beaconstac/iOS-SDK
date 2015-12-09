@@ -98,4 +98,10 @@
  */
 + (void)fetchAllBeaconsWithCompletionBlock:(void (^)(NSDictionary *beaconsDictionary, NSError *error))completionBlock;
 
+/**
+ * Returns a dictionary of Beacons associated with the account on specificed page number. 
+ * Each page can have a maximum of 100 beacons
+ */
++ (void)fetchBeaconsPage:(int)page withCompletionBlock:(void (^)(NSDictionary *beaconsDictionary, NSDictionary *response, NSError *error))completionBlock;
+
 @end

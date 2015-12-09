@@ -25,7 +25,7 @@
 @interface MSTag : NSObject
 
 /**
- * Represents place name assigned by user
+ * Represents tag name assigned by user
  */
 @property (nonatomic, strong) NSString *name;
 
@@ -35,7 +35,7 @@
 @property (nonatomic, strong, readonly) NSArray *beaconsArray;
 
 /**
- * Represents the place ID of the Tag
+ * Represents the ID of the Tag
  */
 @property (nonatomic, strong, readonly) NSNumber *tagID;
 
@@ -63,14 +63,14 @@
 
 /**
  * Creates a Tag object with the provided parameters
- * @param name Represents name of place
- * @param completionBlock This block is invoked when the server responds. It takes two arguments: place - The place object whcih got created on the server, error - which is a NSError object describing the failure
+ * @param name Represents name of Tag
+ * @param completionBlock This block is invoked when the server responds. It takes two arguments: tag - The tag object whcih got created on the server, error - which is a NSError object describing the failure
  */
 + (void)createTagWithName:(NSString*)name beacons:(NSArray*)beacons withCompletionBlock:(void (^)(MSTag *tag, NSError *error))completionBlock;
 
 /**
  * Returns an array of MSTags associated with the account
- * @param completionBlock This block is invoked when the server responds. It takes two arguments: places - An array of places associated with the account, error - which is a NSError object describing the failure
+ * @param completionBlock This block is invoked when the server responds. It takes two arguments: tags - An array of tags associated with the account, error - which is a NSError object describing the failure
  */
 + (void)fetchAllTagsWithCompletionBlock:(void (^)(NSArray *tags, NSError *error))completionBlock;
 

@@ -1,5 +1,5 @@
 //
-//  MSLogger.h
+//  MSConstants.h
 //  BeaconstacSDK
 //
 //  Copyright© 2014, MobStac Inc. All rights reserved.
@@ -20,45 +20,34 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+#ifndef BeaconstacSDK_MSConstants_h
+#define BeaconstacSDK_MSConstants_h
+
+#ifdef USE_QA_SERVER
+    #define URL_BASE @"https://beaconstacqa.mobstac.com/api/1.0/"
+#else
+    #define URL_BASE @"https://beaconstac.mobstac.com/api/1.0/"
+#endif
+#define URL_RULE_PATH @"rules/"
+#define URL_PLACE_PATH @"places/"
+#define URL_TAG_PATH @"tags/"
+#define URL_EVENTLOGGER_PATH @"eventlogger/"
+#define URL_BEACON_PATH @"beacons/"
+#define URL_NOTIFICATIONS_PATH @"notifications/"
 
 /**
- * Provides control over BeaconstacSDK logging level.
- *
- * @code
- * [MSLogger sharedInstance]setLogLevel:MSLogLevelError]];
- * @endcode
+ * SDK properties
  */
-@interface MSLogger : NSObject
+#define SDK_VERSION @"1.2"
+#define EVENT_LOG_VERSION @1.1
 
 /**
- * Logging level enumeration
+ * Beacon thresholds
+ * @todo : These values should be fetched form a table based on the device type
+ * iPhone shows a lower RSSI than iPod value under same condition
  */
-typedef NS_ENUM (NSUInteger, MSLogLevel) {
-    MSLogLevelVerbose = 1,
-    MSLogLevelError = 2,
-    MSLogLevelNone = 10
-};
 
-/**
- * Set desired logging level
- */
-@property (nonatomic, assign) MSLogLevel loglevel;
+#define RSSI_ENTRY_THRESHOLD -75  // Defines entry criteria
+#define RSSI_EXIT_THRESHOLD -90   // Defines exit criteria
 
-/**
- * Log a verbose message.
- */
-- (void)verbose:(NSString*)message;
-
-/**
- * Log an error message.
- */
-- (void)error:(NSString*)message;
-
-/**
- * This is a shared instance to see Logs being created.
- */
-+ (MSLogger*)sharedInstance;
-
-
-@end
+#endif

@@ -1,3 +1,10 @@
+### v1.2 released on December 9, 2015
+
+* Added compatibility for background beacon ranging on iOS9
+* Added a new delegate method which is triggered when Rule sync with server completes
+* Performance improvement in rule triggering
+* Cleanup all data on destroying Beaconstac shared instance
+
 ### v1.1.1 released on August 12, 2015
 
 * Rules assigned to Tags will trigger callbacks when camped on the tagged beacon

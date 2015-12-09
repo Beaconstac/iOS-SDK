@@ -116,6 +116,11 @@
  */
 - (void)beaconstac:(Beaconstac*)beaconstac failedToSyncRulesWithError:(NSError *)error;
 
+/**
+ * Called when rule sync call to the server is finished. Returns the Rule dictionary and error, if any
+ */
+- (void)beaconstac:(Beaconstac*)beaconstac didSyncRules:(NSDictionary*)ruleDict withError:(NSError *)error;
+
 @end
 
 /**
@@ -249,6 +254,5 @@ typedef NS_ENUM (NSUInteger, MSUIAction){
  * @param message Message to be sent to the server
  */
 - (void)logEventWithActionType:(MSUIAction)actionType andMessage:(NSString*)message;
-
 
 @end

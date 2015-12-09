@@ -1,5 +1,5 @@
 //
-//  MSConstants.h
+//  MSLogger.h
 //  BeaconstacSDK
 //
 //  Copyright© 2014, MobStac Inc. All rights reserved.
@@ -20,33 +20,62 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#ifndef BeaconstacSDK_MSConstants_h
-#define BeaconstacSDK_MSConstants_h
-
-#ifdef USE_QA_SERVER
-    #define URL_BASE @"https://beaconstac.qa.mobstac.com/api/1.0/"
-#else
-    #define URL_BASE @"https://beaconstac.mobstac.com/api/1.0/"
-#endif
-#define URL_RULE_PATH @"rules/"
-#define URL_PLACE_PATH @"places/"
-#define URL_TAG_PATH @"tags/"
-#define URL_EVENTLOGGER_PATH @"eventlogger/"
-#define URL_BEACON_PATH @"beacons/"
+#import <Foundation/Foundation.h>
 
 /**
- * SDK properties
+ * Provides control over BeaconstacSDK logging level.
+ *
+ * @code
+ * [MSLogger sharedInstance]setLogLevel:MSLogLevelError]];
+ * @endcode
  */
-#define SDK_VERSION @"1.1.1"
-#define EVENT_LOG_VERSION @1.1
+@interface MSLogger : NSObject
 
 /**
- * Beacon thresholds
- * @todo : These values should be fetched form a table based on the device type
- * iPhone shows a lower RSSI than iPod value under same condition
+ * Logging level enumeration
  */
+typedef NS_ENUM (NSUInteger, MSLogLevel) {
+    MSLogLevelNone = 0,
+    MSLogLevelError = 1,
+    MSLogLevelVerbose = 2,
+    MSLogLevelDebug = 3,
+    MSLogLevelEvents = 4
+};
 
-#define RSSI_ENTRY_THRESHOLD -75  // Defines entry criteria
-#define RSSI_EXIT_THRESHOLD -90   // Defines exit criteria
+/**
+ * Set desired logging level
+ */
+@property (nonatomic, assign) MSLogLevel loglevel;
 
-#endif
+/**
+ * Set whether to log beacon and rule events
+ */
+@property (nonatomic) BOOL logEvents;
+
+/**
+ * Log a verbose message.
+ */
+- (void)verbose:(NSString*)message;
+
+/**
+ * Log an error message.
+ */
+- (void)error:(NSString*)message;
+
+/**
+ * Log a debug message.
+ */
+- (void)debug:(NSString*)message;
+
+/**
+ * Log all events.
+ */
+- (void)eventlog:(NSString*)message;
+
+/**
+ * This is a shared instance to see Logs being created.
+ */
++ (MSLogger*)sharedInstance;
+
+
+@end
