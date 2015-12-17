@@ -69,8 +69,29 @@ typedef NS_ENUM (NSUInteger, MSCardType) {
 @property (nonatomic, strong) NSDate *modified;
 
 /**
- * Represents an array of tags associated to the card
+ * Represents an array of tags associated with the card
  */
 @property (nonatomic, strong) NSArray *tags;
+
+/**
+ * Represents id of the MSNotification associated with the card
+ * @see MSNotification
+ */
+@property (nonatomic, strong) NSNumber *notification;
+
+/**
+ * Represents action associated with OK button of the card
+ */
+@property (nonatomic, strong) NSString *okAction;
+
+/**
+ * Represents title on the OK button of the card
+ */
+@property (nonatomic, strong) NSString *okLabel;
+
+/**
+ * Represents title on Cancel button of the card
+ */
+@property (nonatomic, strong) NSString *cancelLabel;
 
 @end

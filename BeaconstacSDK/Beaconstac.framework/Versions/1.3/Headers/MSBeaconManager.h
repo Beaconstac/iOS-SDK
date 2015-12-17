@@ -119,6 +119,14 @@ typedef NS_ENUM (NSUInteger, MSBeaconAffinity)
 @property (strong, nonatomic) MSBeacon *campedOnBeacon;
 
 /**
+ * If set to True, the app would be able to range beacons and trigger rules while
+ * in the background. Default state is False.
+ * Please note that you should enable the background location updates under the
+ * Capabilities tab of your project target in Xcode.
+ */
+@property (nonatomic) BOOL allowRangingInBackground;
+
+/**
  * Initializes a MSBeaconManager to monitor all beacons with the
  * given UUID and identifier.
  * @param uuid This represents the unique Beacon UUID

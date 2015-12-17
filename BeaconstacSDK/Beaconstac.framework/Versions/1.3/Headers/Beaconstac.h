@@ -22,6 +22,7 @@
 
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 #import "MSLogger.h"
 #import "MSBeacon.h"
 #import "MSBeaconManager.h"
@@ -30,6 +31,7 @@
 #import "MSCard.h"
 #import "MSMedia.h"
 #import "MSIdentity.h"
+#import "MSNotification.h"
 
 @class Beaconstac;
 
@@ -185,6 +187,14 @@ typedef NS_ENUM (NSUInteger, MSUIAction){
 @property (nonatomic, strong) NSMutableDictionary *factsDictionary;
 
 /**
+ * If set to True, the app would be able to range beacons and trigger rules while
+ * in the background. Default state is False.
+ * Note: You should enable the background location updates under the Capabilities
+ * tab of your project target in Xcode.
+ */
+@property (nonatomic) BOOL allowRangingInBackground;
+
+/**
  * Returns the previously instantiated singleton instance of Beaconstac.
  */
 + (Beaconstac*)sharedInstance;
@@ -245,6 +255,14 @@ typedef NS_ENUM (NSUInteger, MSUIAction){
  * @param key The key against which the fact must be stored
  */
 - (void)updateFact:(id)fact forKey:(NSString*)key;
+
+/**
+ * This should be called inside AppDelegate's delegate method:
+ * application:handleActionWithIdentifier:forLocalNotification:completionHandler:
+ *
+ * It handles the action associated with Local notification's buttons
+ */
++ (void)handleNotification:(UILocalNotification*)notification forApplication:(UIApplication*)application;
 
 /**
  * Used to log user events to server such as when the user views

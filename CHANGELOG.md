@@ -1,3 +1,8 @@
+### v1.3 released on December 17, 2015
+
+* Added support for syncing and showing notifications associated with cards or created as a standalone action
+* Added a method to enable/disable background ranging
+
 ### v1.2 released on December 9, 2015
 
 * Added compatibility for background beacon ranging on iOS9
