@@ -12,7 +12,16 @@ Please refer to the API documentation on the [Beaconstac developer hub](http://d
 
 Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.com/us/app/beaconstac/id956442796?mt=8).
 
-## Integration with your existing project in XCode
+## Installation
+##### Using Cocoapods (recommended):
+Add the following to your Podfile in your project
+		
+		pod 'Beaconstac'
+
+Run `pod install` in the project directory
+
+
+##### Manually:
 
 1. Download or clone this repo on your system.
 2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destination's Group Folder" is checked.
@@ -26,24 +35,26 @@ Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.c
 	- SystemConfiguration.framework
 	- CoreBluetooth.framework
 	- CoreLocation.framework
+
+## Configure your project
 	
-5. In Info.plist, add a new field, NSLocationAlwaysUsageDescription with relevant value that you want to show to the user. This is mandatory for iOS 8 and above.
+1. In Info.plist, add a new field, NSLocationAlwaysUsageDescription with relevant value that you want to show to the user. This is mandatory for iOS 8 and above.
 <img src="images/usagedescription.png" alt="Build Phases" width="600">
 
-6. Import the framework header in your class and make sure the  class conforms to BeaconstacDelegate protocol
+2. Import the framework header in your class and make sure the  class conforms to BeaconstacDelegate protocol
 
 		#import <Beaconstac/Beaconstac.h>
 
-7. Initialize Beaconstac using the factory method:
+3. Initialize Beaconstac using the factory method:
 		
 		beaconstacInstance = [Beaconstac sharedInstanceWithOrganizationId:<organizationId: Int> developerToken:<developerToken: String>];
         beaconstacInstance.delegate = self;
 
-8. To start ranging beacons:
+4. To start ranging beacons:
 		
 		[beaconstacInstance startRangingBeaconsWithUUIDString:@"F94DBB23-2266-7822-3782-57BEAC0952AC" beaconIdentifier:@"MobstacRegion" filterOptions:nil];
 		
-9. Implement delegate methods to receive callbacks when beacons are ranged:
+5. Implement delegate methods to receive callbacks when beacons are ranged:
 		
 		- (void)beaconstac:(Beaconstac *)beaconstac rangedBeacons:(NSDictionary *)beaconsDictionary
 		{
