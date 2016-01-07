@@ -6,7 +6,7 @@ Beaconstac SDK is an easy way to enable proximity marketing and location analyti
 
 ## Documentation
 
-Please refer to the API documentation on the [Beaconstac developer hub](http://docs.beaconstac.com/docs/references/ios/index.html).
+Please refer to the [API documentation](http://cocoadocs.org/docsets/Beaconstac).
 
 ## Demo app
 
