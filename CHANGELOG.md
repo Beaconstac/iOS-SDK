@@ -1,4 +1,4 @@
-### v1.3.1 released on January 7, 2015
+### v1.3.1 released on January 7, 2016
 
 * Fixed issues with geo-fence monitoring for reliable sync when changes are made on the admin console
 
