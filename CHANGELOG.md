@@ -1,3 +1,7 @@
+### v1.3.1 released on January 7, 2016
+
+* Fixed issues with geo-fence monitoring for reliable sync when changes are made on the admin console
+
 ### v1.3 released on December 17, 2015
 
 * Added support for syncing and showing notifications associated with cards or created as a standalone action
