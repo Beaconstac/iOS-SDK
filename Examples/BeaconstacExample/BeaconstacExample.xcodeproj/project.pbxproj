@@ -13,6 +13,7 @@
 		7D4A2C931BFEE9C5003BBBC0 /* soundcloud.html in Resources */ = {isa = PBXBuildFile; fileRef = 7D4A2C921BFEE9C5003BBBC0 /* soundcloud.html */; };
 		7D4A2C951BFEEBDF003BBBC0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4A2C941BFEEBDF003BBBC0 /* QuartzCore.framework */; };
 		7D4A2C971BFEEC07003BBBC0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4A2C961BFEEC07003BBBC0 /* Accelerate.framework */; };
+		7D911A691C4CCAAB0019E427 /* Assets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7D911A681C4CCAAB0019E427 /* Assets.bundle */; };
 		7DDF9E9F1B2EE5D0001C142B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF9E9E1B2EE5D0001C142B /* main.m */; };
 		7DDF9EA21B2EE5D0001C142B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF9EA11B2EE5D0001C142B /* AppDelegate.m */; };
 		7DDF9EA51B2EE5D0001C142B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF9EA41B2EE5D0001C142B /* ViewController.m */; };
@@ -36,6 +37,7 @@
 		7D4A2C921BFEE9C5003BBBC0 /* soundcloud.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = soundcloud.html; path = BeaconstacExample/soundcloud.html; sourceTree = SOURCE_ROOT; };
 		7D4A2C941BFEEBDF003BBBC0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7D4A2C961BFEEC07003BBBC0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		7D911A681C4CCAAB0019E427 /* Assets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = Assets.bundle; path = BeaconstacExample/Assets.bundle; sourceTree = SOURCE_ROOT; };
 		7DDF9E991B2EE5D0001C142B /* BeaconstacExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconstacExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDF9E9D1B2EE5D0001C142B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DDF9E9E1B2EE5D0001C142B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 		7DE6C1DD1BE878D3006783B2 /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				7D911A681C4CCAAB0019E427 /* Assets.bundle */,
 				7D4A2C921BFEE9C5003BBBC0 /* soundcloud.html */,
 				7DE6C1E31BE87F8D006783B2 /* vimeo.html */,
 			);
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D911A691C4CCAAB0019E427 /* Assets.bundle in Resources */,
 				7D4A2C931BFEE9C5003BBBC0 /* soundcloud.html in Resources */,
 				7DE6C1E41BE87F8D006783B2 /* vimeo.html in Resources */,
 				7DDF9EA81B2EE5D0001C142B /* Main.storyboard in Resources */,
