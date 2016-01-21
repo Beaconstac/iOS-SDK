@@ -7,6 +7,8 @@
 
 #import <UIKit/UIKit.h>
 #import "YTPlayerView.h"
+#import <Beaconstac/Beaconstac.h>
+#import <Beaconstac/MSMedia.h>
 
 @protocol MusicCardDelegate <NSObject>
 
@@ -22,9 +24,13 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet YTPlayerView *ytPlayerView;
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIButton *okButton;
+@property (strong, nonatomic) NSString *okAction;
+@property (strong, nonatomic) MSMedia *media;
 
 - (void)setMode:(NSString*)mode;
 - (void)loadSoundCloudWithUrl:(NSString*)songUrl;
-- (void)loadVimeoWithUrl:(NSString*)videoID;
+- (void)loadVimeoWithUrl:(NSURL*)vimeoUrl;
+- (void)loadYoutubeWithUrl:(NSURL*)youtubeUrl;
 
 @end

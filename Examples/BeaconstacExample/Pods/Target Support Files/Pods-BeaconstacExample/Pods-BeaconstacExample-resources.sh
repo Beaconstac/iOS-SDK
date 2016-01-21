@@ -58,9 +58,13 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
+  install_resource "KIImagePager/KIImagePager/KIImagePager/KICamera.png"
+  install_resource "KIImagePager/KIImagePager/KIImagePager/KICamera@2x.png"
   install_resource "${BUILT_PRODUCTS_DIR}/Assets.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
+  install_resource "KIImagePager/KIImagePager/KIImagePager/KICamera.png"
+  install_resource "KIImagePager/KIImagePager/KIImagePager/KICamera@2x.png"
   install_resource "${BUILT_PRODUCTS_DIR}/Assets.bundle"
 fi
 

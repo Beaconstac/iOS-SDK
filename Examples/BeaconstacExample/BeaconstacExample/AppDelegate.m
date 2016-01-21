@@ -7,6 +7,7 @@
 
 #import "AppDelegate.h"
 #import <CoreLocation/CoreLocation.h>
+#import <Beaconstac/Beaconstac.h>
 
 @interface AppDelegate ()<CLLocationManagerDelegate>
 {
@@ -62,6 +63,12 @@
     if (status == kCLAuthorizationStatusAuthorizedAlways) {
         
     }
+}
+
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler
+{
+    [Beaconstac handleNotification:notification forApplication:application];
+    completionHandler();
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

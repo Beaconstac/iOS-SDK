@@ -1,6 +1,10 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
+## KIImagePager
+
+LICENSE
+
 ## youtube-ios-player-helper
 
 Copyright 2014 Google Inc. All rights reserved.

@@ -9,15 +9,26 @@
 #import <Beaconstac/Beaconstac.h>
 #import "WebViewController.h"
 #import "MusicCardView.h"
+#import "SummaryCardView.h"
+#import "PhotoCardView.h"
+#import "PageCardView.h"
+#import <Beaconstac/MSWebhook.h>
 
-@interface ViewController ()<BeaconstacDelegate, MusicCardDelegate,YTPlayerViewDelegate>
+@interface ViewController ()<BeaconstacDelegate, MusicCardDelegate, SummaryCardDelegate, YTPlayerViewDelegate,PageCardDelegate, PhotoCardDelegate, MSWebhookDelegate>
 {
     NSString *mediaType;
     NSURL *mediaUrl;
     Beaconstac *beaconstac;
     MSCard *visibleCard;
     MusicCardView *musicCardView;
+    SummaryCardView *summaryCardView;
+    PhotoCardView *photoCardView;
+    PageCardView *pageCardView;
 }
+
+@property (weak, nonatomic) UIView *visibleCardView;
+@property (nonatomic, strong) NSMutableDictionary *notificationsDictionary;
+
 @end
 
 @implementation ViewController
@@ -30,6 +41,7 @@
     
     // Setup and initialize the Beaconstac SDK
     beaconstac = [Beaconstac sharedInstanceWithOrganizationId:<org_id> developerToken:<dev_token>];
+    beaconstac.allowRangingInBackground = YES;
     [beaconstac setDelegate:self];
     [[MSLogger sharedInstance] setLoglevel:MSLogLevelError];
 
@@ -43,6 +55,19 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     self.navigationController.navigationBarHidden = NO;
+    
+    [MSNotification fetchAllNotificationsAndRegsiter:YES withCompletionBlock:^(NSArray *notifications, NSError *err) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        if (!err) {
+            NSMutableDictionary *dict = [NSMutableDictionary new];
+            for (MSNotification *notif in notifications) {
+                [dict setObject:notif forKey:notif.notificationID];
+            }
+            self.notificationsDictionary = dict;
+        } else {
+            NSLog(@"Error fetching notifications %@",err);
+        }
+    }];
 }
 
 //
@@ -59,7 +84,12 @@
     [beaconstac updateFact:@"female" forKey:@"Gender"];
 }
 
-#pragma mark - Beaconstac delegate
+#pragma mark - Beaconstac delegate methods
+
+- (void)beaconstac:(Beaconstac *)beaconstac didSyncRules:(NSDictionary *)ruleDict withError:(NSError *)error
+{
+    NSLog(@"didSyncRules with error %@",error);
+}
 
 - (void)beaconstac:(Beaconstac *)beaconstac rangedBeacons:(NSDictionary *)beaconsDictionary
 {
@@ -75,13 +105,7 @@
 
 - (void)beaconstac:(Beaconstac*)beaconstac campedOnBeacon:(MSBeacon*)beacon amongstAvailableBeacons:(NSDictionary *)beaconsDictionary
 {
-    if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-        NSLog(@"CampedOnBeacon: %@", beacon);
-    }
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.alertBody = [NSString stringWithFormat:@"Camped on to Beacon: %@, %@", beacon.major, beacon.minor];
-    [[UIApplication sharedApplication] presentLocalNotificationNow:notification];
-    
+    NSLog(@"CampedOnBeacon: %@", beacon);
 }
 
 - (void)beaconstac:(Beaconstac*)beaconstac exitedBeacon:(MSBeacon*)beacon
@@ -90,9 +114,6 @@
         NSLog(@"ExitedBeacon: %@", beacon);
         return;
     }
-    UILocalNotification *notification = [[UILocalNotification alloc] init];
-    notification.alertBody = [NSString stringWithFormat:@"Exited Beacon: %@, %@", beacon.major, beacon.minor];
-    [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
 }
 
 - (void)beaconstac:(Beaconstac*)beaconstac didEnterBeaconRegion:(CLRegion*)region
@@ -117,18 +138,14 @@
     [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
 }
 
-    // Tells the delegate that a rule is triggered with corresponding list of actions.
+  // Tells the delegate that a rule is triggered with corresponding list of actions.
 - (void)beaconstac:(Beaconstac *)beaconstac triggeredRuleWithRuleName:(NSString *)ruleName actionArray:(NSArray *)actionArray
 {
     NSLog(@"triggeredRuleWithRuleName: %@", ruleName);
     // actionArray contains the list of actions to trigger for the rule that matched.
     
     for (MSAction *action in actionArray) {
-        // meta.action_type can be "popup", "webpage", "card", "media", or "custom"
-    
-        UILocalNotification *notification = [[UILocalNotification alloc] init];
-        notification.alertBody = action.message;
-        [[UIApplication sharedApplication]presentLocalNotificationNow:notification];
+        // action type can be "popup", "webpage", "card", "media", or "custom"
         
         switch (action.type) {
             case MSActionTypePopup:
@@ -144,99 +161,46 @@
                 [self performSegueWithIdentifier:@"webSegue" sender:action];
                 NSLog(@"Webpage action type");
             }
-                break;
+            break;
                 
             case MSActionTypeCard:
             {
                 visibleCard = action.message;
-                switch (visibleCard.type) {
-                        
-                    case MSCardTypeMedia:
-                    {
-                        if (!musicCardView) {
-                            musicCardView = [[[NSBundle mainBundle] loadNibNamed:@"MusicCardView"
-                                                                           owner:self
-                                                                         options:nil] firstObject];
-                        }
-                        
-                        [self.view addSubview:musicCardView];
-                        musicCardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-                        musicCardView.layer.masksToBounds = YES;
-                        musicCardView.delegate = self;
-                        musicCardView.titleLabel.text = visibleCard.title;
-                        self.navigationController.navigationBarHidden = YES;
-
-                        [UIView animateWithDuration:0.35 animations:^{
-                            musicCardView.frame = self.view.frame;
-                        } completion:^(BOOL finished) {
-
-                            for (MSMedia *media in visibleCard.mediaArray) {
-                                if ([media.contentType containsString:@"video"]) {
-                                    if ([[media.mediaUrl absoluteString] containsString:@"vimeo"]) {
-                                        NSString *videoId = [self extractVimeoID:[media.mediaUrl absoluteString]];
-                                        [musicCardView loadVimeoWithUrl:videoId];
-                                    } else if ([media.contentType containsString:@"youtube"] || [media.contentType containsString:@"video"]) {
-                                        musicCardView.ytPlayerView.delegate = self;
-                                        [musicCardView.ytPlayerView setHidden:NO];
-                                        
-                                        NSDictionary *playerVars = @{
-                                                                     @"controls" : @1,
-                                                                     @"playsinline" : @0,
-                                                                     @"autohide" : @1,
-                                                                     @"showinfo" : @1,
-                                                                     @"modestbranding" : @1,
-                                                                     @"suggestedQuality" : @"large"
-                                                                     };
-                                        NSString *videoId = [self extractYoutubeID:[media.mediaUrl absoluteString]];
-                                        [musicCardView.ytPlayerView loadWithVideoId:videoId playerVars:playerVars];
-                                    } else {
-                                        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Only Youtube and Vimeo url are supported in video" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
-                                    }
-                                } else if ([media.contentType containsString:@"audio"]) {
-                                    [musicCardView loadSoundCloudWithUrl:[media.mediaUrl absoluteString]];
-                                } else {
-                                    continue;
-                                }
-                                break;
-                            }
-                        }];
+                if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) {
+                    MSNotification *notif = [self.notificationsDictionary objectForKey:visibleCard.notification];
+                    if (notif) {
+                        [notif showInApplication:[UIApplication sharedApplication]];
                     }
-                    break;
-                
-                    default:
-                    {
-                        for (int i=0; i< visibleCard.mediaArray.count; i++) {
-                            MSMedia *media = visibleCard.mediaArray[i];
-                            NSLog(@"Media 1: Id: %@, name: %@", media.mediaID, media.name);
-                        }
-                    }
-                    break;
+                } else if (self.visibleCardView) {
+                    NSLog(@"Ignoring card");
+                } else {
+                    [self showCard:visibleCard];
                 }
-            
             }
                 break;
+            
+            case MSActionTypeNotification:
+            {
+                MSNotification *notify = action.message;
+                [notify showInApplication:[UIApplication sharedApplication]];
+            }
+                
+            case MSActionTypeWebhook:
+            {
+                MSWebhook *webhook = action.message;
+                webhook.delegate = self;
+                //  Implement the MSWebhookDelegate methods if you do not want to execute the Webhook
+                //  Or, if you want to add additional payloads
+            }
+            break;
                 
             case MSActionTypeCustom:
             {
                 NSDictionary *customActionDict = action.message;
                 NSLog(@"Custom action type: %@", customActionDict);
+                [[[UIAlertView alloc] initWithTitle:ruleName message:[customActionDict description] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
             }
-                break;
-            
-            case MSActionTypeWebhook:
-            {
-                // Pass the POST params you want to pass and additional HTTP headers, if any.
-                // Please note that timestamp and data available in factsDictionary is automatically posted.
-                // Plesae note that HTTP headers sent from the portal are set by default
-                [action executeWebhookWithParams:nil headers:nil WithCompletionBlock:^(NSNumber *statusCode, NSData *data, NSError *error) {
-                    if (!error) {
-                        NSLog(@"Successful");
-                    } else {
-                        NSLog(@"Error: %@", [error localizedDescription]);
-                    }
-                }];
-            }
-                break;
+            break;
                 
             default:
                 break;
@@ -244,9 +208,18 @@
     }
 }
 
-- (void)beaconstac:(Beaconstac *)beaconstac didSyncRules:(NSDictionary *)ruleDict withError:(NSError *)error
+- (BOOL)webhookShouldExecute:(MSWebhook *)webhook
 {
-    NSLog(@"didSyncRules with error %@",error);
+    return YES;
+}
+
+- (void)webhook:(MSWebhook *)webhook executedWithResponse:(NSURLResponse *)response error:(NSError *)error
+{
+    if (error) {
+        [[[UIAlertView alloc] initWithTitle:@"Webhook Error" message:error.description delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+    } else {
+        NSLog(@"Webhook executed with response %@ , error %@",response,error);
+    }
 }
 
 #pragma mark - Music Card delegate
@@ -256,39 +229,20 @@
         case 0:
         {
             [UIView animateWithDuration:0.35 animations:^{
-                musicCardView.frame = CGRectMake(0, musicCardView.frame.size.height,musicCardView.frame.size.width, musicCardView.frame.size.height);
+                self.visibleCardView.frame = CGRectMake(0, musicCardView.frame.size.height,musicCardView.frame.size.width, musicCardView.frame.size.height);
             } completion:^(BOOL finished) {
                 [musicCardView removeFromSuperview];
+                self.visibleCardView = nil;
                 self.navigationController.navigationBarHidden = NO;
             }];
             [musicCardView setMode:@"pause"];
-            [musicCardView.ytPlayerView stopVideo];
         }
             break;
             
-        case 2:
+        case 1:
         {
-            for (MSMedia *media in visibleCard.mediaArray) {
-                if ([media.contentType containsString:@"video"] && [[media.mediaUrl absoluteString] containsString:@"vimeo"]) {
-                    NSString *videoId = [self extractVimeoID:[media.mediaUrl absoluteString]];
-                    [musicCardView loadVimeoWithUrl:videoId];
-                    break;
-                } else if ([media.contentType containsString:@"youtube"]) {
-                        //musicCardView.ytPlayerView.delegate = self;
-                    [musicCardView.ytPlayerView setHidden:NO];
-                    
-                    NSDictionary *playerVars = @{
-                                                 @"controls" : @1,
-                                                 @"playsinline" : @1,
-                                                 @"autohide" : @1,
-                                                 @"showinfo" : @1,
-                                                 @"modestbranding" : @1,
-                                                 @"suggestedQuality" : @"large"
-                                                 };
-                    NSString *videoId = [self extractYoutubeID:[media.mediaUrl absoluteString]];
-                    [musicCardView.ytPlayerView loadWithVideoId:videoId playerVars:playerVars];
-                    break;
-                }
+            if ([musicCardView.okAction length]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:musicCardView.okAction]];
             }
         }
             break;
@@ -298,31 +252,247 @@
     }
 }
 
-
-#pragma mark - Extract video id form URL
-
-- (NSString *)extractYoutubeID:(NSString *)youtubeURL
+- (void)summaryButtonClickedAtIndex:(int)index
 {
-    NSError *error = NULL;
-    NSString *regexString = @"(?<=v(=|/))([-a-zA-Z0-9_]+)|(?<=youtu.be/)([-a-zA-Z0-9_]+)";
-    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:regexString options:NSRegularExpressionCaseInsensitive error:&error];
-    NSRange rangeOfFirstMatch = [regex rangeOfFirstMatchInString:youtubeURL options:0 range:NSMakeRange(0, [youtubeURL length])];
-    if(!NSEqualRanges(rangeOfFirstMatch, NSMakeRange(NSNotFound, 0)))
-    {
-        NSString *substringForFirstMatch = [youtubeURL substringWithRange:rangeOfFirstMatch];
-        return substringForFirstMatch;
+    switch (index) {
+        case 0:
+        {
+            [UIView animateWithDuration:0.35 animations:^{
+                self.visibleCardView.frame = CGRectMake(0, self.visibleCardView.frame.size.height, self.visibleCardView.frame.size.width, self.visibleCardView.frame.size.height);
+            } completion:^(BOOL finished) {
+                [summaryCardView removeFromSuperview];
+                self.visibleCardView = nil;
+                self.navigationController.navigationBarHidden = NO;
+            }];
+        }
+        break;
+            
+        case 1:
+        {
+            if ([summaryCardView.okAction length]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:summaryCardView.okAction]];
+            }
+        }
+        break;
+            
+        default:
+            break;
     }
-    return nil;
 }
 
-- (NSString *)extractVimeoID:(NSString *)vimeoURL
+- (void)photoCardButtonClickedAtIndex:(int)index
 {
-    NSRange range = [vimeoURL rangeOfString:@"vimeo.com/"];
-    if (range.location !=NSNotFound) {
-        NSString *str = [vimeoURL substringFromIndex:(range.location+range.length)];
-        return str;
+    switch (index)
+    {
+        case 0:
+        {
+            [UIView animateWithDuration:0.35 animations:^{
+                self.visibleCardView.frame = CGRectMake(0, self.visibleCardView.frame.size.height, self.visibleCardView.frame.size.width, self.visibleCardView.frame.size.height);
+            } completion:^(BOOL finished) {
+                [photoCardView removeFromSuperview];
+                self.visibleCardView = nil;
+                self.navigationController.navigationBarHidden = NO;
+            }];
+        }
+            break;
+            
+        case 1:
+        {
+            if ([photoCardView.okAction length]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:photoCardView.okAction]];
+            }
+        }
+            break;
+            
+        default:
+            break;
     }
-    return nil;
+}
+
+- (void)pageButtonClickedAtIndex:(int)index
+{
+    switch (index) {
+        case 0:
+        {
+            [UIView animateWithDuration:0.35 animations:^{
+                self.visibleCardView.frame = CGRectMake(0, self.visibleCardView.frame.size.height, self.visibleCardView.frame.size.width, self.visibleCardView.frame.size.height);
+            } completion:^(BOOL finished) {
+                self.visibleCardView = nil;
+            }];
+        }
+            break;
+            
+        case 1:
+        {
+            if ([pageCardView.okAction length]) {
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:pageCardView.okAction]];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
+
+}
+
+- (void)showCard:(MSCard*)card
+{
+    MSNotification *notif = [self.notificationsDictionary objectForKey:card.notification];
+    switch (card.type) {
+        case MSCardTypeMedia:
+        {
+            if (!musicCardView) {
+                musicCardView = [[[NSBundle mainBundle] loadNibNamed:@"MusicCardView"
+                                                               owner:self
+                                                             options:nil] firstObject];
+            }
+            [self.view addSubview:musicCardView];
+            musicCardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+            musicCardView.layer.masksToBounds = YES;
+            musicCardView.delegate = self;
+            musicCardView.titleLabel.text = card.title;
+            musicCardView.media = [card.mediaArray firstObject];
+            [musicCardView.okButton setTitle:notif.okLabel?:@"OK" forState:UIControlStateNormal];
+            musicCardView.okAction = notif.okAction;
+            
+            self.visibleCardView = musicCardView;
+            [UIView animateWithDuration:0.35 animations:^{
+                musicCardView.frame = self.view.frame;
+                self.navigationController.navigationBarHidden = YES;
+            } completion:^(BOOL finished) {
+                for (MSMedia *media in visibleCard.mediaArray) {
+                    if ([media.contentType containsString:@"video"] && [[media.mediaUrl absoluteString] containsString:@"vimeo"]) {
+                        [musicCardView loadVimeoWithUrl:media.mediaUrl];
+                    } else if ([media.contentType containsString:@"video"]) {
+                        musicCardView.ytPlayerView.delegate = self;
+                        [musicCardView loadYoutubeWithUrl:media.mediaUrl];
+                    } else if ([media.contentType containsString:@"audio"]) {
+                        [musicCardView loadSoundCloudWithUrl:[media.mediaUrl absoluteString]];
+                    } else if ([media.contentType containsString:@"video"]) {
+                        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Content type is not supported" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                    }
+                }
+            }];
+        }
+            break;
+            
+        case MSCardTypePhoto:
+        {
+            if (!photoCardView) {
+                photoCardView = [[[NSBundle mainBundle] loadNibNamed:@"PhotoCardView"
+                                                               owner:self
+                                                             options:nil] firstObject];
+            }
+            if (!self.visibleCardView) {
+                [self.view addSubview:photoCardView];
+                photoCardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+                photoCardView.layer.masksToBounds = YES;
+                photoCardView.imageArray = visibleCard.mediaArray;
+                photoCardView.titleLabel.text = visibleCard.title;
+                photoCardView.delegate = self;
+                [photoCardView.okButton setTitle:notif.okLabel?:@"OK" forState:UIControlStateNormal];
+                photoCardView.okAction = notif.okAction;
+                self.visibleCardView = photoCardView;
+                [photoCardView.imagePager reloadData];
+                
+                [UIView animateWithDuration:0.35 animations:^{
+                    photoCardView.frame = self.view.frame;
+                    self.navigationController.navigationBarHidden = YES;
+                } completion:^(BOOL finished) {
+                }];
+            }
+        }
+            break;
+            
+        case MSCardTypeSummary:
+        {
+            if (!summaryCardView) {
+                summaryCardView = [[[NSBundle mainBundle] loadNibNamed:@"SummaryCardView"
+                                                                 owner:self
+                                                               options:nil] firstObject];
+            }
+            [self.view addSubview:summaryCardView];
+            summaryCardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+            summaryCardView.layer.masksToBounds = YES;
+            summaryCardView.delegate = self;
+            summaryCardView.titleLabel.text = visibleCard.title;
+            summaryCardView.summaryView.text = visibleCard.body;
+            [summaryCardView.okButton setTitle:notif.okLabel?:@"OK" forState:UIControlStateNormal];
+            summaryCardView.summaryView.text = visibleCard.body;
+            summaryCardView.okAction = notif.okAction;
+            
+            MSMedia *media = [visibleCard.mediaArray firstObject];
+            NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:media.mediaUrl];
+            
+            [NSURLConnection sendAsynchronousRequest:request
+                                               queue:[NSOperationQueue mainQueue]
+                                   completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                                       if (!error ) {
+                                           UIImage *fetchedImage = [UIImage imageWithData:data];
+                                           if (fetchedImage) {
+                                               dispatch_async(dispatch_get_main_queue(), ^{
+                                                   summaryCardView.imageView.image = fetchedImage;
+                                               });
+                                           }
+                                       }
+                                   }];
+            
+            self.visibleCardView = summaryCardView;
+            [UIView animateWithDuration:0.35 animations:^{
+                summaryCardView.frame = self.view.frame;
+                self.navigationController.navigationBarHidden = YES;
+            } completion:^(BOOL finished) {
+            }];
+        }
+            break;
+
+        case MSCardTypePage:
+        {
+            if (!pageCardView) {
+                pageCardView = [[[NSBundle mainBundle] loadNibNamed:@"PageCardView"
+                                                              owner:self
+                                                            options:nil] firstObject];
+            }
+            if (!self.visibleCardView) {
+                [self.view addSubview:pageCardView];
+                pageCardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+                pageCardView.layer.masksToBounds = YES;
+                pageCardView.delegate = self;
+                pageCardView.titleLabel.text = visibleCard.title;
+                pageCardView.summaryView.text = visibleCard.body;
+                [pageCardView.okButton setTitle:notif.okLabel?:@"OK" forState:UIControlStateNormal];
+                pageCardView.okAction = notif.okAction;
+                
+                MSMedia *media = [visibleCard.mediaArray firstObject];
+                NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:media.mediaUrl];
+                
+                [NSURLConnection sendAsynchronousRequest:request
+                                                   queue:[NSOperationQueue mainQueue]
+                                       completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                                           if (!error ) {
+                                               UIImage *fetchedImage = [UIImage imageWithData:data];
+                                               if (fetchedImage) {
+                                                   dispatch_async(dispatch_get_main_queue(), ^{
+                                                       pageCardView.imageView.image = fetchedImage;
+                                                   });
+                                               }
+                                           }
+                                       }];
+                
+                self.visibleCardView = pageCardView;
+                [UIView animateWithDuration:0.35 animations:^{
+                    pageCardView.frame = self.view.frame;
+                    self.navigationController.navigationBarHidden = YES;
+                } completion:^(BOOL finished) {
+                }];
+            }
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (void)didReceiveMemoryWarning

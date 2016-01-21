@@ -4,6 +4,7 @@
 target 'BeaconstacExample' do
 
 pod 'youtube-ios-player-helper'
+pod 'KIImagePager'
 
 end
 
