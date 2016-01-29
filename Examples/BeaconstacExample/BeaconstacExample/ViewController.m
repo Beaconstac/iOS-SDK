@@ -208,6 +208,8 @@
     }
 }
 
+#pragma mark - Webhook delegate
+
 - (BOOL)webhookShouldExecute:(MSWebhook *)webhook
 {
     return YES;
@@ -223,6 +225,7 @@
 }
 
 #pragma mark - Music Card delegate
+
 - (void)mediaCardButtonClickedAtIndex:(int)index
 {
     switch (index) {
@@ -252,6 +255,8 @@
     }
 }
 
+#pragma mark - Summary Card delegate
+
 - (void)summaryButtonClickedAtIndex:(int)index
 {
     switch (index) {
@@ -279,6 +284,8 @@
             break;
     }
 }
+
+#pragma mark - Photo Card delegate
 
 - (void)photoCardButtonClickedAtIndex:(int)index
 {
@@ -309,6 +316,8 @@
     }
 }
 
+#pragma mark - Page Card delegate
+
 - (void)pageButtonClickedAtIndex:(int)index
 {
     switch (index) {
@@ -317,7 +326,9 @@
             [UIView animateWithDuration:0.35 animations:^{
                 self.visibleCardView.frame = CGRectMake(0, self.visibleCardView.frame.size.height, self.visibleCardView.frame.size.width, self.visibleCardView.frame.size.height);
             } completion:^(BOOL finished) {
+                [pageCardView removeFromSuperview];
                 self.visibleCardView = nil;
+                self.navigationController.navigationBarHidden = NO;
             }];
         }
             break;
@@ -457,7 +468,6 @@
             if (!self.visibleCardView) {
                 [self.view addSubview:pageCardView];
                 pageCardView.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-                pageCardView.layer.masksToBounds = YES;
                 pageCardView.delegate = self;
                 pageCardView.titleLabel.text = visibleCard.title;
                 pageCardView.summaryView.text = visibleCard.body;
