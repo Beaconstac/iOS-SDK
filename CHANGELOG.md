@@ -1,7 +1,7 @@
 ### v1.3.2 released on January 21, 2016
 
 * New Webhook class and delegate methods. See the updated Admin Console for including Webhook parameters.
-* Example app updated to include Summary Card and Photo Card UI
+* Example app updated to include Summary Card, Photo Card and Page Card UI
 
 ### v1.3.1 released on January 7, 2016
 
