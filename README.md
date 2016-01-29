@@ -24,8 +24,8 @@ Run `pod install` in the project directory
 ##### Manually:
 
 1. Download or clone this repo on your system.
-2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destination's Group Folder" is checked.
-<img src="images/frameworkdrop.png" alt="Build Phases" width="600">
+2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destinations Group Folder" is checked.
+![Copy Items](https://raw.githubusercontent.com/Beaconstac/iOS-SDK/master/images/frameworkdrop.png)
 
 3. Navigate to Beaconstac.framework/Resources folder in Finder and drop the Beaconstac.bundle into Project navigator area. Make sure that "Copy Items to Destination's Group Folder" checked.
 <img src="images/bundledrop.png" alt="Build Phases" width="600">
