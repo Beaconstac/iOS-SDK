@@ -24,11 +24,11 @@ Run `pod install` in the project directory
 ##### Manually:
 
 1. Download or clone this repo on your system.
-2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destinations Group Folder" is checked.
-![Copy Items](https://raw.githubusercontent.com/Beaconstac/iOS-SDK/master/images/frameworkdrop.png)
+2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destination Group Folder" is checked.
+![Framework drop](https://raw.githubusercontent.com/Beaconstac/iOS-SDK/master/images/frameworkdrop.png)
 
-3. Navigate to Beaconstac.framework/Resources folder in Finder and drop the Beaconstac.bundle into Project navigator area. Make sure that "Copy Items to Destination's Group Folder" checked.
-<img src="images/bundledrop.png" alt="Build Phases" width="600">
+3. Navigate to Beaconstac.framework/Resources folder in Finder and drop the Beaconstac.bundle into Project navigator area. Make sure that "Copy Items to Destination Group Folder" checked.
+![Bundle drop](https://raw.githubusercontent.com/Beaconstac/iOS-SDK/master/images/bundledrop.png)
 
 4. In Build Phases under Target, add the following frameworks in “Link Binary With Libraries” section:
 	- CoreData.framework
@@ -39,7 +39,7 @@ Run `pod install` in the project directory
 ## Configure your project
 	
 1. In Info.plist, add a new field, NSLocationAlwaysUsageDescription with relevant value that you want to show to the user. This is mandatory for iOS 8 and above.
-<img src="images/usagedescription.png" alt="Build Phases" width="600">
+![Build phases](https://raw.githubusercontent.com/Beaconstac/iOS-SDK/master/images/usagedescription.png)
 
 2. Import the framework header in your class and make sure the  class conforms to BeaconstacDelegate protocol
 
