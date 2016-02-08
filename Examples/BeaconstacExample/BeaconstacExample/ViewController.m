@@ -12,7 +12,6 @@
 #import "SummaryCardView.h"
 #import "PhotoCardView.h"
 #import "PageCardView.h"
-#import <Beaconstac/MSWebhook.h>
 
 @interface ViewController ()<BeaconstacDelegate, MusicCardDelegate, SummaryCardDelegate, YTPlayerViewDelegate,PageCardDelegate, PhotoCardDelegate, MSWebhookDelegate>
 {
@@ -45,8 +44,10 @@
     [beaconstac setDelegate:self];
     [[MSLogger sharedInstance] setLoglevel:MSLogLevelError];
 
+    NSLog(@"SDK %@",SDK_VERSION);
+    
     // Start ranging beacons with the given UUID
-    [beaconstac startRangingBeaconsWithUUIDString:@"F94DBB23-2266-7822-3782-57BEAC0952AC" beaconIdentifier:@"MobstacRegion" filterOptions:nil];
+    [beaconstac startRangingBeaconsWithUUIDString:@"F94DBB23-2266-7822-3782-57BEAC0952AC" beaconIdentifier:@"MobstacRegion" filterOptions:@{@"mybeacons":@YES}];
     
     // Demonstrates Custom Attributes functionality.
     [self customAttributeDemo];
@@ -81,7 +82,7 @@
 //
 - (void)customAttributeDemo
 {
-    [beaconstac updateFact:@"female" forKey:@"Gender"];
+    [beaconstac updateFact:@"male" forKey:@"Gender"];
 }
 
 #pragma mark - Beaconstac delegate methods
@@ -111,7 +112,6 @@
 - (void)beaconstac:(Beaconstac*)beaconstac exitedBeacon:(MSBeacon*)beacon
 {
     if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateActive) {
-        NSLog(@"ExitedBeacon: %@", beacon);
         return;
     }
 }
@@ -151,21 +151,21 @@
             case MSActionTypePopup:
             {
                 NSLog(@"Text Alert action type");
-                NSString *message = action.message;
+                NSString *message = ((MSPopupAction*)action).messageBody;
                 [[[UIAlertView alloc] initWithTitle:ruleName message:[NSString stringWithFormat:@"%@",message] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
             }
                 break;
                 
             case MSActionTypeWebpage:
             {
-                [self performSegueWithIdentifier:@"webSegue" sender:action];
+                [self performSegueWithIdentifier:@"webSegue" sender:(MSWebpageAction*)action];
                 NSLog(@"Webpage action type");
             }
             break;
                 
             case MSActionTypeCard:
             {
-                visibleCard = action.message;
+                visibleCard = (MSCard*)action;
                 if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) {
                     MSNotification *notif = [self.notificationsDictionary objectForKey:visibleCard.notification];
                     if (notif) {
@@ -181,13 +181,13 @@
             
             case MSActionTypeNotification:
             {
-                MSNotification *notify = action.message;
+                MSNotification *notify = (MSNotification*)action;
                 [notify showInApplication:[UIApplication sharedApplication]];
             }
                 
             case MSActionTypeWebhook:
             {
-                MSWebhook *webhook = action.message;
+                MSWebhook *webhook = (MSWebhook*)action;
                 webhook.delegate = self;
                 //  Implement the MSWebhookDelegate methods if you do not want to execute the Webhook
                 //  Or, if you want to add additional payloads
@@ -196,9 +196,9 @@
                 
             case MSActionTypeCustom:
             {
-                NSDictionary *customActionDict = action.message;
-                NSLog(@"Custom action type: %@", customActionDict);
-                [[[UIAlertView alloc] initWithTitle:ruleName message:[customActionDict description] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
+                MSCustomAction *customAction = (MSCustomAction*)action;
+                NSLog(@"Custom action type: %@", customAction.json);
+                [[[UIAlertView alloc] initWithTitle:ruleName message:[customAction.json description] delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil] show];
             }
             break;
                 
@@ -207,8 +207,6 @@
         }
     }
 }
-
-#pragma mark - Webhook delegate
 
 - (BOOL)webhookShouldExecute:(MSWebhook *)webhook
 {
@@ -225,7 +223,6 @@
 }
 
 #pragma mark - Music Card delegate
-
 - (void)mediaCardButtonClickedAtIndex:(int)index
 {
     switch (index) {
@@ -255,8 +252,6 @@
     }
 }
 
-#pragma mark - Summary Card delegate
-
 - (void)summaryButtonClickedAtIndex:(int)index
 {
     switch (index) {
@@ -284,8 +279,6 @@
             break;
     }
 }
-
-#pragma mark - Photo Card delegate
 
 - (void)photoCardButtonClickedAtIndex:(int)index
 {
@@ -315,8 +308,6 @@
             break;
     }
 }
-
-#pragma mark - Page Card delegate
 
 - (void)pageButtonClickedAtIndex:(int)index
 {
@@ -350,7 +341,7 @@
 - (void)showCard:(MSCard*)card
 {
     MSNotification *notif = [self.notificationsDictionary objectForKey:card.notification];
-    switch (card.type) {
+    switch (card.cardType) {
         case MSCardTypeMedia:
         {
             if (!musicCardView) {
@@ -502,6 +493,14 @@
             
         default:
             break;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"webSegue"]) {
+        WebViewController *webVC = (WebViewController*)segue.destinationViewController;
+        webVC.url = ((MSWebpageAction*)sender).webUrl;
     }
 }
 

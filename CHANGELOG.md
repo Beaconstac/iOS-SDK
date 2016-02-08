@@ -1,7 +1,12 @@
+### v1.4 released on February 8, 2016
+
+* New classes for Webpage, Custom and Popup action types. All action types now inherit from MSAction. Check the Example code for how to access these.
+* Improvement in 'allowRangingInBackground' functionality
+
 ### v1.3.2 released on January 21, 2016
 
 * New Webhook class and delegate methods. See the updated Admin Console for including Webhook parameters.
-* Example app updated to include Summary Card, Photo Card and Page Card UI
+* Example app updated to include Summary Card and Photo Card UI
 
 ### v1.3.1 released on January 7, 2016
 

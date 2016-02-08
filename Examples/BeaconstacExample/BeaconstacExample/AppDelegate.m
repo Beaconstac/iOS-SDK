@@ -38,6 +38,12 @@
     }
 #endif
     
+    if ([application respondsToSelector:@selector(shortcutItems)]) {
+        UIApplicationShortcutItem *startItem = [[UIApplicationShortcutItem alloc] initWithType:@"Type1" localizedTitle:@"Start background scan" localizedSubtitle:nil icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeMarkLocation] userInfo:nil];
+        UIApplicationShortcutItem *stopItem = [[UIApplicationShortcutItem alloc] initWithType:@"Type2" localizedTitle:@"Stop background scan" localizedSubtitle:nil icon:[UIApplicationShortcutIcon iconWithType:UIApplicationShortcutIconTypeProhibit] userInfo:nil];
+        application.shortcutItems = @[startItem,stopItem];
+    }
+    
     return YES;
 }
 
@@ -64,6 +70,18 @@
         
     }
 }
+
+- (void)application:(UIApplication *)application performActionForShortcutItem:(UIApplicationShortcutItem *)shortcutItem completionHandler:(void(^)(BOOL succeeded))completionHandler NS_AVAILABLE_IOS(9_0)
+{
+    if ([shortcutItem.type isEqualToString:@"Type1"]) {
+        [[Beaconstac sharedInstance] setAllowRangingInBackground:YES];
+        [[Beaconstac sharedInstance] startRangingBeaconsWithUUIDString:@"F94DBB23-2266-7822-3782-57BEAC0952AC" beaconIdentifier:@"MobstacRegion" filterOptions:@{@"mybeacons":@YES}];
+    } else {
+        [[Beaconstac sharedInstance] setAllowRangingInBackground:NO];
+        [[Beaconstac sharedInstance] stopRangingBeacons];
+    }
+}
+
 
 - (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forLocalNotification:(UILocalNotification *)notification completionHandler:(void(^)())completionHandler
 {
