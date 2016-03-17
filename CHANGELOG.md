@@ -1,3 +1,11 @@
+### v1.4.1 released on March 17, 2016
+
+* Fixed a bug which was causing name and email to be not reported on Analytics dashboard (https://manage.beaconstac.com/reporting/visitors) 
+* Introduced new property in Beaconstac to check if beacon ranging is enabled
+* Introduced new api in MSRuleProcessor to fetch rules from server, ignoring the local cached version
+* MSRuleProcessor cannot be accessed as [MSRuleProcessor sharedInstance] anymore. Instead, use the property in Beaconstac instance: [[Beaconstac sharedInstance] ruleProcessor]
+
+
 ### v1.4 released on February 8, 2016
 
 * New classes for Webpage, Custom and Popup action types. All action types now inherit from MSAction. Check the Example code for how to access these.

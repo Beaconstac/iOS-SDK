@@ -7,6 +7,7 @@
 //
 
 #import "PhotoCardView.h"
+#import <Beaconstac/Beaconstac.h>
 
 @interface PhotoCardView()<KIImagePagerDelegate,KIImagePagerDataSource>
 

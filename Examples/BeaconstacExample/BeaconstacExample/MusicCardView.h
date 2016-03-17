@@ -8,7 +8,6 @@
 #import <UIKit/UIKit.h>
 #import "YTPlayerView.h"
 #import <Beaconstac/Beaconstac.h>
-#import <Beaconstac/MSMedia.h>
 
 @protocol MusicCardDelegate <NSObject>
 

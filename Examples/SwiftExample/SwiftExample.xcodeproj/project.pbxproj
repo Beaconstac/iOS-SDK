@@ -16,7 +16,7 @@
 		7D42AC981C197DEA00BB3D3A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D42AC971C197DEA00BB3D3A /* CoreData.framework */; };
 		7D42AC9A1C197E2C00BB3D3A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D42AC991C197E2C00BB3D3A /* SystemConfiguration.framework */; };
 		7D42ACA91C198CC100BB3D3A /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D42ACA81C198CC100BB3D3A /* Beaconstac.framework */; };
-		7DD4E1C61C68BA2C00C34D0F /* BeaconstacData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7DD4E1C51C68BA2C00C34D0F /* BeaconstacData.bundle */; };
+		7DDC9A3E1C9B278200FED97C /* BeaconstacData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC9A3D1C9B278200FED97C /* BeaconstacData.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,7 @@
 		7D42AC991C197E2C00BB3D3A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7D42ACA51C198A0200BB3D3A /* SwiftExample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftExample-Bridging-Header.h"; sourceTree = "<group>"; };
 		7D42ACA81C198CC100BB3D3A /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../../../BeaconstacSDK/Beaconstac.framework; sourceTree = "<group>"; };
-		7DD4E1C51C68BA2C00C34D0F /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../BeaconstacSDK/Beaconstac.framework/Versions/1.4/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
+		7DDC9A3D1C9B278200FED97C /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../BeaconstacSDK/Beaconstac.framework/Versions/1.4.1/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,7 @@
 				7D42AC821C197D2600BB3D3A /* Main.storyboard */,
 				7D42AC871C197D2600BB3D3A /* LaunchScreen.storyboard */,
 				7D42AC8A1C197D2600BB3D3A /* Info.plist */,
-				7DD4E1C51C68BA2C00C34D0F /* BeaconstacData.bundle */,
+				7DDC9A3D1C9B278200FED97C /* BeaconstacData.bundle */,
 				7D42ACA81C198CC100BB3D3A /* Beaconstac.framework */,
 				7D42AC991C197E2C00BB3D3A /* SystemConfiguration.framework */,
 				7D42AC951C197DE500BB3D3A /* CoreLocation.framework */,
@@ -150,7 +150,7 @@
 			files = (
 				7D42AC891C197D2600BB3D3A /* LaunchScreen.storyboard in Resources */,
 				7D42AC861C197D2600BB3D3A /* Assets.xcassets in Resources */,
-				7DD4E1C61C68BA2C00C34D0F /* BeaconstacData.bundle in Resources */,
+				7DDC9A3E1C9B278200FED97C /* BeaconstacData.bundle in Resources */,
 				7D42AC841C197D2600BB3D3A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

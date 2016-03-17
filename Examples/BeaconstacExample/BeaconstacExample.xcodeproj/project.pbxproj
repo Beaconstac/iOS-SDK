@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		3DD46C40C5DB149D74BD718A /* libPods-BeaconstacExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D894DA7EC4599DB0A643D2B4 /* libPods-BeaconstacExample.a */; };
 		7D19259F1C510AB600B7AEBD /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D19259E1C510AB600B7AEBD /* Beaconstac.framework */; };
-		7D1925A11C510AC000B7AEBD /* BeaconstacData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7D1925A01C510AC000B7AEBD /* BeaconstacData.bundle */; };
 		7D4A2C931BFEE9C5003BBBC0 /* soundcloud.html in Resources */ = {isa = PBXBuildFile; fileRef = 7D4A2C921BFEE9C5003BBBC0 /* soundcloud.html */; };
 		7D4A2C951BFEEBDF003BBBC0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4A2C941BFEEBDF003BBBC0 /* QuartzCore.framework */; };
 		7D4A2C971BFEEC07003BBBC0 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D4A2C961BFEEC07003BBBC0 /* Accelerate.framework */; };
@@ -20,6 +19,7 @@
 		7D911A7C1C4E4F450019E427 /* SummaryCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D911A7A1C4E4F450019E427 /* SummaryCardView.xib */; };
 		7D911A841C4E7DC60019E427 /* PhotoCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7D911A821C4E7DC60019E427 /* PhotoCardView.m */; };
 		7D911A851C4E7DC60019E427 /* PhotoCardView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D911A831C4E7DC60019E427 /* PhotoCardView.xib */; };
+		7DDC9A3C1C9B20A200FED97C /* BeaconstacData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC9A3B1C9B20A200FED97C /* BeaconstacData.bundle */; };
 		7DDF9E9F1B2EE5D0001C142B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF9E9E1B2EE5D0001C142B /* main.m */; };
 		7DDF9EA21B2EE5D0001C142B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF9EA11B2EE5D0001C142B /* AppDelegate.m */; };
 		7DDF9EA51B2EE5D0001C142B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7DDF9EA41B2EE5D0001C142B /* ViewController.m */; };
@@ -39,7 +39,6 @@
 /* Begin PBXFileReference section */
 		5A7E718D6A9A40662F62B4D5 /* Pods-BeaconstacExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconstacExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconstacExample/Pods-BeaconstacExample.release.xcconfig"; sourceTree = "<group>"; };
 		7D19259E1C510AB600B7AEBD /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../../../BeaconstacSDK/Beaconstac.framework; sourceTree = "<group>"; };
-		7D1925A01C510AC000B7AEBD /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../BeaconstacSDK/Beaconstac.framework/Versions/1.4/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 		7D4A2C921BFEE9C5003BBBC0 /* soundcloud.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; name = soundcloud.html; path = BeaconstacExample/soundcloud.html; sourceTree = SOURCE_ROOT; };
 		7D4A2C941BFEEBDF003BBBC0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7D4A2C961BFEEC07003BBBC0 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -53,6 +52,7 @@
 		7D911A811C4E7DC60019E427 /* PhotoCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCardView.h; sourceTree = "<group>"; };
 		7D911A821C4E7DC60019E427 /* PhotoCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCardView.m; sourceTree = "<group>"; };
 		7D911A831C4E7DC60019E427 /* PhotoCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCardView.xib; sourceTree = "<group>"; };
+		7DDC9A3B1C9B20A200FED97C /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../BeaconstacSDK/Beaconstac.framework/Versions/1.4.1/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 		7DDF9E991B2EE5D0001C142B /* BeaconstacExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconstacExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDF9E9D1B2EE5D0001C142B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DDF9E9E1B2EE5D0001C142B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -176,7 +176,7 @@
 		7DDF9EC41B2EE6B0001C142B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				7D1925A01C510AC000B7AEBD /* BeaconstacData.bundle */,
+				7DDC9A3B1C9B20A200FED97C /* BeaconstacData.bundle */,
 				7D19259E1C510AB600B7AEBD /* Beaconstac.framework */,
 				7DDF9ECD1B2EE82C001C142B /* SystemConfiguration.framework */,
 				7DDF9ECB1B2EE81E001C142B /* CoreBluetooth.framework */,
@@ -268,10 +268,10 @@
 				7DE6C1E41BE87F8D006783B2 /* vimeo.html in Resources */,
 				7DDF9EA81B2EE5D0001C142B /* Main.storyboard in Resources */,
 				7D788D241C57530800A321BA /* PageCardView.xib in Resources */,
+				7DDC9A3C1C9B20A200FED97C /* BeaconstacData.bundle in Resources */,
 				7D911A7C1C4E4F450019E427 /* SummaryCardView.xib in Resources */,
 				7DDF9EAD1B2EE5D0001C142B /* LaunchScreen.xib in Resources */,
 				7DE6C1DC1BE877EB006783B2 /* MusicCardView.xib in Resources */,
-				7D1925A11C510AC000B7AEBD /* BeaconstacData.bundle in Resources */,
 				7DDF9EAA1B2EE5D0001C142B /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

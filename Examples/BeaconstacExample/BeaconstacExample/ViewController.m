@@ -39,11 +39,12 @@
     self.title = @"Beaconstac";
     
     // Setup and initialize the Beaconstac SDK
-    beaconstac = [Beaconstac sharedInstanceWithOrganizationId:<org_id> developerToken:<dev_token>];
+    beaconstac = [Beaconstac sharedInstanceWithOrganizationId:720 developerToken:@"e62435a78e67ec98bba3b879ba00448650032557"];
     beaconstac.allowRangingInBackground = YES;
     [beaconstac setDelegate:self];
+    [beaconstac setUserIdentityWithFirstName:@"User" lastName:nil emailAddress:@"user@domain.com" userInfo:nil];
     [[MSLogger sharedInstance] setLoglevel:MSLogLevelError];
-
+    
     NSLog(@"SDK %@",SDK_VERSION);
     
     // Start ranging beacons with the given UUID

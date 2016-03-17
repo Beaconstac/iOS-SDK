@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Beaconstac/Beaconstac.h>
 #import "KIImagePager.h"
 
 @protocol PhotoCardDelegate <NSObject>
