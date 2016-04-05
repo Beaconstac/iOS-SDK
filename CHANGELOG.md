@@ -1,3 +1,7 @@
+### v1.4.2 released on April 5, 2016
+
+* Fixed a bug which was causing Custom attributes to not work properly. 
+
 ### v1.4.1 released on March 17, 2016
 
 * Fixed a bug which was causing name and email to be not reported on Analytics dashboard (https://manage.beaconstac.com/reporting/visitors) 
@@ -9,7 +13,7 @@
 ### v1.4 released on February 8, 2016
 
 * New classes for Webpage, Custom and Popup action types. All action types now inherit from MSAction. Check the Example code for how to access these.
-* Improvement in 'allowRangingInBackground' functionality
+* Improvement in 'allowRangingInBackground' property
 
 ### v1.3.2 released on January 21, 2016
 

@@ -83,7 +83,8 @@
 //
 - (void)customAttributeDemo
 {
-    [beaconstac updateFact:@"male" forKey:@"Gender"];
+    [beaconstac updateFact:@"john" forKey:@"name"];
+    [beaconstac updateFact:@25 forKey:@"age"];
 }
 
 #pragma mark - Beaconstac delegate methods
