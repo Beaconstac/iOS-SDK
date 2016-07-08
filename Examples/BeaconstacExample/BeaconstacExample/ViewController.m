@@ -210,9 +210,15 @@
     }
 }
 
+#pragma mark - MSWebhook Delegates
 - (BOOL)webhookShouldExecute:(MSWebhook *)webhook
 {
     return YES;
+}
+
+// To add any additional parameters to the webhook request which are generated dynamically
+- (NSDictionary *)addPayloadToWebhook:(MSWebhook *)webhook {
+    return @{@"userId":@"dynamicUserId"};
 }
 
 - (void)webhook:(MSWebhook *)webhook executedWithResponse:(NSURLResponse *)response error:(NSError *)error

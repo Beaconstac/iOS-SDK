@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28886F7E1CA8FC560000E77C /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28886F7D1CA8FC560000E77C /* Beaconstac.framework */; };
+		28886F801CA8FC5E0000E77C /* BeaconstacData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 28886F7F1CA8FC5E0000E77C /* BeaconstacData.bundle */; };
 		7D42AC7F1C197D2600BB3D3A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D42AC7E1C197D2600BB3D3A /* AppDelegate.swift */; };
 		7D42AC811C197D2600BB3D3A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D42AC801C197D2600BB3D3A /* ViewController.swift */; };
 		7D42AC841C197D2600BB3D3A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D42AC821C197D2600BB3D3A /* Main.storyboard */; };
@@ -15,11 +17,11 @@
 		7D42AC961C197DE500BB3D3A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D42AC951C197DE500BB3D3A /* CoreLocation.framework */; };
 		7D42AC981C197DEA00BB3D3A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D42AC971C197DEA00BB3D3A /* CoreData.framework */; };
 		7D42AC9A1C197E2C00BB3D3A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D42AC991C197E2C00BB3D3A /* SystemConfiguration.framework */; };
-		7D42ACA91C198CC100BB3D3A /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D42ACA81C198CC100BB3D3A /* Beaconstac.framework */; };
-		7DDC9A3E1C9B278200FED97C /* BeaconstacData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7DDC9A3D1C9B278200FED97C /* BeaconstacData.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		28886F7D1CA8FC560000E77C /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../../../BeaconstacSDK/Beaconstac.framework; sourceTree = "<group>"; };
+		28886F7F1CA8FC5E0000E77C /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../../beaconstac_ios_app/Beaconstac.framework/Versions/1.5/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 		7D42AC7B1C197D2600BB3D3A /* SwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D42AC7E1C197D2600BB3D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D42AC801C197D2600BB3D3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,8 +33,6 @@
 		7D42AC971C197DEA00BB3D3A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		7D42AC991C197E2C00BB3D3A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7D42ACA51C198A0200BB3D3A /* SwiftExample-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SwiftExample-Bridging-Header.h"; sourceTree = "<group>"; };
-		7D42ACA81C198CC100BB3D3A /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../../../BeaconstacSDK/Beaconstac.framework; sourceTree = "<group>"; };
-		7DDC9A3D1C9B278200FED97C /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../BeaconstacSDK/Beaconstac.framework/Versions/1.4.2/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +43,7 @@
 				7D42AC9A1C197E2C00BB3D3A /* SystemConfiguration.framework in Frameworks */,
 				7D42AC981C197DEA00BB3D3A /* CoreData.framework in Frameworks */,
 				7D42AC961C197DE500BB3D3A /* CoreLocation.framework in Frameworks */,
-				7D42ACA91C198CC100BB3D3A /* Beaconstac.framework in Frameworks */,
+				28886F7E1CA8FC560000E77C /* Beaconstac.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,8 +76,8 @@
 				7D42AC821C197D2600BB3D3A /* Main.storyboard */,
 				7D42AC871C197D2600BB3D3A /* LaunchScreen.storyboard */,
 				7D42AC8A1C197D2600BB3D3A /* Info.plist */,
-				7DDC9A3D1C9B278200FED97C /* BeaconstacData.bundle */,
-				7D42ACA81C198CC100BB3D3A /* Beaconstac.framework */,
+				28886F7F1CA8FC5E0000E77C /* BeaconstacData.bundle */,
+				28886F7D1CA8FC560000E77C /* Beaconstac.framework */,
 				7D42AC991C197E2C00BB3D3A /* SystemConfiguration.framework */,
 				7D42AC951C197DE500BB3D3A /* CoreLocation.framework */,
 				7D42AC971C197DEA00BB3D3A /* CoreData.framework */,
@@ -150,7 +150,7 @@
 			files = (
 				7D42AC891C197D2600BB3D3A /* LaunchScreen.storyboard in Resources */,
 				7D42AC861C197D2600BB3D3A /* Assets.xcassets in Resources */,
-				7DDC9A3E1C9B278200FED97C /* BeaconstacData.bundle in Resources */,
+				28886F801CA8FC5E0000E77C /* BeaconstacData.bundle in Resources */,
 				7D42AC841C197D2600BB3D3A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +279,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../BeaconstacSDK/",
+					"$(PROJECT_DIR)/SwiftExample",
 				);
 				INFOPLIST_FILE = SwiftExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -298,6 +299,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/../../BeaconstacSDK/",
+					"$(PROJECT_DIR)/SwiftExample",
 				);
 				INFOPLIST_FILE = SwiftExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;

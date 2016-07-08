@@ -1,3 +1,10 @@
+### v1.5 released on July 8, 2016
+
+* Introducing Rules by Places. This allows assigning a MSRule to a MSPlace object instead of a single MSBeacon or a MSTag on beacons. Check Beaconstac Admin Console on how to set it up.
+* Added a new property for assigning GooglePlaceID to a given MSPlace object.
+* Added a new property in MSRule - placesBeacons, which is an array of beacons attached to a place in case this MSRule is assigned to a MSPlace.
+* SDK automatically syncs notifications from Beaconstac Admin Conole and registers UserNotificationCategory for each CTA created under Notifications.
+
 ### v1.4.2 released on April 5, 2016
 
 * Fixed a bug which was causing Custom attributes to not work properly. 

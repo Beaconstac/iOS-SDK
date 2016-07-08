@@ -51,6 +51,9 @@ class ViewController: UIViewController, BeaconstacDelegate
         triggerLocalNotificationWithMessage("Exited beacon region \(region.identifier)")
     }
     
+    func beaconstac(beaconstac: Beaconstac!, didRangeFirstBeacon beacon: MSBeacon!) {
+        print("Ranged beacons for the first time \(beacon)")
+    }
     
     func beaconstac(beaconstac: Beaconstac!, rangedBeacons beaconsDictionary: [NSObject : AnyObject]!) {
         print("Ranged beacons \(beaconsDictionary)")
@@ -68,6 +71,42 @@ class ViewController: UIViewController, BeaconstacDelegate
     
     func beaconstac(beaconstac: Beaconstac!, triggeredRuleWithRuleName ruleName: String!, actionArray: [AnyObject]!) {
         print("Triggered rule \(ruleName) with actions \(actionArray)")
+        
+        for action in actionArray as! [MSAction] {
+            
+            switch action.type {
+            case .Popup:
+                let popup = action as! MSPopupAction
+                print("Popup action with message \(popup.messageBody)")
+                
+            case .Webpage:
+                let webpage = action as! MSWebpageAction
+                print("Show webpage with url \(webpage.webUrl)")
+                
+            case .Card:
+                let card = action as! MSCard
+                print("Show card with properties \(card)")
+
+            case .Notification:
+                let notification = action as! MSNotification
+                notification.showInApplication(UIApplication.sharedApplication())
+                
+            case .Webhook:
+                let webhook = action as! MSWebhook
+                webhook.delegate = self
+                //  Implement the MSWebhookDelegate methods if you do not want to execute the Webhook
+                //  Or, if you want to add additional payloads
+                
+            case .Custom:
+                let customAction = action as! MSCustomAction
+                print("Custom action with json \(customAction.json)")
+                
+            default:
+                break
+            }
+        }
+        
+        
     }
     
     func beaconstac(beaconstac: Beaconstac!, didEnterGeofenceRegion region: CLRegion!) {
@@ -85,5 +124,31 @@ class ViewController: UIViewController, BeaconstacDelegate
     func beaconstac(beaconstac: Beaconstac!, didUpdateToLocation newLocation: CLLocation!, fromLocation oldLocation: CLLocation!) {
         print("User Location updated from \(oldLocation) to \(newLocation)")
     }
+    
+    func beaconstac(beaconstac: Beaconstac!, didRangeBeaconsForFirstTime beacons: [AnyObject]!) {
+        print("Ranged beacons for the first time \(beacons)")
+    }
 }
 
+
+extension ViewController : MSWebhookDelegate {
+
+    // MARK: MSWebhook Delegate methods
+    func webhookShouldExecute(webhook: MSWebhook!) -> Bool {
+        return true
+    }
+    
+    func addPayloadToWebhook(webhook: MSWebhook!) -> [NSObject : AnyObject]! {
+        // Adds an extra userId parameter before executing the webhook
+        return ["userId": "dynamicUserId"]
+    }
+    
+    func webhook(webhook: MSWebhook!, executedWithResponse response: NSURLResponse!, error: NSError!) {
+        if (error == nil) {
+            print("Webhook successfully done with response \(response)")
+        }
+        else {
+            print("Webhook failure with error \(error)")
+        }
+    }
+}
