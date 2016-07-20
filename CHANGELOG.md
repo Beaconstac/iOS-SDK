@@ -1,3 +1,8 @@
+### v1.5.1 released on July 20, 2016
+
+* Improvements in user analytics. This update is recommended for all users.
+
+
 ### v1.5 released on July 8, 2016
 
 * Introducing Rules by Places. This allows assigning a MSRule to a MSPlace object instead of a single MSBeacon or a MSTag on beacons. Check Beaconstac Admin Console on how to set it up.

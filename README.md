@@ -14,7 +14,7 @@ Beaconstac SDK is an easy way to enable proximity marketing and location analyti
 Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.com/us/app/beaconstac/id956442796?mt=8).
 
 ## Installation
-##### Using CocoaPods (recommended):
+##### Using Cocoapods (recommended):
 Add the following to your Podfile in your project
 		
 		pod 'Beaconstac'

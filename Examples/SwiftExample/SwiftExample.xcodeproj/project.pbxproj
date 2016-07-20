@@ -21,7 +21,7 @@
 
 /* Begin PBXFileReference section */
 		28886F7D1CA8FC560000E77C /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../../../BeaconstacSDK/Beaconstac.framework; sourceTree = "<group>"; };
-		28886F7F1CA8FC5E0000E77C /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../../beaconstac_ios_app/Beaconstac.framework/Versions/1.5/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
+		28886F7F1CA8FC5E0000E77C /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../../beaconstac_ios_app/Beaconstac.framework/Versions/1.5.1/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 		7D42AC7B1C197D2600BB3D3A /* SwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D42AC7E1C197D2600BB3D3A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7D42AC801C197D2600BB3D3A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };

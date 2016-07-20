@@ -15,8 +15,8 @@ class ViewController: UIViewController, BeaconstacDelegate
         super.viewDidLoad()
         
         MSLogger.sharedInstance().loglevel = .Verbose
-        
-        let beaconstac = Beaconstac.sharedInstanceWithOrganizationId(10, developerToken: "1ccxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+
+        let beaconstac = Beaconstac.sharedInstanceWithOrganizationId(<org_id>, developerToken: <dev_token>)
         beaconstac.allowRangingInBackground = true
         beaconstac.delegate = self
         beaconstac.startRangingBeaconsWithUUIDString("F94DBB23-2266-7822-3782-57BEAC0952AC", beaconIdentifier: "MobstacRegion", filterOptions: ["myBeacons":true])

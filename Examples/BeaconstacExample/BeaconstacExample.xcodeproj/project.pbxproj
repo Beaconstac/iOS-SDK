@@ -52,7 +52,7 @@
 		7D911A811C4E7DC60019E427 /* PhotoCardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCardView.h; sourceTree = "<group>"; };
 		7D911A821C4E7DC60019E427 /* PhotoCardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCardView.m; sourceTree = "<group>"; };
 		7D911A831C4E7DC60019E427 /* PhotoCardView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCardView.xib; sourceTree = "<group>"; };
-		7DAFCCC21CB3C41900BF227A /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../BeaconstacSDK/Beaconstac.framework/Versions/1.5/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
+		7DAFCCC21CB3C41900BF227A /* BeaconstacData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = BeaconstacData.bundle; path = ../../../../beaconstac_ios_app/Beaconstac.framework/Versions/1.5.1/Resources/BeaconstacData.bundle; sourceTree = "<group>"; };
 		7DDF9E991B2EE5D0001C142B /* BeaconstacExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconstacExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7DDF9E9D1B2EE5D0001C142B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7DDF9E9E1B2EE5D0001C142B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
