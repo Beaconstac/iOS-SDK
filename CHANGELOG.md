@@ -1,3 +1,7 @@
+### v1.5.2 released on October 4, 2016
+
+* Fixed a bug which was causing crash on iOS 10.
+
 ### v1.5.1 released on July 20, 2016
 
 * Improvements in user analytics. This update is recommended for all users.
