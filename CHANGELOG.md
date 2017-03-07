@@ -1,3 +1,10 @@
+### v1.5.3 released on February 13, 2017
+
+* Introducing beacon ranging on display wakeup.
+* Added a new property usageRequirement in Beaconstac.h to better manage user location permissions based on the applications requirement.
+* Removed allowRangingInBackground property from Beaconstac.h. Instead use the property usageRequirement for setting your applications options.
+* Added a new MSNotification property in MSCard to display notification attached to the card.
+
 ### v1.5.2 released on October 4, 2016
 
 * Fixed a bug which was causing crash on iOS 10.
