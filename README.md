@@ -136,11 +136,11 @@ func didRangeBeacons(_ beacons: [NSObject]) {
 print(beacons)
 }
 
-func campOnBeacon(_ beacon: Beacon) {
+func campOnBeacon(_ beacon: MBeacon) {
 print(beacon)
 }
 
-func exitBeacon(_ beacon: Beacon) {
+func exitBeacon(_ beacon: MBeacon) {
 print(beacon)
 }
 
@@ -249,5 +249,5 @@ __Note__: If the rule contains the filters and app doesn't provide it, the rule 
 
 ```swift
 // If you know the your app visitor, create a Visitor object and call this on the Beaconstac instance.
-func setVisitor(_ visitor: Visitor)
+func setVisitor(_ visitor: MVisitor)
 ```
