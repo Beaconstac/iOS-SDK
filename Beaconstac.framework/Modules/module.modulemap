@@ -1,0 +1,11 @@
+framework module Beaconstac {
+  umbrella header "Beaconstac.h"
+
+  export *
+  module * { export * }
+}
+
+module Beaconstac.Swift {
+    header "Beaconstac-Swift.h"
+    requires objc
+}

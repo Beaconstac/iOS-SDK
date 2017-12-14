@@ -1,3 +1,7 @@
+### v3.0 released on Decemeber 14, 2017
+* A entirely new SDK written in swift.
+* Uses our Beaconstac v2 API.
+
 ### v1.5.3 released on February 13, 2017
 
 * Introducing beacon ranging on display wakeup.
