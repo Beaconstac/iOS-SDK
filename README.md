@@ -41,7 +41,7 @@ Run `pod install` in the project directory
 
 ## Configure your project
 
-1. In Info.plist, add a new field, NSLocationAlwaysUsageDescription, NSLocationAlwaysAndWhenInUsageDescription with relevant value that you want to show to the user. This is mandatory for iOS 10 and above.
+1. In Info.plist, add a new fields, `NSLocationAlwaysUsageDescription`, `NSLocationAlwaysAndWhenInUsageDescription` with relevant values that you want to show to the user. This is mandatory for iOS 10 and above.
 <img src="images/usagedescription.png" alt="Build Phases" width="600">
 
 ## Pre-requisite
@@ -70,9 +70,9 @@ import Beaconstac
 
 ```swift
 do {
-beaconstacInstance = try Beaconstac.sharedInstance("My_DEVELOPER_TOKEN")
+	beaconstacInstance = try Beaconstac.sharedInstance("My_DEVELOPER_TOKEN")
 } catch let error {
-print(error)
+	print(error)
 }
 ```
 
@@ -86,14 +86,14 @@ print(error)
 
 ```swift
 do {
-beaconstacInstance = try Beaconstac.sharedInstance("My_DEVELOPER_TOKEN", ibeaconOption: .BackgroundRangeOnDisplayWakeUp, delegate: self, completion: : { (beaconstac, error) in
-if error == nil {
-beaconstac?.startScanningBeacons()
-// Initialization successful, it just works...
-}
-})
+	beaconstacInstance = try Beaconstac.sharedInstance("My_DEVELOPER_TOKEN", ibeaconOption: .BackgroundRangeOnDisplayWakeUp, delegate: self, completion: : { (beaconstac, error) in
+		if error == nil {
+			beaconstac?.startScanningBeacons()
+			// Initialization successful, it just works...
+		}
+	})
 } catch let error {
-print(error)
+	print(error)
 }
 ```
 
@@ -101,9 +101,9 @@ print(error)
 
 ```swift
 do {
-beaconstacInstance = try Beaconstac.sharedInstance()
+	beaconstacInstance = try Beaconstac.sharedInstance()
 } catch let error {
-print(error)
+	print(error)
 }
 ```
 
@@ -124,28 +124,28 @@ beaconstacInstance.delegate = self
 
 // required
 func didFail(_ error: Error) {
-print(error)
+	print(error)
 }
 
 //Optional
 func didEnterRegion(_ region: String) {
-print(region)
+	print(region)
 }
 
 func didRangeBeacons(_ beacons: [NSObject]) {
-print(beacons)
+	print(beacons)
 }
 
 func campOnBeacon(_ beacon: MBeacon) {
-print(beacon)
+	print(beacon)
 }
 
 func exitBeacon(_ beacon: MBeacon) {
-print(beacon)
+	print(beacon)
 }
 
 func didExitRegion(_ region: String) {
-print(region)
+	print(region)
 }
 ```
 
@@ -158,7 +158,7 @@ beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.ruleDelegate = self
 
 func willTriggerRule(_ rule: Rule) {
-// read which rule is about to trigger and the actions, filters set by the marketers...
+	// read which rule is about to trigger and the actions, filters set by the marketers...
 }
 
 func didTriggerRule(_ rule: Rule) {
@@ -175,7 +175,7 @@ beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.notificationDelegate = self
 
 func overrideNotification(_ notification: Notification) {
-// If you override, you should handle everything from configuring, triggering and displaying of the notification.
+	// If you override, you should handle everything from configuring, triggering and displaying of the notification.
 }
 ```
 
@@ -187,7 +187,7 @@ beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.webhookDelegate = self
 
 func addParameters(_ webhook: Webhook) -> Dictionary<String, Any> {
-// If you override, make sure the keys of the previously added
+	// If you override, make sure the keys of the previously added
 }
 ```
 
@@ -208,13 +208,13 @@ public func notificatoinOptionsForBeaconstacNotification(_ notification: UNNotif
 
 // EXAMPLE:
 func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-var notificationPresentationOptions: UNNotificationPresentationOptions
-if let notificationOption = try! beaconstac.sharedInstance().notificatoinOptionsForBeaconstacNotification(notification) {
-notificationPresentationOptions = notificationOption
-} else {
-// My Presenation options...
-}
-completionHandler(notificationPresentationOptions)
+	var notificationPresentationOptions: UNNotificationPresentationOptions
+	if let notificationOption = try! beaconstac.sharedInstance().notificatoinOptionsForBeaconstacNotification(notification) {
+		notificationPresentationOptions = notificationOption
+	} else {
+	// My Presenation options...
+	}
+	completionHandler(notificationPresentationOptions)
 }
 
 
@@ -226,13 +226,13 @@ public func showCardViewerForLocalNotification(_ notification: UNNotification) -
 
 // EXAMPLE:
 func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
-let notification = response.notification
-if beaconstac.showCardViewerForLocalNotification(notification) {
-// We will handle the notification...
-} else {
-// Handle it...
-}
-completionHandler()
+	let notification = response.notification
+	if beaconstac.showCardViewerForLocalNotification(notification) {
+		// We will handle the notification...
+	} else {
+		// Handle it...
+	}
+	completionHandler()
 }
 
 ```
