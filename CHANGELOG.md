@@ -1,6 +1,10 @@
 ### v3.0 released on Decemeber 14, 2017
-* A entirely new SDK written in swift.
-* Uses our Beaconstac v2 API.
+* Introducing a completely new Beaconstac SDK written completely in Swift.
+* One line initialisation making it easier than ever to integrate Beaconstac into your app.
+* Light-weight and added bitcode support.
+* A new way to handle location permission for battery efficient BLE scanning and conforming to Apple App Store guidelines.
+* Uses the much improved Beaconstac API v2 for faster and intelligent syncing of rules.
+* Offline support with persistent caching of rules.
 
 ### v1.5.3 released on February 13, 2017
 
