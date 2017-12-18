@@ -184,7 +184,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wnullability"
 
 SWIFT_MODULE_NAMESPACE_PUSH("Beaconstac")
-@class NSObject;
 @class MBeacon;
 
 /// Beacon Delegate to listen to beacons related callbacks.
@@ -195,8 +194,8 @@ SWIFT_PROTOCOL("_TtP10Beaconstac14BeaconDelegate_")
 @optional
 /// As soon as we detect a beacon related to your account, we invoke this with the place name.
 - (void)didEnterRegion:(NSString * _Nonnull)region;
-/// Ranging of beacons which is objects of the class Beacon
-- (void)didRangeBeacons:(NSArray<NSObject *> * _Nonnull)beacons;
+/// Ranging of beacons which is objects of the class MBeacon
+- (void)didRangeBeacons:(NSArray<MBeacon *> * _Nonnull)beacons;
 /// SDK triggers this if it finds a beacon who’s RSSI is less than -75.
 - (void)campOnBeacon:(MBeacon * _Nonnull)beacon;
 /// SDK triggers this if it finds a beacon who’s RSSI is -75 + the BEACON_EXIT_BIAS.
@@ -238,7 +237,7 @@ SWIFT_CLASS("_TtC10Beaconstac10MEddystone")
 @end
 
 
-/// The hardware related properties in this class, which is as part of the Beacon class. This is read only class
+/// The hardware related properties in this class, which is as part of the MBeacon class. This is read only class
 SWIFT_CLASS("_TtC10Beaconstac9MHardware")
 @interface MHardware : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
