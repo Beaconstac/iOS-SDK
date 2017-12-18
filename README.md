@@ -70,7 +70,11 @@ import Beaconstac
 
 ```swift
 do {
-    beaconstacInstance = try Beaconstac.sharedInstance("My_DEVELOPER_TOKEN")
+    Beaconstac.sharedInstance("My_DEVELOPER_TOKEN", completion: { (beaconstac, error) in
+        if error == nil {
+            // Done initializationa and scans for beacons.
+        }
+        })
 } catch let error {
     print(error)
 }
