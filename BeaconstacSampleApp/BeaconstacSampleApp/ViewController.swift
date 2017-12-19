@@ -16,8 +16,6 @@ class ViewController: UITableViewController {
     var isShowingToast: Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
-        let nib = UINib(nibName: "BeaconTableViewCell", bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: "BeaconCell")
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -83,17 +81,16 @@ extension ViewController {
 
 extension ViewController: BeaconDelegate {
     func didFail(_ error: Error) {
-        // Failed...
+        print(error)
     }
     
     func didEnterRegion(_ region: String) {
         showToast(message: "Region Entered \(region)")
     }
     
-    func didRangeBeacons(_ beacons: [NSObject]) {
-        self.beacons = beacons as! [MBeacon]
+    func didRangeBeacons(_ beacons: [MBeacon]) {
+        self.beacons = beacons
         tableView.reloadData()
-//        showToast(message: "Ranged beacons")
     }
     
     func campOnBeacon(_ beacon: MBeacon) {
@@ -109,5 +106,28 @@ extension ViewController: BeaconDelegate {
     func didExitRegion(_ region: String) {
         tableView.reloadData()
         showToast(message: "Region Exited \(region)")
+    }
+}
+
+extension ViewController: RuleProcessorDelegate {
+    func willTriggerRule(_ rule: MRule) {
+        // Check which rule is going to be triggred..
+    }
+    
+    func didTriggerRule(_ rule: MRule) {
+        // Check which rule is triggred..
+    }
+}
+
+extension ViewController: NotificationDelegate {
+    func overrideNotification(_ notification: MNotification) {
+        // Override the notification.
+    }
+}
+
+extension ViewController: WebhookDelegate {
+    func addParameters(_ webhook: MWebhook) -> Dictionary<String, Any> {
+        // retrun your values...
+        return [:]
     }
 }

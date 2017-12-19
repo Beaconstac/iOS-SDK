@@ -4,8 +4,6 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>NSBluetoothPeripheralUsageDescription</key>
-	<string>Range Beacons</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -22,6 +20,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Range Beacons</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Beaconstac SDK Demo</string>
 	<key>NSLocationAlwaysUsageDescription</key>

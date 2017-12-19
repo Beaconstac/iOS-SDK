@@ -66,27 +66,23 @@ The app should provide the developer token while initializing the SDK. Get it fr
 import Beaconstac
 ```
 
-2. Initialize Beaconstac using __one-line initialization__, the initialization starts scanning for beacons immediately.
+2. Initialize `Beaconstac` using __one-line initialization__, the initialization starts scanning for beacons immediately.
 
 ```swift
 do {
-    Beaconstac.sharedInstance("My_DEVELOPER_TOKEN", completion: { (beaconstac, error) in
-        if error == nil {
-            // Done initializationa and scans for beacons.
-        }
-        })
+    beaconstacInstance = try Beaconstac.sharedInstance("MY_DEVELOPER_TOKEN")
 } catch let error {
     print(error)
 }
 ```
 
 
-3. If you want to use the advacnced integration, use __iBeaconOption__ as defined below
+3. If you want to use the `advacnced integration`, use __iBeaconOption__ as defined below
 
 | iBeaconOption                  |    Location Authorization      | Monitoring                                | Ranging                     | Description                                       |
 |:------------------------------:|:--------------------------:|:--------------------------------:| :------------------------:|:----------------------------------------------:|
-|              WhenInUse              |    When In Use Authorization | CoreLocation API doesn't support | CoreLocation API supports | App should be in the foreground                  |
-| BackgroundRangeOnDisplayWakeUp |    Always Authorization       | CoreLocation API supports           | CoreLocation API supports | App can be in the background but doesn't range |
+|              WhenInUse         |  When In Use Authorization | CoreLocation API doesn't support | CoreLocation API supports | App should be in the foreground                |
+| BackgroundRangeOnDisplayWakeUp |  Always Authorization      | CoreLocation API supports        | CoreLocation API supports | App can be in the background but doesn't range |
 
 ```swift
 do {
@@ -118,7 +114,7 @@ beaconstac.startScanningBeacons() // Starts scanning for beacons...
 beaconstac.stopScanningBeacons() // Stops scanning for beacons...
 ```
 
-6. Implement BeaconDelegate protocol methods to receive callbacks when beacons are scanned
+6. Implement `BeaconDelegate` protocol methods to receive callbacks when beacons are scanned
 
 ```swift
 
@@ -153,7 +149,7 @@ func didExitRegion(_ region: String) {
 }
 ```
 
-7. Implement RuleProcessorDelegate protocol methods to receive callbacks when rules are triggered
+7. Implement `RuleProcessorDelegate` protocol methods to receive callbacks when rules are triggered
 
 ```swift
 
@@ -170,7 +166,7 @@ func didTriggerRule(_ rule: Rule) {
 }
 ```
 
-8. Implement NotificationDelegate protocol methods to override the display of the Local Notification.
+8. Implement `NotificationDelegate` protocol methods to override the display of the Local Notification.
 
 ```swift
 
@@ -183,7 +179,7 @@ func overrideNotification(_ notification: Notification) {
 }
 ```
 
-9. Implement WebhookDelegate protocol methods to add additional parameters to be sent to the webhook.
+9. Implement `WebhookDelegate` protocol methods to add additional parameters to be sent to the webhook.
 
 ```swift
 // In the class where you want to listen to webhook events...
@@ -195,14 +191,14 @@ func addParameters(_ webhook: Webhook) -> Dictionary<String, Any> {
 }
 ```
 
-10. The difference between the rssi of the camp on beacon (-75) and exit beacon is defined using the BEACON_EXIT_BIAS, defaults to 10. You can override this behaviour by setting a new value.
+10. The difference between the rssi of the camp on beacon (-75) and exit beacon is defined using the `BEACON_EXIT_BIAS`, defaults to 10. You can override this behaviour by setting a new value.
 
 ```swift
 beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.BEACON_EXIT_BIAS = 15 // Set the difference value
 ```
 
-11. If you don't listen to the NotificationDelegate protocol, the SDK configures, triggers UNNotification. However to present the notification do the following.
+11. If you don't listen to the `NotificationDelegate` protocol, the SDK configures, triggers UNNotification. However to present the notification do the following.
 
 ```swift
 
@@ -213,7 +209,7 @@ public func notificatoinOptionsForBeaconstacNotification(_ notification: UNNotif
 // EXAMPLE:
 func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
     var notificationPresentationOptions: UNNotificationPresentationOptions
-    if let notificationOption = try! beaconstac.sharedInstance().notificatoinOptionsForBeaconstacNotification(notification) {
+    if let notificationOption = try! beaconstac.sharedInstance().notificationOptionsForBeaconstacNotification(notification) {
       notificationPresentationOptions = notificationOption
     } else {
       // My Presenation options...
@@ -240,7 +236,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive respo
 
 ```
 
-12. You are required to add filters regarding the app user, if the marketer has provided the filters. To do so
+12. You are required to `add filters` regarding the app user, if the marketer has provided the filters. To do so
 
 ```swift
 // Provide the filters to the SDK as Key-Value pairs using dictionary. Note keys are keys insensitive.
@@ -248,7 +244,7 @@ func addFilters(_ filters: Dictionary<String, Any>)
 ```
 __Note__: If the rule contains the filters and app doesn't provide it, the rule will be treated as a filter validation failed and we won't trigger that particular rule.
 
-13. The SDK collects analytics regarding how your app user(Visitor) sees the iBeacon related information. If you know information about your app user, create a Visitor object and provide it to us.
+13. The SDK collects `analytics` regarding how we collect the `iBeacon` related information and tie it to app user(MVisitor). If you know information about your app user, create a MVisitor object and provide it to us.
 
 ```swift
 // If you know the your app visitor, create a Visitor object and call this on the Beaconstac instance.

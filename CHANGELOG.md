@@ -1,3 +1,15 @@
+### v3.0.1 released on December 14, 2017
+
+* Event Logging changes.
+* Fix defnition of `BeaconDelegate`'s didRagneBeacons to return `MBeacon` objects.
+* Fix method signature.
+
+### v3.0.2 released on December 14, 2017
+
+* Event Logging changes.
+* Fix defnition of `BeaconDelegate`'s didRagneBeacons to return `MBeacon` objects.
+* Fix method signature.
+
 ### v3.0 released on Decemeber 14, 2017
 * Introducing a completely new Beaconstac SDK written completely in Swift.
 * One line initialisation making it easier than ever to integrate Beaconstac into your app.
@@ -135,4 +147,6 @@
 * Deprecated setUpOrganizationId: userToken: beaconUUID: beaconIdentifier method from Beaconstac class
 * Deprecated sharedInstance method in Beaconstac class
 * Modified initUserIdentity method to setUserIdentity in Beaconstac class
+
+
 
