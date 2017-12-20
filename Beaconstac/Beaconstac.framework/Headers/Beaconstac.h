@@ -6,6 +6,7 @@
 //  Copyright © 2017 MobStac. All rights reserved.
 //
 
+#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
 //! Project version number for Beaconstac.

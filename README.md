@@ -15,10 +15,12 @@ Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.c
 
 ## Installation
 ##### Using Cocoapods (recommended):
-Add the following to your Podfile in your project
+Add the following to your Podfile in your project, we are supporting iOS 10.0+ make sure your pod has proper platform set.
 
 ```pod
-pod 'Beaconstac'
+platform :ios, '10.0'
+target '<My-App-Target>''
+pod 'Beaconstac', '~> 3.0'
 ```
 
 Run `pod install` in the project directory
@@ -30,10 +32,9 @@ Run `pod install` in the project directory
 2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destination's Group Folder" is checked.
 <img src="images/frameworkdrop.png" alt="Build Phases" width="600">
 
-3. Navigate to Beaconstac.framework/Resources folder in Finder and drop the Beaconstac.bundle into Project navigator area. Make sure that "Copy Items to Destination's Group Folder" checked.
-<img src="images/bundledrop.png" alt="Build Phases" width="600">
+3. Add the `Beaconstac.framework` to the embedded binaries section of your destination app target.
 
-4. In Build Phases under Target, add the following frameworks in â€œLink Binary With Librariesâ€ section:
+4. In Build Phases under destination app target, add the following frameworks in Link Binary With Libraries section:
 - CoreData.framework
 - SystemConfiguration.framework
 - CoreBluetooth.framework
@@ -41,7 +42,7 @@ Run `pod install` in the project directory
 
 ## Configure your project
 
-1. In Info.plist, add a new fields, `NSLocationAlwaysUsageDescription`, `NSLocationAlwaysAndWhenInUsageDescription` with relevant values that you want to show to the user. This is mandatory for iOS 10 and above.
+1. In Info.plist, add a new fields, `NSLocationAlwaysUsageDescription`, `NSLocationAlwaysAndWhenInUsageDescription`, `NSBluetoothPeripheralUsageDescription` with relevant values that you want to show to the user. This is mandatory for iOS 10 and above.
 <img src="images/usagedescription.png" alt="Build Phases" width="600">
 
 ## Pre-requisite
@@ -58,6 +59,12 @@ __MY_DEVELOPER_TOKEN__
 
 The app should provide the developer token while initializing the SDK. Get it from [Beaconstac Dashboard Account Page](https://dashboard.beaconstac.com/#/account).
 
+## Beaconstac Sample App
+
+To run our Beaconstac Sample App make the following changes to the build settings.
+1. Search for `Framework Search Paths`
+2. Change the value to the abosulte path of the `Beaconstac.framework`.
+
 ## Set Up
 
 1. Import the framework header in your class
@@ -70,7 +77,13 @@ import Beaconstac
 
 ```swift
 do {
-    beaconstacInstance = try Beaconstac.sharedInstance("MY_DEVELOPER_TOKEN")
+    Beaconstac.sharedInstance("MY_DEVELOPER_TOKEN", completion: : { (beaconstac, error) in
+      if let beaconstacInstance = beaconstac {
+        // Successful...
+      } else if let e = error {
+        print(e)
+      }
+    }))
 } catch let error {
     print(error)
 }
@@ -79,17 +92,19 @@ do {
 
 3. If you want to use the `advacnced integration`, use __iBeaconOption__ as defined below
 
-| iBeaconOption                  |    Location Authorization      | Monitoring                                | Ranging                     | Description                                       |
+| iBeaconOption                  |    Location Authorization  | Monitoring                       | Ranging                     | Description                                       |
 |:------------------------------:|:--------------------------:|:--------------------------------:| :------------------------:|:----------------------------------------------:|
 |              WhenInUse         |  When In Use Authorization | CoreLocation API doesn't support | CoreLocation API supports | App should be in the foreground                |
 | BackgroundRangeOnDisplayWakeUp |  Always Authorization      | CoreLocation API supports        | CoreLocation API supports | App can be in the background but doesn't range |
 
 ```swift
 do {
-    beaconstacInstance = try Beaconstac.sharedInstance("My_DEVELOPER_TOKEN", ibeaconOption: .BackgroundRangeOnDisplayWakeUp, delegate: self, completion: : { (beaconstac, error) in
-      if error == nil {
-            beaconstac?.startScanningBeacons()
-            // Initialization successful, it just works...
+    Beaconstac.sharedInstance("My_DEVELOPER_TOKEN", ibeaconOption: .BackgroundRangeOnDisplayWakeUp, delegate: self, completion: : { (beaconstac, error) in
+      if let beaconstacInstance = beaconstac {
+          beaconstac?.startScanningBeacons()
+          // Initialization successful, it just works...
+      } else if let e = error {
+          print(e)
       }
     })
 } catch let error {
@@ -203,7 +218,7 @@ beaconstacInstance.BEACON_EXIT_BIAS = 15 // Set the difference value
 ```swift
 
 // Check if the notification is from SDK and provide UNNotificationPresentationOptions or nil by invoking the below method.
-public func notificatoinOptionsForBeaconstacNotification(_ notification: UNNotification) -> UNNotificationPresentationOptions?
+public func notificationOptionsForBeaconstacNotification(_ notification: UNNotification) -> UNNotificationPresentationOptions?
 
 
 // EXAMPLE:
@@ -216,7 +231,6 @@ func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent noti
     }
     completionHandler(notificationPresentationOptions)
 }
-
 
 
 
@@ -239,7 +253,7 @@ func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive respo
 12. You are required to `add filters` regarding the app user, if the marketer has provided the filters. To do so
 
 ```swift
-// Provide the filters to the SDK as Key-Value pairs using dictionary. Note keys are keys insensitive.
+// Provide the filters to the SDK as Key-Value pairs using dictionary. Note keys are case insensitive.
 func addFilters(_ filters: Dictionary<String, Any>)
 ```
 __Note__: If the rule contains the filters and app doesn't provide it, the rule will be treated as a filter validation failed and we won't trigger that particular rule.

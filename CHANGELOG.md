@@ -1,10 +1,11 @@
+### v3.0.2 released on December 20, 2017
+
+* Fixed pod issues
+* Fixed documentation
+* Fixed path issues for the Sample App and the pod spec
+
+
 ### v3.0.1 released on December 14, 2017
-
-* Event Logging changes.
-* Fix defnition of `BeaconDelegate`'s didRagneBeacons to return `MBeacon` objects.
-* Fix method signature.
-
-### v3.0.2 released on December 14, 2017
 
 * Event Logging changes.
 * Fix defnition of `BeaconDelegate`'s didRagneBeacons to return `MBeacon` objects.
