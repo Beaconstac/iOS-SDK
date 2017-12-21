@@ -26,11 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelega
     var locationManager: CLLocationManager!
     var bluetoothManager: CBPeripheralManager!
     
-    var MY_DEVELOPER_TOKEN = "<MY DEVELOPER TOKEN>"
+    var MY_DEVELOPER_TOKEN = "f6d4f6fbf637ecb8a0d4d9a8d87211fd2c2922c9"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        bluetoothManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
+
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
@@ -43,9 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelega
             }
         }
         
-        let options = [CBPeripheralManagerOptionShowPowerAlertKey: true]
-        bluetoothManager = CBPeripheralManager(delegate: self, queue: nil, options: options)
-
         return true
     }
     

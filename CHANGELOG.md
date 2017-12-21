@@ -1,9 +1,7 @@
-### v3.0.2 released on December 20, 2017
+### v3.0.3 released on December 20, 2017
 
-* Fixed pod issues
-* Fixed documentation
-* Fixed path issues for the Sample App and the pod spec
-
+* Fixed RSSI fluctuation
+* Fixed exit beacon crash
 
 ### v3.0.1 released on December 14, 2017
 

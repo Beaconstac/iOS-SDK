@@ -205,7 +205,6 @@ SWIFT_PROTOCOL("_TtP10Beaconstac14BeaconDelegate_")
 @end
 
 
-/// This is the main class where you configure Beaconstac SDK. You provide the Developer Token which is present on your account page and you can configure beacon monitoring and ranging based on your requirement.
 SWIFT_CLASS("_TtC10Beaconstac10Beaconstac")
 @interface Beaconstac : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
