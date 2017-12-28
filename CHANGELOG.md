@@ -1,7 +1,7 @@
-### v3.0.3 released on December 20, 2017
+### v3.0.4 released on December 20, 2017
 
-* Fixed RSSI fluctuation
-* Fixed exit beacon crash
+* Fixed event logging
+* Few more changes for master flavour
 
 ### v3.0.1 released on December 14, 2017
 
