@@ -173,6 +173,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 #if __has_feature(modules)
 @import ObjectiveC;
+@import UserNotifications;
 #endif
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
@@ -204,16 +205,132 @@ SWIFT_PROTOCOL("_TtP10Beaconstac14BeaconDelegate_")
 - (void)didExitRegion:(NSString * _Nonnull)region;
 @end
 
+@protocol RuleProcessorDelegate;
+@protocol NotificationDelegate;
+@protocol WebhookDelegate;
+enum iBeaconOption : NSInteger;
 
 /// This is the main class where you configure Beaconstac SDK. You provide the Developer Token which is present on your account page and you can configure beacon monitoring and ranging based on your requirement.
 SWIFT_CLASS("_TtC10Beaconstac10Beaconstac")
 @interface Beaconstac : NSObject
+/// Listen to this delegate to recieve when we monitor regions, range beacons and if any error occurred in the process
+@property (nonatomic, weak) id <BeaconDelegate> _Nullable delegate;
+/// Listen to this delegate to know when we trigger the what rule which is set by the markerter on the dashboard
+@property (nonatomic, weak) id <RuleProcessorDelegate> _Nullable ruleDelegate;
+/// Listen to this delegate to customize the UNNotfication and to display it yourself.
+@property (nonatomic, weak) id <NotificationDelegate> _Nullable notificationDelegate;
+/// Listen to this delegate to add additional parameters while executing a webhook.
+@property (nonatomic, weak) id <WebhookDelegate> _Nullable webhookDelegate;
+/// You can change the camp off beacon RSSI threshold, the default is 10
+@property (nonatomic) NSInteger BEACON_EXIT_BIAS;
+/// Get the sharedInstance at any point in time after initializing using token
+///
+/// throws:
+/// If you never initialized using token
+///
+/// returns:
+/// Beaconstac instance or nil
++ (Beaconstac * _Nullable)sharedInstanceAndReturnError:(NSError * _Nullable * _Nullable)error SWIFT_WARN_UNUSED_RESULT;
+/// Initialize the SDK using this class method
+/// \param token Part of the iBeacon Platform in Beaconstac dashboard, to authorize for the API endpoints
+///
+/// \param ibeaconOption Optional, determines how the SDK does region monitoring and beacon ranging
+///
+/// \param organization Optional, part of the Beaconstac dashborad.
+///
+/// \param delegate Optional, to listen to the BeaconDelegate callbacks, if you don’t provide the delegate we will startScanningForBeacons once we have required data.
+///
+/// \param completion this is called once the SDK gets initialised successfully or if any error occurs.
+///
++ (void)sharedInstance:(NSString * _Nonnull)token ibeaconOption:(enum iBeaconOption)ibeaconOption organization:(NSString * _Nullable)organization delegate:(id <BeaconDelegate> _Nullable)delegate completion:(void (^ _Nonnull)(Beaconstac * _Nullable, NSError * _Nullable))completion;
+/// Invoke this method if you want the SDK to scan for beacons. Based on the SDK configuration this determines when to start scanning beacons.
+- (void)startScanningBeacons;
+/// Invoke this method if you want the SDK to stop scanning in between the process.
+- (void)stopScanningBeacons;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
+@class MVisitor;
 
+@interface Beaconstac (SWIFT_EXTENSION(Beaconstac))
+/// The marketer sets the trigger conditions for the rules. Use this method to provide valuable information regarding the app user. If the marketer has set the filter and you don’t provide the filters to the SDK, we treat it as trigger failure. Make sure you provide valuable information regarding app users.
+/// \param filters Pass in a dictionary to set the filters, the keys are case senitive. We will check the filters set by the marketer on the dashboard to validate the trigger.
+///
+- (void)addFilters:(NSDictionary<NSString *, id> * _Nonnull)filters;
+/// This is the data we send as part of the analytics events. By default the visitor is initialized with <em>Visitor</em> as the first name.
+/// \param visitor If you know details about the app user create a Visitor object and send SDK.
+///
+- (void)setVisitor:(MVisitor * _Nonnull)visitor;
+@end
 
+@class UNNotification;
 
+@interface Beaconstac (SWIFT_EXTENSION(Beaconstac))
+/// After the notification will present with options is called on the UNNotificationCentreDelegate callback check if SDK can handle notification
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     notification: UNNotification to process the presentation options
+///   </li>
+/// </ul>
+///
+/// returns:
+/// UNNotificationPresentationOptions or nil
+- (UNNotificationPresentationOptions)notificationOptionsForBeaconstacNotification:(UNNotification * _Nonnull)notification SWIFT_WARN_UNUSED_RESULT;
+/// After the notification did receive response is called on the UNNotificationCentreDelegate callback check if SDK can handle notification
+/// <ul>
+///   <li>
+///     Parameters:
+///   </li>
+///   <li>
+///     notification: UNNotification to process the displaying of markdown card if it contains the SDK_MARKDOWN_CARD_URL_KEY in the request content’s user info.
+///   </li>
+/// </ul>
+///
+/// returns:
+/// If SDK can handle the notification
+- (BOOL)showCardViewerForLocalNotification:(UNNotification * _Nonnull)notification SWIFT_WARN_UNUSED_RESULT;
+/// After we display the markdown card, if you wishes dimiss the viewer call this method.
+- (void)dismissCardViewer;
+@end
+
+/// Error codes if any error occurs inside SDK, the domain name is com.beaconstac.sdk.error
+typedef SWIFT_ENUM(NSInteger, BeaconstacSDKError) {
+/// Indicate that the SDK is not configured yet for you to use.
+  BeaconstacSDKErrorSDKNotInitialized = -1001,
+/// If the app doesn’t have authorization to use bluetooth or the Bluetooth is disabled in the Device.
+  BeaconstacSDKErrorBluetoothDisabled = -1002,
+/// The app doesn’t have authorization to use location
+  BeaconstacSDKErrorLocationPermissionDenied = -1003,
+/// The app doesn’t have authorization for when in use and your SDK setting wants it.
+  BeaconstacSDKErrorLocationTrackingWhenInUseDenied = -1004,
+/// The app doesn’t have authorization for always and your SDK setting wants it.
+  BeaconstacSDKErrorLocationTrackingAlwaysDenied = -1005,
+/// The device doesn’t support ranging
+  BeaconstacSDKErrorCannotRangeBeacons = -1006,
+/// Conversion failures, please contact Beaconstac in case this happens
+  BeaconstacSDKErrorUnableToConvertStringToDate = -1007,
+/// Conversion failures, please contact Beaconstac in case this happens
+  BeaconstacSDKErrorUnableToConvertDateToString = -1008,
+/// If the marketer set a invalid url for webhook on the dashboard
+  BeaconstacSDKErrorUnableToCreateURL = -1009,
+/// If the parameters you sent to webhook to configure isn’t properly formated
+  BeaconstacSDKErrorUnableToCreateWebhookHTTPBody = -1010,
+/// Posting to webhook request failed
+  BeaconstacSDKErrorPostingToWebhookFailed = -1011,
+/// Error occured while performing network tasks
+  BeaconstacSDKErrorNetworkErrorOccurred = -1012,
+/// Cached data not found
+  BeaconstacSDKErrorNotConnectedToInternet = -1013,
+/// Cached data not found
+  BeaconstacSDKErrorCachedDataNotFound = -1014,
+/// User not found with this email
+  BeaconstacSDKErrorUserNotFound = -1015,
+/// Invalid request
+  BeaconstacSDKErrorInvalidRequest = -1016,
+};
 
 
 /// Abstract super calss of Notification and Webhook
@@ -222,10 +339,28 @@ SWIFT_CLASS("_TtC10Beaconstac7MAction")
 - (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
 @end
 
+@class MHardware;
 
 /// The beacon class which includes both the Beaconstac related data as well as the hardware beacon data.
 SWIFT_CLASS("_TtC10Beaconstac7MBeacon")
 @interface MBeacon : NSObject
+/// The id of the beacon
+@property (nonatomic, readonly) int64_t id;
+/// The name of the beacon
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// The campedOn status
+@property (nonatomic, readonly) BOOL isCampedOn;
+/// The place id of the beacon
+@property (nonatomic, readonly) int64_t place;
+/// The place name of the beacon
+@property (nonatomic, readonly, copy) NSString * _Nonnull placeName;
+/// The latitude of the beacon
+@property (nonatomic, readonly) double latitude;
+/// The longitude of the beacon
+@property (nonatomic, readonly) double longitude;
+/// The hardware object of the beacon
+@property (nonatomic, readonly, strong) MHardware * _Nonnull hardware;
+@property (nonatomic, readonly) int64_t latestRSSI;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
@@ -233,6 +368,12 @@ SWIFT_CLASS("_TtC10Beaconstac7MBeacon")
 /// The eddystone class which is as part of the Hardware class. This is read only class
 SWIFT_CLASS("_TtC10Beaconstac10MEddystone")
 @interface MEddystone : NSObject
+/// The eddystone nid parameter of the beacon hardware
+@property (nonatomic, readonly, copy) NSString * _Nonnull nid;
+/// The eddystone bid parameter of the beacon hardware
+@property (nonatomic, readonly, copy) NSString * _Nonnull bid;
+/// The eddystone url parameter of the beacon hardware
+@property (nonatomic, readonly, copy) NSString * _Nonnull url;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
@@ -240,6 +381,30 @@ SWIFT_CLASS("_TtC10Beaconstac10MEddystone")
 /// The hardware related properties in this class, which is as part of the MBeacon class. This is read only class
 SWIFT_CLASS("_TtC10Beaconstac9MHardware")
 @interface MHardware : NSObject
+/// The uuid of the beacon hardware
+@property (nonatomic, readonly, copy) NSString * _Nonnull UUID;
+/// The major of the beacon hardware
+@property (nonatomic, readonly) int64_t major;
+/// The minor of the beacon hardware
+@property (nonatomic, readonly) int64_t minor;
+/// The serial number of the beacon hardware
+@property (nonatomic, readonly, copy) NSString * _Nonnull serialNumber;
+/// The mode of the beacon hardware
+@property (nonatomic, readonly, copy) NSString * _Nonnull mode;
+/// The proximity status parameter of the beacon hardware
+@property (nonatomic, readonly) int64_t proximityStatus;
+/// The temperature of the beacon hardware
+@property (nonatomic, readonly) int64_t temperature;
+/// The battery of the beacon hardware
+@property (nonatomic, readonly) int64_t battery;
+/// The advertising interval of the beacon hardware
+@property (nonatomic, readonly) int64_t advertisingInterval;
+/// The transmission power of the beacon hardware
+@property (nonatomic, readonly) int64_t transmissionPower;
+/// The firmware version of the beacon hardware
+@property (nonatomic, readonly, copy) NSString * _Nonnull firmwareVersion;
+/// The eddystone object of the beacon hardware
+@property (nonatomic, readonly, strong) MEddystone * _Nonnull eddystone;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
@@ -247,6 +412,12 @@ SWIFT_CLASS("_TtC10Beaconstac9MHardware")
 /// The markdown card class to handle the loading of markdown if assocaited with the notification
 SWIFT_CLASS("_TtC10Beaconstac13MMarkdownCard")
 @interface MMarkdownCard : NSObject
+/// The id of the markdown card
+@property (nonatomic, readonly) int64_t id;
+/// The title of the markdown card
+@property (nonatomic, readonly, copy) NSString * _Nonnull title;
+/// The url of the markdown card
+@property (nonatomic, readonly, copy) NSString * _Nonnull url;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
@@ -254,6 +425,16 @@ SWIFT_CLASS("_TtC10Beaconstac13MMarkdownCard")
 /// The Notification class to handle the notification action.
 SWIFT_CLASS("_TtC10Beaconstac13MNotification")
 @interface MNotification : MAction
+/// The id of the notification
+@property (nonatomic, readonly) int64_t id;
+/// The title of the notification
+@property (nonatomic, readonly, copy) NSString * _Nonnull title;
+/// The body of the notification
+@property (nonatomic, readonly, copy) NSString * _Nonnull body;
+/// The okActionURL of the notification, if the user clicks on the notification load the url.
+@property (nonatomic, readonly, copy) NSString * _Nullable okActionURL;
+/// The markdown card assocaited with the notification as set by the marketer on the dashboard.
+@property (nonatomic, readonly, strong) MMarkdownCard * _Nullable markdownCard;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
@@ -261,13 +442,62 @@ SWIFT_CLASS("_TtC10Beaconstac13MNotification")
 /// The rule class which determines when to trigger and what action to perform
 SWIFT_CLASS("_TtC10Beaconstac5MRule")
 @interface MRule : NSObject
+/// The id of the rule
+@property (nonatomic, readonly) int64_t id;
+/// The name of the rule
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// The dwell time of the rule
+/// The dwell time on entry determines after how many seconds should the rule get triggred
+/// The dwell time on exit determines if the user stayed certain time after the entry event.
+@property (nonatomic, readonly) int64_t dwellTime;
+/// The rule by as assigned by the marketer on the dashboard.
+@property (nonatomic, readonly, copy) NSString * _Nonnull ruleBy;
+/// When to trigger the event.
+/// <ul>
+///   <li>
+///     1: Entry
+///   </li>
+///   <li>
+///     2: Exit
+///   </li>
+/// </ul>
+@property (nonatomic, readonly) int64_t triggerEvent;
+/// Actions assigned to the rule. Action is a abstract super class, it can be of only two types either Notification or Webhook both are concrete classes
+@property (nonatomic, readonly, copy) NSArray<MAction *> * _Nonnull actions;
+/// Place names if the rule is associated by rule by place.
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nullable placeNames;
+/// Determines if the marketer has activated/paused the rule on the dashboard.
+- (BOOL)isActive SWIFT_WARN_UNUSED_RESULT;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
+@class NSNumber;
 
 /// The visitor class used to collect analytics related data of the app user, along with this information we send vendorId, deviceModel, os information, bundle information, sdk information
 SWIFT_CLASS("_TtC10Beaconstac8MVisitor")
 @interface MVisitor : NSObject
+/// The first name of the visitor
+@property (nonatomic, readonly, copy) NSString * _Nonnull firstName;
+/// The last name of the visitor
+@property (nonatomic, readonly, copy) NSString * _Nonnull lastName;
+/// The email of the visitor
+@property (nonatomic, readonly, copy) NSString * _Nullable email;
+/// The age of the visitor
+@property (nonatomic, readonly, strong) NSNumber * _Nullable age;
+/// The gender of the visitor
+@property (nonatomic, readonly, copy) NSString * _Nullable gender;
+/// Initialise the Visitor object and send it as part of the Beaconstac.
+/// \param firstName first name of the visitor
+///
+/// \param lastName last name of the visitor
+///
+/// \param email optional email of the visitor
+///
+/// \param age optional age of the visitor in int
+///
+/// \param gender optional gender of the visitor in string
+///
+- (nonnull instancetype)init:(NSString * _Nonnull)firstName lastName:(NSString * _Nonnull)lastName email:(NSString * _Nullable)email age:(NSNumber * _Nullable)age gender:(NSString * _Nullable)gender OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
@@ -275,8 +505,52 @@ SWIFT_CLASS("_TtC10Beaconstac8MVisitor")
 /// The Webhook class to handle the webhook action.
 SWIFT_CLASS("_TtC10Beaconstac8MWebhook")
 @interface MWebhook : MAction
+/// The id of the webhook
+@property (nonatomic, readonly) int64_t id;
+/// The name of the webhook
+@property (nonatomic, readonly, copy) NSString * _Nonnull name;
+/// The post url of the webhook
+@property (nonatomic, readonly, copy) NSString * _Nonnull url;
+/// The status of the url as determined by the server
+@property (nonatomic, readonly, copy) NSString * _Nonnull status;
+/// The parameters to be sent as part of the post body which is set by the marketer.
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, id> * _Nullable params;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
+
+
+/// The notification delegate
+SWIFT_PROTOCOL("_TtP10Beaconstac20NotificationDelegate_")
+@protocol NotificationDelegate
+/// Set this delegate on the Beaconstac object if you wish you override the displaying of the notification. If you listen to this callback, you are responsible on how and when to trigger the notification.
+- (void)overrideNotification:(MNotification * _Nonnull)notification;
+@end
+
+
+/// The RuleProcessorDelegate, use this to know when the rules get triggered.
+SWIFT_PROTOCOL("_TtP10Beaconstac21RuleProcessorDelegate_")
+@protocol RuleProcessorDelegate
+/// This callback is triggered just before the rule is executed
+- (void)willTriggerRule:(MRule * _Nonnull)rule;
+/// This callback is triggered after the rule is executed
+- (void)didTriggerRule:(MRule * _Nonnull)rule;
+@end
+
+
+/// The webhook delegate
+SWIFT_PROTOCOL("_TtP10Beaconstac15WebhookDelegate_")
+@protocol WebhookDelegate
+/// Set this delegate on the Beaconstac object, if you wish to add additional parameters as part of the post body to the webhook.
+- (NSDictionary<NSString *, id> * _Nonnull)addParameters:(MWebhook * _Nonnull)webhook SWIFT_WARN_UNUSED_RESULT;
+@end
+
+/// The iBeaconOption specifies how the SDK monitors and ranges beacon.
+typedef SWIFT_ENUM(NSInteger, iBeaconOption) {
+/// This ranges beacons in background only if the display wakes up. Requires always location Authorization
+  iBeaconOptionBackgroundRangeOnDisplayWakeUp = 0,
+/// This ranges beacons only in foreground, requires when in use location Authorization
+  iBeaconOptionWhenInUseRange = 1,
+};
 
 SWIFT_MODULE_NAMESPACE_POP
 #pragma clang diagnostic pop

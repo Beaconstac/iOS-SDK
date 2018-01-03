@@ -78,7 +78,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                 Beaconstac.sharedInstance(MY_DEVELOPER_TOKEN, delegate: viewController, completion: {[weak self] (beaconstacInstance, error) in
                     if let instance = beaconstacInstance {
                         self?.beaconstac = instance
-                        self?.beaconstac.startScanningBeacons()
+//                        self?.beaconstac.startScanningBeacons()
                         self?.beaconstac.notificationDelegate = viewController
                         self?.beaconstac.webhookDelegate = viewController
                         self?.beaconstac.ruleDelegate = viewController
@@ -93,7 +93,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         var notificationPresentationOptions: UNNotificationPresentationOptions
-        if let notificationOption = beaconstac.notificationOptionsForBeaconstacNotification(notification) {
+        let notificationOption = beaconstac.notificationOptionsForBeaconstacNotification(notification)
+        if notificationOption.rawValue > 0 {
             notificationPresentationOptions = notificationOption
         } else {
             // Your configuration...
