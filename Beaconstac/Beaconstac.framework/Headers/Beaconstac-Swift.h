@@ -358,6 +358,8 @@ SWIFT_CLASS("_TtC10Beaconstac7MBeacon")
 @property (nonatomic, readonly) double latitude;
 /// The longitude of the beacon
 @property (nonatomic, readonly) double longitude;
+/// The tags associated with the beacon
+@property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull tags;
 /// The hardware object of the beacon
 @property (nonatomic, readonly, strong) MHardware * _Nonnull hardware;
 @property (nonatomic, readonly) int64_t latestRSSI;

@@ -59,12 +59,6 @@ __MY_DEVELOPER_TOKEN__
 
 The app should provide the developer token while initializing the SDK. Get it from [Beaconstac Dashboard Account Page](https://dashboard.beaconstac.com/#/account).
 
-## Beaconstac Sample App
-
-To run our Beaconstac Sample App make the following changes to the build settings.
-1. Search for `Framework Search Paths`
-2. Change the value to the abosulte path of the `Beaconstac.framework`.
-
 ## Set Up
 
 1. Import the framework header in your class

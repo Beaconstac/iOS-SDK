@@ -14,6 +14,7 @@ class BeaconTableViewCell: UITableViewCell {
     @IBOutlet weak var minor: UILabel!
     @IBOutlet weak var major: UILabel!
     @IBOutlet weak var uuid: UILabel!
+    @IBOutlet weak var rssi: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

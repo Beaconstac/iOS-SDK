@@ -1,7 +1,8 @@
-### v3.0.4 released on December 20, 2017
+### v3.0.6 released on January 4, 2018
 
-* Fixed event logging
-* Few more changes for master flavour
+* tags property in MBeacon object.
+* Fix crash if the SDK started without switching on the bluetooth.
+* Fix path issues in the SampleApp
 
 ### v3.0.1 released on December 14, 2017
 

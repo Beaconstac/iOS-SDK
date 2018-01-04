@@ -43,6 +43,7 @@ class ViewController: UITableViewController {
         cell.major.text = "\(beacon.hardware.major)"
         cell.minor.text = "\(beacon.hardware.minor)"
         cell.uuid.text = "\(beacon.hardware.UUID)"
+        cell.rssi.text = "\(beacon.latestRSSI)"
         if beacon.isCampedOn {
             cell.backgroundColor = UIColor.lightGray
         } else {
