@@ -30,16 +30,16 @@
         <scene sceneID="6Ap-oc-ZBG">
             <objects>
                 <tableViewController id="Ihn-k8-sJC" customClass="ViewController" customModule="SampleApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="can-My-giC">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="117" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="can-My-giC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeaconCell" rowHeight="85" id="KGk-i7-Jjw" customClass="BeaconTableViewCell" customModule="SampleApp" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="375" height="85"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BeaconCell" rowHeight="117" id="KGk-i7-Jjw" customClass="BeaconTableViewCell" customModule="SampleApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="55.5" width="375" height="117"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="84.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="116.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRj-Yn-vG1">
@@ -72,6 +72,12 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Serail Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ojp-A0-2Nn">
+                                            <rect key="frame" x="8" y="87" width="359" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="ZbP-rr-XMr" secondAttribute="trailing" id="8uJ-r1-2I5"/>
@@ -79,11 +85,14 @@
                                         <constraint firstItem="xQZ-lL-La3" firstAttribute="width" secondItem="JV9-tB-k6H" secondAttribute="width" id="IR2-ZT-YD6"/>
                                         <constraint firstItem="fRj-Yn-vG1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="MnF-e4-ZxM"/>
                                         <constraint firstAttribute="trailing" secondItem="ggN-Wa-Sqr" secondAttribute="trailing" id="Tz4-QG-qmS"/>
+                                        <constraint firstItem="Ojp-A0-2Nn" firstAttribute="top" secondItem="ZbP-rr-XMr" secondAttribute="bottom" constant="8" id="aWA-3s-pNU"/>
                                         <constraint firstItem="ZbP-rr-XMr" firstAttribute="top" secondItem="JV9-tB-k6H" secondAttribute="bottom" constant="8" id="dGU-MZ-R3R"/>
                                         <constraint firstItem="ggN-Wa-Sqr" firstAttribute="centerY" secondItem="fRj-Yn-vG1" secondAttribute="centerY" id="fCj-at-jI3"/>
                                         <constraint firstItem="ZbP-rr-XMr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="gzh-XW-J7f"/>
+                                        <constraint firstItem="Ojp-A0-2Nn" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="hGX-MQ-UfC"/>
                                         <constraint firstItem="xQZ-lL-La3" firstAttribute="top" secondItem="fRj-Yn-vG1" secondAttribute="bottom" constant="8" id="hci-Oc-kbq"/>
                                         <constraint firstItem="xQZ-lL-La3" firstAttribute="trailing" secondItem="JV9-tB-k6H" secondAttribute="leading" id="heU-uK-34Z"/>
+                                        <constraint firstAttribute="trailing" secondItem="Ojp-A0-2Nn" secondAttribute="trailing" constant="8" id="jVX-3u-E11"/>
                                         <constraint firstItem="xQZ-lL-La3" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="mOp-Zr-fp3"/>
                                         <constraint firstItem="ggN-Wa-Sqr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" symbolic="YES" id="mrs-ns-e3S"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="fRj-Yn-vG1" secondAttribute="trailing" constant="20" symbolic="YES" id="qOX-sO-pOF"/>
@@ -97,6 +106,7 @@
                                     <outlet property="minor" destination="JV9-tB-k6H" id="uTb-9j-3sm"/>
                                     <outlet property="name" destination="fRj-Yn-vG1" id="n3b-Q4-hfG"/>
                                     <outlet property="rssi" destination="ggN-Wa-Sqr" id="Ucg-R1-x5Z"/>
+                                    <outlet property="serialNumber" destination="Ojp-A0-2Nn" id="kxi-R5-WyH"/>
                                     <outlet property="uuid" destination="ZbP-rr-XMr" id="pIc-6h-Jkt"/>
                                 </connections>
                             </tableViewCell>

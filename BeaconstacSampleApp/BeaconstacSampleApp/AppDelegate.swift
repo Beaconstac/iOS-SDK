@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelega
     var locationManager: CLLocationManager!
     var bluetoothManager: CBPeripheralManager!
     
-    var MY_DEVELOPER_TOKEN = ""
+    var MY_DEVELOPER_TOKEN = "<MY DEVELOPER TOKEN>"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.

@@ -1,8 +1,7 @@
-### v3.0.6 released on January 4, 2018
+### v3.0.7 released on January 5, 2018
 
-* tags property in MBeacon object.
-* Fix crash if the SDK started without switching on the bluetooth.
-* Fix path issues in the SampleApp
+* Fixing rule deletion casuing core data errors
+* Fixing nil urls in notification
 
 ### v3.0.1 released on December 14, 2017
 

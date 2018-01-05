@@ -14,6 +14,7 @@ class ViewController: UITableViewController {
 
     var beacons = [MBeacon]()
     var isShowingToast: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -44,6 +45,7 @@ class ViewController: UITableViewController {
         cell.minor.text = "\(beacon.hardware.minor)"
         cell.uuid.text = "\(beacon.hardware.UUID)"
         cell.rssi.text = "\(beacon.latestRSSI)"
+        cell.serialNumber.text = beacon.hardware.serialNumber
         if beacon.isCampedOn {
             cell.backgroundColor = UIColor.lightGray
         } else {
