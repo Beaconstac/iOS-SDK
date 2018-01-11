@@ -1,7 +1,6 @@
-### v3.0.7 released on January 5, 2018
+### v3.0.8 released on January 11, 2018
 
-* Fixing rule deletion casuing core data errors
-* Fixing nil urls in notification
+* Fixing issue with the OK_ACTION_URL not set.
 
 ### v3.0.1 released on December 14, 2017
 
