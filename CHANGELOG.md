@@ -1,6 +1,7 @@
-### v3.0.8 released on January 11, 2018
+### v3.0.10 released on January 20, 2018
 
-* Fixing issue with the OK_ACTION_URL not set.
+* The event logger changes to populate visitor data
+* Camp off when app user disables bluetooth
 
 ### v3.0.1 released on December 14, 2017
 
