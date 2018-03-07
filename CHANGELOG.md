@@ -1,7 +1,7 @@
-### v3.0.10 released on January 20, 2018
+### v3.1 released on March 5, 2018
 
-* The event logger changes to populate visitor data
-* Camp off when app user disables bluetooth
+* Analytics overhaul changes
+* Define LATCH_LATENCY for campOn/campOff behaviour
 
 ### v3.0.1 released on December 14, 2017
 

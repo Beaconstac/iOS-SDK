@@ -47,7 +47,7 @@ class ViewController: UITableViewController {
         cell.rssi.text = "\(beacon.latestRSSI)"
         cell.serialNumber.text = beacon.hardware.serialNumber
         if beacon.isCampedOn {
-            cell.backgroundColor = UIColor.lightGray
+            cell.backgroundColor = UIColor.green
         } else {
             cell.backgroundColor = UIColor.white
         }
@@ -83,53 +83,54 @@ extension ViewController {
 }
 
 extension ViewController: BeaconDelegate {
-    func didFail(_ error: Error) {
+    func didFail(_ beaconstac: Beaconstac, error: Error) {
         print(error)
     }
     
-    func didEnterRegion(_ region: String) {
+    func didEnterRegion(_ beaconstac: Beaconstac, region: String) {
         showToast(message: "Region Entered \(region)")
     }
     
-    func didRangeBeacons(_ beacons: [MBeacon]) {
+    func didRangeBeacons(_ beaconstac: Beaconstac, beacons: [MBeacon]) {
         self.beacons = beacons
         tableView.reloadData()
     }
     
-    func campOnBeacon(_ beacon: MBeacon) {
+    func campOnBeacon(_ beaconstac: Beaconstac, beacon: MBeacon) {
         tableView.reloadData()
         showToast(message: "Camped On \(beacon.name)")
     }
     
-    func exitBeacon(_ beacon: MBeacon) {
+    func exitBeacon(_ beaconstac: Beaconstac, beacon: MBeacon) {
         tableView.reloadData()
         showToast(message: "Exit \(beacon.name)")
     }
     
-    func didExitRegion(_ region: String) {
+    func didExitRegion(_ beaconstac: Beaconstac, region: String) {
         tableView.reloadData()
         showToast(message: "Region Exited \(region)")
     }
 }
 
 extension ViewController: RuleProcessorDelegate {
-    func willTriggerRule(_ rule: MRule) {
+    
+    func willTriggerRule(_ beaconstac: Beaconstac, rule: MRule) {
         // Check which rule is going to be triggred..
     }
     
-    func didTriggerRule(_ rule: MRule) {
+    func didTriggerRule(_ beaconstac: Beaconstac, rule: MRule) {
         // Check which rule is triggred..
     }
 }
 
 extension ViewController: NotificationDelegate {
-    func overrideNotification(_ notification: MNotification) {
+    func overrideNotification(_ beaconstac: Beaconstac, notification: MNotification) {
         // Override the notification.
     }
 }
 
 extension ViewController: WebhookDelegate {
-    func addParameters(_ webhook: MWebhook) -> Dictionary<String, Any> {
+    func addParameters(_ beaconstac: Beaconstac, webhook: MWebhook) -> Dictionary<String, Any> {
         // retrun your values...
         return [:]
     }

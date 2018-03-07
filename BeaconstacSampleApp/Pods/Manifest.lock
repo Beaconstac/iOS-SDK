@@ -1,0 +1,12 @@
+PODS:
+  - EddystoneScanner (1.1)
+
+DEPENDENCIES:
+  - EddystoneScanner
+
+SPEC CHECKSUMS:
+  EddystoneScanner: 4f00811c58b54349d87205d1bf1789fdc9d0951f
+
+PODFILE CHECKSUM: d8f102212049976c568b51a8d8c166fa89eaef53
+
+COCOAPODS: 1.4.0

@@ -20,7 +20,7 @@ Add the following to your Podfile in your project, we are supporting iOS 10.0+ m
 ```pod
 platform :ios, '10.0'
 target '<My-App-Target>''
-pod 'Beaconstac', '~> 3.0'
+pod 'Beaconstac', '~> 3.1'
 ```
 
 Run `pod install` in the project directory
@@ -32,13 +32,14 @@ Run `pod install` in the project directory
 2. Drag and drop the Beaconstac.framework file into your Xcode project. Make sure that "Copy Items to Destination's Group Folder" is checked.
 <img src="images/frameworkdrop.png" alt="Build Phases" width="600">
 
-3. Add the `Beaconstac.framework` to the embedded binaries section of your destination app target.
+3. Add the `Beaconstac.framework` and `EddystoneScanner.framework` to the embedded binaries section of your destination app target.
 
 4. In Build Phases under destination app target, add the following frameworks in Link Binary With Libraries section:
 - CoreData.framework
 - SystemConfiguration.framework
 - CoreBluetooth.framework
 - CoreLocation.framework
+- EddystoneScanner.framework
 
 ## Configure your project
 
@@ -86,7 +87,7 @@ do {
 
 3. If you want to use the `advacnced integration`, use __iBeaconOption__ as defined below
 
-| iBeaconOption                  |    Location Authorization  | Monitoring                       | Ranging                     | Description                                       |
+| iBeaconOption                  |    Location Authorization  | Monitoring                       | Ranging                   | Description                                       |
 |:------------------------------:|:--------------------------:|:--------------------------------:| :------------------------:|:----------------------------------------------:|
 |              WhenInUse         |  When In Use Authorization | CoreLocation API doesn't support | CoreLocation API supports | App should be in the foreground                |
 | BackgroundRangeOnDisplayWakeUp |  Always Authorization      | CoreLocation API supports        | CoreLocation API supports | App can be in the background but doesn't range |
@@ -132,28 +133,28 @@ beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.delegate = self
 
 // required
-func didFail(_ error: Error) {
+func didFail(_ beaconstac: Beaconstac, error: Error) {
     print(error)
 }
 
 //Optional
-func didEnterRegion(_ region: String) {
+func didEnterRegion(_ beaconstac: Beaconstac, region: String) {
     print(region)
 }
 
-func didRangeBeacons(_ beacons: [NSObject]) {
+func didRangeBeacons(_ beaconstac: Beaconstac, beacons: [MBeacon]) {
     print(beacons)
 }
 
-func campOnBeacon(_ beacon: MBeacon) {
+func didEnterBeacon(_ beaconstac: Beaconstac, beacon: MBeacon) {
     print(beacon)
 }
 
-func exitBeacon(_ beacon: MBeacon) {
+func didExitBeacon(_ beaconstac: Beaconstac, beacon: MBeacon) {
     print(beacon)
 }
 
-func didExitRegion(_ region: String) {
+func didExitRegion(_ beaconstac: Beaconstac, region: String) {
     print(region)
 }
 ```
@@ -166,11 +167,11 @@ func didExitRegion(_ region: String) {
 beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.ruleDelegate = self
 
-func willTriggerRule(_ rule: Rule) {
+func willTriggerRule(_ beaconstac: Beaconstac, rule: MRule) {
     // read which rule is about to trigger and the actions, filters set by the marketers...
 }
 
-func didTriggerRule(_ rule: Rule) {
+func didTriggerRule(_ beaconstac: Beaconstac, rule: MRule) {
     // read which rule is triggered and the actions, filters set by the marketers...
 }
 ```
@@ -183,7 +184,7 @@ func didTriggerRule(_ rule: Rule) {
 beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.notificationDelegate = self
 
-func overrideNotification(_ notification: Notification) {
+func overrideNotification(_ beaconstac: Beaconstac, notification: MNotification) {
     // If you override, you should handle everything from configuring, triggering and displaying of the notification.
 }
 ```
@@ -195,16 +196,16 @@ func overrideNotification(_ notification: Notification) {
 beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.webhookDelegate = self
 
-func addParameters(_ webhook: Webhook) -> Dictionary<String, Any> {
+func addParameters(_ beaconstac: Beaconstac, webhook: MWebhook) -> Dictionary<String, Any> {
     // If you override, make sure the keys of the previously added
 }
 ```
 
-10. The difference between the rssi of the camp on beacon (-75) and exit beacon is defined using the `BEACON_EXIT_BIAS`, defaults to 10. You can override this behaviour by setting a new value.
+10. The `Latch_Latency`, defines how the campOn/campOff behaviour is adjusted when the SDK finds the beacon. Lets say, the SDK camped on to a beacon and there is a beacon who's latest RSSI, is less than the latest RSSI of the camped On beacon + the latch latency, then SDK camps off from the current beacon and camps on to this beacon.
 
 ```swift
 beaconstacInstance = try! Beaconstac.sharedInstance()
-beaconstacInstance.BEACON_EXIT_BIAS = 15 // Set the difference value
+beaconstacInstance.latchLatency = HIGH
 ```
 
 11. If you don't listen to the `NotificationDelegate` protocol, the SDK configures, triggers UNNotification. However to present the notification do the following.

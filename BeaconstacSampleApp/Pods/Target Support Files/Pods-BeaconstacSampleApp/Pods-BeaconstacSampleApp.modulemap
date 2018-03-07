@@ -1,0 +1,6 @@
+framework module Pods_BeaconstacSampleApp {
+  umbrella header "Pods-BeaconstacSampleApp-umbrella.h"
+
+  export *
+  module * { export * }
+}

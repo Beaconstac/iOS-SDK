@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelega
     var locationManager: CLLocationManager!
     var bluetoothManager: CBPeripheralManager!
     
-    var MY_DEVELOPER_TOKEN = "e62435a78e67ec98bba3b879ba00448650032557"
+    var MY_DEVELOPER_TOKEN = "MY_DEVELOPER_TOKEN"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -75,13 +75,13 @@ extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways {
             if let viewController = (self.window?.rootViewController as? UINavigationController)?.topViewController as? ViewController {
-                Beaconstac.sharedInstance(MY_DEVELOPER_TOKEN, delegate: viewController, completion: {[weak self] (beaconstacInstance, error) in
+                Beaconstac.sharedInstance(MY_DEVELOPER_TOKEN, ibeaconOption: .BackgroundRangeOnDisplayWakeUp, delegate: viewController, completion: {[weak self] (beaconstacInstance, error) in
                     if let instance = beaconstacInstance {
                         self?.beaconstac = instance
                         self?.beaconstac.startScanningBeacons()
-//                        self?.beaconstac.notificationDelegate = viewController
-//                        self?.beaconstac.webhookDelegate = viewController
-//                        self?.beaconstac.ruleDelegate = viewController
+                        self?.beaconstac.notificationDelegate = viewController
+                        self?.beaconstac.webhookDelegate = viewController
+                        self?.beaconstac.ruleDelegate = viewController
                     }
                 })
             }
@@ -93,14 +93,16 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         var notificationPresentationOptions: UNNotificationPresentationOptions
-        let notificationOption = beaconstac.notificationOptionsForBeaconstacNotification(notification)
-        if notificationOption.rawValue > 0 {
-            notificationPresentationOptions = notificationOption
-        } else {
-            // Your configuration...
-            notificationPresentationOptions = .sound
+        if beaconstac != nil {
+            let notificationOption = beaconstac.notificationOptionsForBeaconstacNotification(notification)
+            if notificationOption.rawValue > 0 {
+                notificationPresentationOptions = notificationOption
+            } else {
+                // Your configuration...
+                notificationPresentationOptions = .sound
+            }
+            completionHandler(notificationPresentationOptions)
         }
-        completionHandler(notificationPresentationOptions)
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

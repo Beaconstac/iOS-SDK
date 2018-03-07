@@ -185,30 +185,33 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wnullability"
 
 SWIFT_MODULE_NAMESPACE_PUSH("Beaconstac")
+@class Beaconstac;
 @class MBeacon;
 
 /// Beacon Delegate to listen to beacons related callbacks.
 SWIFT_PROTOCOL("_TtP10Beaconstac14BeaconDelegate_")
 @protocol BeaconDelegate
 /// Non optional method, sends a callback if any error occures in the SDK, use BeaconstacSDKError to determine what went wrong
-- (void)didFail:(NSError * _Nonnull)error;
+- (void)didFail:(Beaconstac * _Nonnull)beaconstac error:(NSError * _Nonnull)error;
 @optional
 /// As soon as we detect a beacon related to your account, we invoke this with the place name.
-- (void)didEnterRegion:(NSString * _Nonnull)region;
+- (void)didEnterRegion:(Beaconstac * _Nonnull)beaconstac region:(NSString * _Nonnull)region;
 /// Ranging of beacons which is objects of the class MBeacon
-- (void)didRangeBeacons:(NSArray<MBeacon *> * _Nonnull)beacons;
+- (void)didRangeBeacons:(Beaconstac * _Nonnull)beaconstac beacons:(NSArray<MBeacon *> * _Nonnull)beacons;
 /// SDK triggers this if it finds a beacon who’s RSSI is less than -75.
-- (void)campOnBeacon:(MBeacon * _Nonnull)beacon;
+- (void)campOnBeacon:(Beaconstac * _Nonnull)beaconstac beacon:(MBeacon * _Nonnull)beacon;
 /// SDK triggers this if it finds a beacon who’s RSSI is -75 + the BEACON_EXIT_BIAS.
-- (void)exitBeacon:(MBeacon * _Nonnull)beacon;
+- (void)exitBeacon:(Beaconstac * _Nonnull)beaconstac beacon:(MBeacon * _Nonnull)beacon;
 /// As soon as SDK sees no beacons near the device location and there was a region enter invoked prior to this call.
-- (void)didExitRegion:(NSString * _Nonnull)region;
+- (void)didExitRegion:(Beaconstac * _Nonnull)beaconstac region:(NSString * _Nonnull)region;
 @end
 
 @protocol RuleProcessorDelegate;
 @protocol NotificationDelegate;
 @protocol WebhookDelegate;
+enum LatchLatency : int64_t;
 enum iBeaconOption : NSInteger;
+@class NSNumber;
 
 /// This is the main class where you configure Beaconstac SDK. You provide the Developer Token which is present on your account page and you can configure beacon monitoring and ranging based on your requirement.
 SWIFT_CLASS("_TtC10Beaconstac10Beaconstac")
@@ -221,8 +224,8 @@ SWIFT_CLASS("_TtC10Beaconstac10Beaconstac")
 @property (nonatomic, weak) id <NotificationDelegate> _Nullable notificationDelegate;
 /// Listen to this delegate to add additional parameters while executing a webhook.
 @property (nonatomic, weak) id <WebhookDelegate> _Nullable webhookDelegate;
-/// You can change the camp off beacon RSSI threshold, the default is 10
-@property (nonatomic) NSInteger BEACON_EXIT_BIAS;
+/// Defines the camp off behaviour when the SDK finds a nearby beacon who’s RSSI is less than the (camped on beacon’s latest RSSI + latch latency). Default is MEDIUM.
+@property (nonatomic) enum LatchLatency latchLatency;
 /// Get the sharedInstance at any point in time after initializing using token
 ///
 /// throws:
@@ -242,7 +245,7 @@ SWIFT_CLASS("_TtC10Beaconstac10Beaconstac")
 ///
 /// \param completion this is called once the SDK gets initialised successfully or if any error occurs.
 ///
-+ (void)sharedInstance:(NSString * _Nonnull)token ibeaconOption:(enum iBeaconOption)ibeaconOption organization:(NSString * _Nullable)organization delegate:(id <BeaconDelegate> _Nullable)delegate completion:(void (^ _Nonnull)(Beaconstac * _Nullable, NSError * _Nullable))completion;
++ (void)sharedInstance:(NSString * _Nonnull)token ibeaconOption:(enum iBeaconOption)ibeaconOption organization:(NSNumber * _Nullable)organization delegate:(id <BeaconDelegate> _Nullable)delegate completion:(void (^ _Nonnull)(Beaconstac * _Nullable, NSError * _Nullable))completion;
 /// Invoke this method if you want the SDK to scan for beacons. Based on the SDK configuration this determines when to start scanning beacons.
 - (void)startScanningBeacons;
 /// Invoke this method if you want the SDK to stop scanning in between the process.
@@ -332,6 +335,12 @@ typedef SWIFT_ENUM(NSInteger, BeaconstacSDKError) {
   BeaconstacSDKErrorInvalidRequest = -1016,
 };
 
+typedef SWIFT_ENUM(int64_t, LatchLatency) {
+  LatchLatencyLOW = 3,
+  LatchLatencyMEDIUM = 5,
+  LatchLatencyHIGH = 7,
+};
+
 
 /// Abstract super calss of Notification and Webhook
 SWIFT_CLASS("_TtC10Beaconstac7MAction")
@@ -362,7 +371,7 @@ SWIFT_CLASS("_TtC10Beaconstac7MBeacon")
 @property (nonatomic, readonly, copy) NSArray<NSString *> * _Nonnull tags;
 /// The hardware object of the beacon
 @property (nonatomic, readonly, strong) MHardware * _Nonnull hardware;
-@property (nonatomic, readonly) int64_t latestRSSI;
+@property (nonatomic) int64_t latestRSSI;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
@@ -473,7 +482,6 @@ SWIFT_CLASS("_TtC10Beaconstac5MRule")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 @end
 
-@class NSNumber;
 
 /// The visitor class used to collect analytics related data of the app user, along with this information we send vendorId, deviceModel, os information, bundle information, sdk information
 SWIFT_CLASS("_TtC10Beaconstac8MVisitor")
@@ -525,7 +533,7 @@ SWIFT_CLASS("_TtC10Beaconstac8MWebhook")
 SWIFT_PROTOCOL("_TtP10Beaconstac20NotificationDelegate_")
 @protocol NotificationDelegate
 /// Set this delegate on the Beaconstac object if you wish you override the displaying of the notification. If you listen to this callback, you are responsible on how and when to trigger the notification.
-- (void)overrideNotification:(MNotification * _Nonnull)notification;
+- (void)overrideNotification:(Beaconstac * _Nonnull)beaconstac notification:(MNotification * _Nonnull)notification;
 @end
 
 
@@ -533,9 +541,9 @@ SWIFT_PROTOCOL("_TtP10Beaconstac20NotificationDelegate_")
 SWIFT_PROTOCOL("_TtP10Beaconstac21RuleProcessorDelegate_")
 @protocol RuleProcessorDelegate
 /// This callback is triggered just before the rule is executed
-- (void)willTriggerRule:(MRule * _Nonnull)rule;
+- (void)willTriggerRule:(Beaconstac * _Nonnull)beaconstac rule:(MRule * _Nonnull)rule;
 /// This callback is triggered after the rule is executed
-- (void)didTriggerRule:(MRule * _Nonnull)rule;
+- (void)didTriggerRule:(Beaconstac * _Nonnull)beaconstac rule:(MRule * _Nonnull)rule;
 @end
 
 
@@ -543,7 +551,7 @@ SWIFT_PROTOCOL("_TtP10Beaconstac21RuleProcessorDelegate_")
 SWIFT_PROTOCOL("_TtP10Beaconstac15WebhookDelegate_")
 @protocol WebhookDelegate
 /// Set this delegate on the Beaconstac object, if you wish to add additional parameters as part of the post body to the webhook.
-- (NSDictionary<NSString *, id> * _Nonnull)addParameters:(MWebhook * _Nonnull)webhook SWIFT_WARN_UNUSED_RESULT;
+- (NSDictionary<NSString *, id> * _Nonnull)addParameters:(Beaconstac * _Nonnull)beaconstac webhook:(MWebhook * _Nonnull)webhook SWIFT_WARN_UNUSED_RESULT;
 @end
 
 /// The iBeaconOption specifies how the SDK monitors and ranges beacon.
