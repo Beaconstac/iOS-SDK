@@ -1,3 +1,8 @@
+### v3.1.1 released on March 16, 2018
+
+* Expose REGION_IDENTIFIER of CLBeaconRegion
+* Update EddystoneScanner
+
 ### v3.1 released on March 5, 2018
 
 * Analytics overhaul changes
@@ -146,6 +151,7 @@
 * Deprecated setUpOrganizationId: userToken: beaconUUID: beaconIdentifier method from Beaconstac class
 * Deprecated sharedInstance method in Beaconstac class
 * Modified initUserIdentity method to setUserIdentity in Beaconstac class
+
 
 
 
