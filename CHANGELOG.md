@@ -1,3 +1,7 @@
+### v3.1.2 released on March 21, 2018
+
+* Fix Visitor Entity
+
 ### v3.1.1 released on March 16, 2018
 
 * Expose REGION_IDENTIFIER of CLBeaconRegion
