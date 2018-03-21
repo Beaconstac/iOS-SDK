@@ -17,12 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelega
     
     func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
         if peripheral.state == .poweredOn {
-            print("On")
+            beaconstac?.startScanningBeacons()
+        } else {
+            beaconstac?.stopScanningBeacons()
         }
     }
 
     var window: UIWindow?
-    var beaconstac: Beaconstac!
+    var beaconstac: Beaconstac?
     var locationManager: CLLocationManager!
     var bluetoothManager: CBPeripheralManager!
     
@@ -73,18 +75,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelega
 
 extension AppDelegate: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .authorizedAlways {
-            if let viewController = (self.window?.rootViewController as? UINavigationController)?.topViewController as? ViewController {
-                Beaconstac.sharedInstance(MY_DEVELOPER_TOKEN, ibeaconOption: .BackgroundRangeOnDisplayWakeUp, delegate: viewController, completion: {[weak self] (beaconstacInstance, error) in
-                    if let instance = beaconstacInstance {
-                        self?.beaconstac = instance
-                        self?.beaconstac.startScanningBeacons()
-                        self?.beaconstac.notificationDelegate = viewController
-                        self?.beaconstac.webhookDelegate = viewController
-                        self?.beaconstac.ruleDelegate = viewController
-                    }
-                })
+        if status == .authorizedAlways || status == .authorizedWhenInUse {
+            if beaconstac != nil {
+                beaconstac?.startScanningBeacons()
+            } else {
+                if let viewController = (self.window?.rootViewController as? UINavigationController)?.topViewController as? ViewController {
+                    Beaconstac.sharedInstance(MY_DEVELOPER_TOKEN, delegate: viewController, completion: {[weak self] (beaconstacInstance, error) in
+                        if let instance = beaconstacInstance {
+                            self?.beaconstac = instance
+                            self?.beaconstac?.startScanningBeacons()
+                            self?.beaconstac?.notificationDelegate = viewController
+                            self?.beaconstac?.webhookDelegate = viewController
+                            self?.beaconstac?.ruleDelegate = viewController
+                        }
+                    })
+                }
             }
+        } else {
+            beaconstac?.stopScanningBeacons()
         }
     }
 }
@@ -94,8 +102,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         var notificationPresentationOptions: UNNotificationPresentationOptions
         if beaconstac != nil {
-            let notificationOption = beaconstac.notificationOptionsForBeaconstacNotification(notification)
-            if notificationOption.rawValue > 0 {
+            if let notificationOption = beaconstac?.notificationOptionsForBeaconstacNotification(notification), notificationOption.rawValue > 0 {
                 notificationPresentationOptions = notificationOption
             } else {
                 // Your configuration...
@@ -107,7 +114,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let notification = response.notification
-        if beaconstac.showCardViewerForLocalNotification(notification) {
+        if let instance = beaconstac, instance.showCardViewerForLocalNotification(notification) {
             // We will handle the notification...
         } else {
             // Leave it to us...
