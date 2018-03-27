@@ -402,8 +402,6 @@ SWIFT_CLASS("_TtC10Beaconstac9MHardware")
 @property (nonatomic, readonly, copy) NSString * _Nonnull serialNumber;
 /// The mode of the beacon hardware
 @property (nonatomic, readonly, copy) NSString * _Nonnull mode;
-/// The proximity status parameter of the beacon hardware
-@property (nonatomic, readonly) int64_t proximityStatus;
 /// The temperature of the beacon hardware
 @property (nonatomic, readonly) int64_t temperature;
 /// The battery of the beacon hardware

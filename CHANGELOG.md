@@ -1,3 +1,7 @@
+### v3.1.2 released on March 27, 2018
+
+* Remove Proximity Status from the server
+
 ### v3.1.2 released on March 21, 2018
 
 * Fix Visitor Entity
@@ -155,6 +159,7 @@
 * Deprecated setUpOrganizationId: userToken: beaconUUID: beaconIdentifier method from Beaconstac class
 * Deprecated sharedInstance method in Beaconstac class
 * Modified initUserIdentity method to setUserIdentity in Beaconstac class
+
 
 
 
