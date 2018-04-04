@@ -1,4 +1,8 @@
-### v3.1.2 released on March 27, 2018
+### v3.1.4 released on April 4, 2018
+
+* Fix bug around mandatory non-exsistent property.
+
+### v3.1.3 release on March 27, 2018
 
 * Remove Proximity Status from the server
 
