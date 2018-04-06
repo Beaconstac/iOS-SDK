@@ -206,6 +206,11 @@ SWIFT_PROTOCOL("_TtP10Beaconstac14BeaconDelegate_")
 - (void)didExitRegion:(Beaconstac * _Nonnull)beaconstac region:(NSString * _Nonnull)region;
 @end
 
+typedef SWIFT_ENUM(NSInteger, BeaconState) {
+  BeaconStateActive = 0,
+  BeaconStateSleeping = 1,
+};
+
 @protocol RuleProcessorDelegate;
 @protocol NotificationDelegate;
 @protocol WebhookDelegate;
@@ -359,6 +364,8 @@ SWIFT_CLASS("_TtC10Beaconstac7MBeacon")
 @property (nonatomic, readonly, copy) NSString * _Nonnull name;
 /// The campedOn status
 @property (nonatomic, readonly) BOOL isCampedOn;
+/// The state of the beacon
+@property (nonatomic, readonly) enum BeaconState state;
 /// The place id of the beacon
 @property (nonatomic, readonly) int64_t place;
 /// The place name of the beacon
