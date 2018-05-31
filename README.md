@@ -4,11 +4,6 @@
 
 Beaconstac SDK is an easy way to enable proximity marketing and location analytics through an iBeacon-compliant BLE network.
 
-## Documentation
-
-* Please refer to the [API reference](http://cocoadocs.org/docsets/Beaconstac).
-* Tutorials and Programming guide available at http://docs.beaconstac.com/docs/references.html
-
 ## Demo app
 
 Try out the Beaconstac Demo app on the [iTunes App Store](https://itunes.apple.com/us/app/beaconstac/id956442796?mt=8).
