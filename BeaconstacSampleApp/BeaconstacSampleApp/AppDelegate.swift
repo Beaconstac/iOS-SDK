@@ -13,10 +13,10 @@ import Beaconstac
 import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CBCentralManagerDelegate {
     
-    func peripheralManagerDidUpdateState(_ peripheral: CBPeripheralManager) {
-        if peripheral.state == .poweredOn {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        if central.state == .poweredOn {
             beaconstac?.startScanningBeacons()
         } else {
             beaconstac?.stopScanningBeacons()
@@ -26,14 +26,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBPeripheralManagerDelega
     var window: UIWindow?
     var beaconstac: Beaconstac?
     var locationManager: CLLocationManager!
-    var bluetoothManager: CBPeripheralManager!
+    var bluetoothManager: CBCentralManager!
     
-    var MY_DEVELOPER_TOKEN = "MY_DEVELOPER_TOKEN"
+    var MY_DEVELOPER_TOKEN = "08ddda7aabcbecfa54b29f6d032d7d289eb241b5"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        bluetoothManager = CBPeripheralManager(delegate: self, queue: nil, options: nil)
+        bluetoothManager = CBCentralManager(delegate: self, queue: nil, options: nil)
 
         locationManager = CLLocationManager()
         locationManager.delegate = self

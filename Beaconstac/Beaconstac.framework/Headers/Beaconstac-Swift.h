@@ -206,6 +206,15 @@ SWIFT_PROTOCOL("_TtP10Beaconstac14BeaconDelegate_")
 - (void)didExitRegion:(Beaconstac * _Nonnull)beaconstac region:(NSString * _Nonnull)region;
 @end
 
+typedef SWIFT_ENUM(NSInteger, BeaconHardwareType) {
+  BeaconHardwareTypeUnknown = 0,
+  BeaconHardwareTypeIndoor = 1,
+  BeaconHardwareTypeOutdoor = 2,
+  BeaconHardwareTypePocket = 3,
+  BeaconHardwareTypeKeychain = 4,
+  BeaconHardwareTypeLongrange = 5,
+};
+
 typedef SWIFT_ENUM(NSInteger, BeaconState) {
   BeaconStateActive = 0,
   BeaconStateSleeping = 1,
@@ -419,6 +428,8 @@ SWIFT_CLASS("_TtC10Beaconstac9MHardware")
 @property (nonatomic, readonly) int64_t transmissionPower;
 /// The firmware version of the beacon hardware
 @property (nonatomic, readonly, copy) NSString * _Nonnull firmwareVersion;
+/// The hardware type of the beacon
+@property (nonatomic, readonly) enum BeaconHardwareType type;
 /// The eddystone object of the beacon hardware
 @property (nonatomic, readonly, strong) MEddystone * _Nonnull eddystone;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;

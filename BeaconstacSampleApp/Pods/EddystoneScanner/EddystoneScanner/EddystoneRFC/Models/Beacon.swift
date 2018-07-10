@@ -41,6 +41,26 @@ import CoreBluetooth
         }
     }
     
+    /// Distance of the beacon from the device
+    @objc public var distance: Double {
+        get {
+            if (txPower == 0 || rssi == 0) {
+                return -1
+            }
+            var dist = -1.0
+            if (rssi == 0) {
+                return dist // if we cannot determine accuracy, return -1.
+            }
+            let ratio = Double(rssi) * 1.0 / Double(txPower)
+            if (ratio < 1.0) {
+                dist = pow(ratio, 10)
+            } else {
+                dist = (0.89976) * pow(ratio, 7.7095) + 0.111
+            }
+            return dist
+        }
+    }
+    
     /// Telemtry data from the beacon. Always updated to the latest value
     @objc public var telemetry: Telemetry?
     

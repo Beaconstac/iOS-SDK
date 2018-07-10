@@ -1,3 +1,11 @@
+### v3.1.6 released on July 10, 2018
+
+* Fix offline crashes
+
+### v3.1.5 released on April 6, 2018
+
+* Fix threading issues
+
 ### v3.1.4 released on April 4, 2018
 
 * Fix bug around mandatory non-exsistent property.
@@ -163,6 +171,7 @@
 * Deprecated setUpOrganizationId: userToken: beaconUUID: beaconIdentifier method from Beaconstac class
 * Deprecated sharedInstance method in Beaconstac class
 * Modified initUserIdentity method to setUserIdentity in Beaconstac class
+
 
 
 
