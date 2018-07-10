@@ -60,6 +60,10 @@ __MY_DEVELOPER_TOKEN__
 
 The app should provide the developer token while initializing the SDK. Get it from [Beaconstac Dashboard Account Page](https://dashboard.beaconstac.com/#/account).
 
+__Monitoring Regions__
+
+If you are using the region monitoring API's from advanced location manager, make sure it won't affect the Beaconstac SDK.
+
 ## Set Up
 
 1. Import the framework header in your class
