@@ -1,5 +1,5 @@
 PODS:
-  - EddystoneScanner (1.1.4)
+  - EddystoneScanner (1.1.5)
 
 DEPENDENCIES:
   - EddystoneScanner
@@ -9,7 +9,7 @@ SPEC REPOS:
     - EddystoneScanner
 
 SPEC CHECKSUMS:
-  EddystoneScanner: 7ba2b1aa7d7a7845d1a0ce02f0c51181852be113
+  EddystoneScanner: 771773cf97e37c3047e1f9e0b6c503640061f1b8
 
 PODFILE CHECKSUM: d8f102212049976c568b51a8d8c166fa89eaef53
 
