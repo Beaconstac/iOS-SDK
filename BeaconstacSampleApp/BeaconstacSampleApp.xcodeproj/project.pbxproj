@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A6D7C1F0793940464B80E50 /* BeaconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDE50BC3C9D0234987F9013 /* BeaconTableViewCell.swift */; };
-		0E8221B01B8B9012AF07BC58 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C7FD77D6AC1A9B9E7A090A6F /* Foundation.framework */; };
-		1CB46722F181605E38EECF35 /* Pods_BeaconstacSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B331E0D23FF33DEAFD68E5 /* Pods_BeaconstacSampleApp.framework */; };
-		32BC97F5A2115AFFA9BF08CC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE141509F45222699ABD2F88 /* ViewController.swift */; };
-		57FF8CC0E58BBCE95C23D816 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9550C8284B92D4202C6C9B7 /* Main.storyboard */; };
-		629BC4BDD8639E59BE035DB9 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1A2E6C8479661BB5C4F7AD69 /* CoreBluetooth.framework */; };
-		6624120F4BB988F588405791 /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E68728715291302FE1A4F9D /* Beaconstac.framework */; };
-		75F082B9C8F12C0E9BF48C2B /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEEB0C632A5F25020FE6D9A0 /* Beaconstac.framework */; };
-		7ACC5019B8EEA3B4ABE6500F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26A873CAA0081CBC31E5E8FF /* CoreLocation.framework */; };
-		894EA4FF5BEB564480ACE757 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 691CC432C3E12993E41030EA /* CoreData.framework */; };
-		D03E486F6AA8485D03469E4C /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36A395C14D203E7F99C93542 /* Pods_SampleApp.framework */; };
-		D122EC4042AEF7A863ACF9CA /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 76FAC3625213B37C85F30102 /* UserNotifications.framework */; };
-		E1E7D38AABC5F4B5F2655820 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40C1159428A0C87B365D3B57 /* LaunchScreen.storyboard */; };
-		E4BD89393AE6469C5453DBE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09D504AB5C6D295527779AFA /* Assets.xcassets */; };
-		EC41F6E92667FAE8563E8767 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B139835A692AA7108B4085 /* AppDelegate.swift */; };
-		F5E090307F2969D81B8ECF64 /* Beaconstac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8E68728715291302FE1A4F9D /* Beaconstac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		27F23D19963ADB871A11672F /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9665516F9CADD677EB154A8B /* CoreBluetooth.framework */; };
+		32441B142D5D6243AF5D6904 /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 546204AC478B8C4EC0965A47 /* Beaconstac.framework */; };
+		3C36F2D26FA0192912D6C6B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DB4B50891FFF5BE71E439FD /* Foundation.framework */; };
+		3CA862649DCC8B8F9C19AAC4 /* Beaconstac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA28B3A6E7FA338DD8B5BA1 /* Beaconstac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		40A232156599C6439FAC8D09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E21121BF0FA272597D644917 /* AppDelegate.swift */; };
+		49EFACC15BAFB6E055CDD2F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FEADCB4E49D8729514F16 /* LaunchScreen.storyboard */; };
+		67C70FC0CCC64C4DBFD48865 /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA28B3A6E7FA338DD8B5BA1 /* Beaconstac.framework */; };
+		788CB59654504FF62ADD3990 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC893EA780C76E3AD283D7 /* UserNotifications.framework */; };
+		7DED58492D06169E6F45CD6D /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931D91F7128B87CFB2B1EAFA /* Pods_SampleApp.framework */; };
+		962140D65128BD3D064D41C8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B967A171AC653702A61154D /* CoreData.framework */; };
+		9A29A80695099D118BCD2A07 /* Pods_BeaconstacSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372548AD9AEDB6F72266AF4F /* Pods_BeaconstacSampleApp.framework */; };
+		9F60AF6FFAC2843CCFB1796F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887BB3C93ED7005D2BF6737E /* Assets.xcassets */; };
+		B79AA64B9FD12E949CFB8748 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2556AD97A2A50C2DA33B37EA /* CoreLocation.framework */; };
+		EC109CA13A2791CFC589B6F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CC8690D4A37E7B9C378841 /* ViewController.swift */; };
+		EE5A87262C106C46ACAFE56F /* BeaconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92DD1C68756B54E5BECE27B1 /* BeaconTableViewCell.swift */; };
+		FC21D9036FD07B172ED6F689 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B02A1D5DEE7CFE97EA5C4D2 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		DBE874F2A34D88FD38A97657 /* Embed Frameworks */ = {
+		ADE38166572D8314D504304A /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F5E090307F2969D81B8ECF64 /* Beaconstac.framework in Embed Frameworks */,
+				3CA862649DCC8B8F9C19AAC4 /* Beaconstac.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,125 +40,125 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09D504AB5C6D295527779AFA /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = BeaconstacSampleApp/Assets.xcassets; sourceTree = "<group>"; };
-		107FB3978900A6752EC1917E /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = BeaconstacSampleApp/Info.plist; sourceTree = "<group>"; };
-		1A2E6C8479661BB5C4F7AD69 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
-		26A873CAA0081CBC31E5E8FF /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
-		36A395C14D203E7F99C93542 /* Pods_SampleApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_SampleApp.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Pods_SampleApp.framework; sourceTree = DEVELOPER_DIR; };
-		40C1159428A0C87B365D3B57 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BeaconstacSampleApp/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		52D08103D04BA8E119A16BE8 /* Pods-BeaconstacSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconstacSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
-		691CC432C3E12993E41030EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
-		71F43F728B5E16CD3435F7A6 /* Pods-BeaconstacSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconstacSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.release.xcconfig"; sourceTree = "<group>"; };
-		76FAC3625213B37C85F30102 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
-		8E68728715291302FE1A4F9D /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../Beaconstac/Beaconstac.framework; sourceTree = "<group>"; };
-		90B139835A692AA7108B4085 /* AppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = BeaconstacSampleApp/AppDelegate.swift; sourceTree = "<group>"; };
-		A60287C37CD6FD37F06B3377 /* BeaconstacSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconstacSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A9550C8284B92D4202C6C9B7 /* Main.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Main.storyboard; path = BeaconstacSampleApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		AE141509F45222699ABD2F88 /* ViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = BeaconstacSampleApp/ViewController.swift; sourceTree = "<group>"; };
-		BEEB0C632A5F25020FE6D9A0 /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Beaconstac.framework; sourceTree = DEVELOPER_DIR; };
-		C7FD77D6AC1A9B9E7A090A6F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		DDDE50BC3C9D0234987F9013 /* BeaconTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeaconTableViewCell.swift; path = BeaconstacSampleApp/BeaconTableViewCell.swift; sourceTree = "<group>"; };
-		F2B331E0D23FF33DEAFD68E5 /* Pods_BeaconstacSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconstacSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B37C51182D131F7578E89B3 /* Pods-BeaconstacSampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconstacSampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		2556AD97A2A50C2DA33B37EA /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreLocation.framework; sourceTree = DEVELOPER_DIR; };
+		34CC8690D4A37E7B9C378841 /* ViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = BeaconstacSampleApp/ViewController.swift; sourceTree = "<group>"; };
+		372548AD9AEDB6F72266AF4F /* Pods_BeaconstacSampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BeaconstacSampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		546204AC478B8C4EC0965A47 /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Beaconstac.framework; sourceTree = DEVELOPER_DIR; };
+		6B02A1D5DEE7CFE97EA5C4D2 /* Main.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = Main.storyboard; path = BeaconstacSampleApp/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7B967A171AC653702A61154D /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
+		7BAC893EA780C76E3AD283D7 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/UserNotifications.framework; sourceTree = DEVELOPER_DIR; };
+		7C6FEADCB4E49D8729514F16 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = BeaconstacSampleApp/Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7DB4B50891FFF5BE71E439FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7F0B064AF7D51DCACCE79BDF /* Pods-BeaconstacSampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BeaconstacSampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7FA28B3A6E7FA338DD8B5BA1 /* Beaconstac.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Beaconstac.framework; path = ../Beaconstac/Beaconstac.framework; sourceTree = "<group>"; };
+		887BB3C93ED7005D2BF6737E /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = BeaconstacSampleApp/Assets.xcassets; sourceTree = "<group>"; };
+		92DD1C68756B54E5BECE27B1 /* BeaconTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BeaconTableViewCell.swift; path = BeaconstacSampleApp/BeaconTableViewCell.swift; sourceTree = "<group>"; };
+		931D91F7128B87CFB2B1EAFA /* Pods_SampleApp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_SampleApp.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/Pods_SampleApp.framework; sourceTree = DEVELOPER_DIR; };
+		9665516F9CADD677EB154A8B /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS11.3.sdk/System/Library/Frameworks/CoreBluetooth.framework; sourceTree = DEVELOPER_DIR; };
+		C33C3F80C5C6A2C0EB884A53 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = Info.plist; path = BeaconstacSampleApp/Info.plist; sourceTree = "<group>"; };
+		C57CD769965B4516586A6AC7 /* BeaconstacSampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BeaconstacSampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E21121BF0FA272597D644917 /* AppDelegate.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = BeaconstacSampleApp/AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		32F96BEA360AB84143CF2C49 /* Frameworks */ = {
+		04906CFDC7F7108A56F7275D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E8221B01B8B9012AF07BC58 /* Foundation.framework in Frameworks */,
-				75F082B9C8F12C0E9BF48C2B /* Beaconstac.framework in Frameworks */,
-				7ACC5019B8EEA3B4ABE6500F /* CoreLocation.framework in Frameworks */,
-				629BC4BDD8639E59BE035DB9 /* CoreBluetooth.framework in Frameworks */,
-				894EA4FF5BEB564480ACE757 /* CoreData.framework in Frameworks */,
-				D122EC4042AEF7A863ACF9CA /* UserNotifications.framework in Frameworks */,
-				D03E486F6AA8485D03469E4C /* Pods_SampleApp.framework in Frameworks */,
-				6624120F4BB988F588405791 /* Beaconstac.framework in Frameworks */,
-				1CB46722F181605E38EECF35 /* Pods_BeaconstacSampleApp.framework in Frameworks */,
+				3C36F2D26FA0192912D6C6B9 /* Foundation.framework in Frameworks */,
+				32441B142D5D6243AF5D6904 /* Beaconstac.framework in Frameworks */,
+				B79AA64B9FD12E949CFB8748 /* CoreLocation.framework in Frameworks */,
+				27F23D19963ADB871A11672F /* CoreBluetooth.framework in Frameworks */,
+				962140D65128BD3D064D41C8 /* CoreData.framework in Frameworks */,
+				788CB59654504FF62ADD3990 /* UserNotifications.framework in Frameworks */,
+				7DED58492D06169E6F45CD6D /* Pods_SampleApp.framework in Frameworks */,
+				67C70FC0CCC64C4DBFD48865 /* Beaconstac.framework in Frameworks */,
+				9A29A80695099D118BCD2A07 /* Pods_BeaconstacSampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		32B91C70EB01E3ADDBD8EAC2 /* iOS */ = {
+		1FABABBCED5E0ADD37582230 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C7FD77D6AC1A9B9E7A090A6F /* Foundation.framework */,
-				BEEB0C632A5F25020FE6D9A0 /* Beaconstac.framework */,
-				26A873CAA0081CBC31E5E8FF /* CoreLocation.framework */,
-				1A2E6C8479661BB5C4F7AD69 /* CoreBluetooth.framework */,
-				691CC432C3E12993E41030EA /* CoreData.framework */,
-				76FAC3625213B37C85F30102 /* UserNotifications.framework */,
-				36A395C14D203E7F99C93542 /* Pods_SampleApp.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		6B38F550D5F53080E059D254 /* BeaconstacSampleApp */ = {
-			isa = PBXGroup;
-			children = (
-				90B139835A692AA7108B4085 /* AppDelegate.swift */,
-				09D504AB5C6D295527779AFA /* Assets.xcassets */,
-				40C1159428A0C87B365D3B57 /* LaunchScreen.storyboard */,
-				A9550C8284B92D4202C6C9B7 /* Main.storyboard */,
-				DDDE50BC3C9D0234987F9013 /* BeaconTableViewCell.swift */,
-				107FB3978900A6752EC1917E /* Info.plist */,
-				AE141509F45222699ABD2F88 /* ViewController.swift */,
-			);
-			name = BeaconstacSampleApp;
-			sourceTree = "<group>";
-		};
-		8E99F94A7D6170B661CA937D /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A60287C37CD6FD37F06B3377 /* BeaconstacSampleApp.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		9192D9AB708DA6115496D5B2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				32B91C70EB01E3ADDBD8EAC2 /* iOS */,
-				8E68728715291302FE1A4F9D /* Beaconstac.framework */,
-				F2B331E0D23FF33DEAFD68E5 /* Pods_BeaconstacSampleApp.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		BF5B9F6393069CC7D19D21DA /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				71F43F728B5E16CD3435F7A6 /* Pods-BeaconstacSampleApp.release.xcconfig */,
-				52D08103D04BA8E119A16BE8 /* Pods-BeaconstacSampleApp.debug.xcconfig */,
+				0B37C51182D131F7578E89B3 /* Pods-BeaconstacSampleApp.release.xcconfig */,
+				7F0B064AF7D51DCACCE79BDF /* Pods-BeaconstacSampleApp.debug.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		D436D649AE949E89B870343F = {
+		5851A3535C440C6299EDAFD9 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				8E99F94A7D6170B661CA937D /* Products */,
-				9192D9AB708DA6115496D5B2 /* Frameworks */,
-				6B38F550D5F53080E059D254 /* BeaconstacSampleApp */,
-				BF5B9F6393069CC7D19D21DA /* Pods */,
+				7DB4B50891FFF5BE71E439FD /* Foundation.framework */,
+				546204AC478B8C4EC0965A47 /* Beaconstac.framework */,
+				2556AD97A2A50C2DA33B37EA /* CoreLocation.framework */,
+				9665516F9CADD677EB154A8B /* CoreBluetooth.framework */,
+				7B967A171AC653702A61154D /* CoreData.framework */,
+				7BAC893EA780C76E3AD283D7 /* UserNotifications.framework */,
+				931D91F7128B87CFB2B1EAFA /* Pods_SampleApp.framework */,
 			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		D00E7E4113AC308BD37CCAE6 = {
+			isa = PBXGroup;
+			children = (
+				F312AFE2786981B82E0A79B4 /* Products */,
+				FEA459721BBE5DA38CE1E039 /* Frameworks */,
+				EFC0A9C7F41A0C0BC1FE33E5 /* BeaconstacSampleApp */,
+				1FABABBCED5E0ADD37582230 /* Pods */,
+			);
+			sourceTree = "<group>";
+		};
+		EFC0A9C7F41A0C0BC1FE33E5 /* BeaconstacSampleApp */ = {
+			isa = PBXGroup;
+			children = (
+				E21121BF0FA272597D644917 /* AppDelegate.swift */,
+				887BB3C93ED7005D2BF6737E /* Assets.xcassets */,
+				7C6FEADCB4E49D8729514F16 /* LaunchScreen.storyboard */,
+				6B02A1D5DEE7CFE97EA5C4D2 /* Main.storyboard */,
+				92DD1C68756B54E5BECE27B1 /* BeaconTableViewCell.swift */,
+				C33C3F80C5C6A2C0EB884A53 /* Info.plist */,
+				34CC8690D4A37E7B9C378841 /* ViewController.swift */,
+			);
+			name = BeaconstacSampleApp;
+			sourceTree = "<group>";
+		};
+		F312AFE2786981B82E0A79B4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C57CD769965B4516586A6AC7 /* BeaconstacSampleApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FEA459721BBE5DA38CE1E039 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5851A3535C440C6299EDAFD9 /* iOS */,
+				7FA28B3A6E7FA338DD8B5BA1 /* Beaconstac.framework */,
+				372548AD9AEDB6F72266AF4F /* Pods_BeaconstacSampleApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA3B1E9ED1B6E02326F786E1 /* BeaconstacSampleApp */ = {
+		31FF807D8B2D4972A538C99C /* BeaconstacSampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B0FA9C46E22B13F1606283F8 /* Build configuration list for PBXNativeTarget "BeaconstacSampleApp" */;
+			buildConfigurationList = 6E802F1B9C42215702327D8E /* Build configuration list for PBXNativeTarget "BeaconstacSampleApp" */;
 			buildPhases = (
-				25FF006A2391FF9F7B0601F6 /* [CP] Check Pods Manifest.lock */,
-				BB4095F6A12F9AAB21BF7889 /* Sources */,
-				32F96BEA360AB84143CF2C49 /* Frameworks */,
-				F79F5F79CB29A9C6EB2C89E6 /* Resources */,
-				DBE874F2A34D88FD38A97657 /* Embed Frameworks */,
-				5555866F3775EC8391F2028C /* [CP] Embed Pods Frameworks */,
+				39C7B5A5045F03C7B0F9012F /* [CP] Check Pods Manifest.lock */,
+				D3502EA0D1C578F03A3DEDD6 /* Sources */,
+				04906CFDC7F7108A56F7275D /* Frameworks */,
+				39AC6E9556CB6BA8B2EF57FD /* Resources */,
+				ADE38166572D8314D504304A /* Embed Frameworks */,
+				DB7BF0E06AFE9BC1032A4308 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -166,50 +166,50 @@
 			);
 			name = BeaconstacSampleApp;
 			productName = BeaconstacSampleApp;
-			productReference = A60287C37CD6FD37F06B3377 /* BeaconstacSampleApp.app */;
+			productReference = C57CD769965B4516586A6AC7 /* BeaconstacSampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		26A23D82F911E2A3F84ED4F4 /* Project object */ = {
+		AF3420DC047CCE45B69CE9BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
 			};
-			buildConfigurationList = 1AE9A3935CC8546784FAC7F7 /* Build configuration list for PBXProject "BeaconstacSampleApp" */;
+			buildConfigurationList = 15BD6B152E804A69C8615DB3 /* Build configuration list for PBXProject "BeaconstacSampleApp" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 			);
-			mainGroup = D436D649AE949E89B870343F;
-			productRefGroup = 8E99F94A7D6170B661CA937D /* Products */;
+			mainGroup = D00E7E4113AC308BD37CCAE6;
+			productRefGroup = F312AFE2786981B82E0A79B4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA3B1E9ED1B6E02326F786E1 /* BeaconstacSampleApp */,
+				31FF807D8B2D4972A538C99C /* BeaconstacSampleApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F79F5F79CB29A9C6EB2C89E6 /* Resources */ = {
+		39AC6E9556CB6BA8B2EF57FD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4BD89393AE6469C5453DBE1 /* Assets.xcassets in Resources */,
-				E1E7D38AABC5F4B5F2655820 /* LaunchScreen.storyboard in Resources */,
-				57FF8CC0E58BBCE95C23D816 /* Main.storyboard in Resources */,
+				9F60AF6FFAC2843CCFB1796F /* Assets.xcassets in Resources */,
+				49EFACC15BAFB6E055CDD2F8 /* LaunchScreen.storyboard in Resources */,
+				FC21D9036FD07B172ED6F689 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		25FF006A2391FF9F7B0601F6 /* [CP] Check Pods Manifest.lock */ = {
+		39C7B5A5045F03C7B0F9012F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -227,7 +227,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5555866F3775EC8391F2028C /* [CP] Embed Pods Frameworks */ = {
+		DB7BF0E06AFE9BC1032A4308 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -248,51 +248,22 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		BB4095F6A12F9AAB21BF7889 /* Sources */ = {
+		D3502EA0D1C578F03A3DEDD6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EC41F6E92667FAE8563E8767 /* AppDelegate.swift in Sources */,
-				0A6D7C1F0793940464B80E50 /* BeaconTableViewCell.swift in Sources */,
-				32BC97F5A2115AFFA9BF08CC /* ViewController.swift in Sources */,
+				40A232156599C6439FAC8D09 /* AppDelegate.swift in Sources */,
+				EE5A87262C106C46ACAFE56F /* BeaconTableViewCell.swift in Sources */,
+				EC109CA13A2791CFC589B6F2 /* ViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		6382B7356CBC05DE4929699A /* Release */ = {
+		104B94D1FE052C79D4A04D8B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 71F43F728B5E16CD3435F7A6 /* Pods-BeaconstacSampleApp.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 44VN4BY3TF;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					../Beaconstac/,
-				);
-				INFOPLIST_FILE = BeaconstacSampleApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MODULEMAP_FILE = "";
-				PRODUCT_BUNDLE_IDENTIFIER = mobstac.SampleApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_INCLUDE_PATHS = "";
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		E0EF3A2AA79BF2AC758CF26A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52D08103D04BA8E119A16BE8 /* Pods-BeaconstacSampleApp.debug.xcconfig */;
+			baseConfigurationReference = 7F0B064AF7D51DCACCE79BDF /* Pods-BeaconstacSampleApp.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -318,7 +289,7 @@
 			};
 			name = Debug;
 		};
-		E73D05EA5E0E6EF2AA77FA00 /* Release */ = {
+		4B0C91C414D831B8852507C1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -367,7 +338,36 @@
 			};
 			name = Release;
 		};
-		F1B7E1DFABFBC9D1BF0BA941 /* Debug */ = {
+		7957E39BF51793EB346F1E63 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0B37C51182D131F7578E89B3 /* Pods-BeaconstacSampleApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 44VN4BY3TF;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					../Beaconstac/,
+				);
+				INFOPLIST_FILE = BeaconstacSampleApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MODULEMAP_FILE = "";
+				PRODUCT_BUNDLE_IDENTIFIER = mobstac.SampleApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_INCLUDE_PATHS = "";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7F4B11BDB5F84BF1083C0EEA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -426,25 +426,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1AE9A3935CC8546784FAC7F7 /* Build configuration list for PBXProject "BeaconstacSampleApp" */ = {
+		15BD6B152E804A69C8615DB3 /* Build configuration list for PBXProject "BeaconstacSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F1B7E1DFABFBC9D1BF0BA941 /* Debug */,
-				E73D05EA5E0E6EF2AA77FA00 /* Release */,
+				7F4B11BDB5F84BF1083C0EEA /* Debug */,
+				4B0C91C414D831B8852507C1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B0FA9C46E22B13F1606283F8 /* Build configuration list for PBXNativeTarget "BeaconstacSampleApp" */ = {
+		6E802F1B9C42215702327D8E /* Build configuration list for PBXNativeTarget "BeaconstacSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6382B7356CBC05DE4929699A /* Release */,
-				E0EF3A2AA79BF2AC758CF26A /* Debug */,
+				7957E39BF51793EB346F1E63 /* Release */,
+				104B94D1FE052C79D4A04D8B /* Debug */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 26A23D82F911E2A3F84ED4F4 /* Project object */;
+	rootObject = AF3420DC047CCE45B69CE9BA /* Project object */;
 }
