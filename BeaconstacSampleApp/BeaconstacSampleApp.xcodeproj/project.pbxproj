@@ -15,7 +15,6 @@
 		49EFACC15BAFB6E055CDD2F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7C6FEADCB4E49D8729514F16 /* LaunchScreen.storyboard */; };
 		67C70FC0CCC64C4DBFD48865 /* Beaconstac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FA28B3A6E7FA338DD8B5BA1 /* Beaconstac.framework */; };
 		788CB59654504FF62ADD3990 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BAC893EA780C76E3AD283D7 /* UserNotifications.framework */; };
-		7DED58492D06169E6F45CD6D /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 931D91F7128B87CFB2B1EAFA /* Pods_SampleApp.framework */; };
 		962140D65128BD3D064D41C8 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B967A171AC653702A61154D /* CoreData.framework */; };
 		9A29A80695099D118BCD2A07 /* Pods_BeaconstacSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 372548AD9AEDB6F72266AF4F /* Pods_BeaconstacSampleApp.framework */; };
 		9F60AF6FFAC2843CCFB1796F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 887BB3C93ED7005D2BF6737E /* Assets.xcassets */; };
@@ -72,7 +71,6 @@
 				27F23D19963ADB871A11672F /* CoreBluetooth.framework in Frameworks */,
 				962140D65128BD3D064D41C8 /* CoreData.framework in Frameworks */,
 				788CB59654504FF62ADD3990 /* UserNotifications.framework in Frameworks */,
-				7DED58492D06169E6F45CD6D /* Pods_SampleApp.framework in Frameworks */,
 				67C70FC0CCC64C4DBFD48865 /* Beaconstac.framework in Frameworks */,
 				9A29A80695099D118BCD2A07 /* Pods_BeaconstacSampleApp.framework in Frameworks */,
 			);
@@ -177,6 +175,12 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
 				LastUpgradeCheck = 0930;
+				TargetAttributes = {
+					31FF807D8B2D4972A538C99C = {
+						DevelopmentTeam = 44VN4BY3TF;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 15BD6B152E804A69C8615DB3 /* Build configuration list for PBXProject "BeaconstacSampleApp" */;
 			compatibilityVersion = "Xcode 3.2";
