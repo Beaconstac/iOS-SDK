@@ -1,3 +1,7 @@
+### v3.1.8 released on September 11, 2018
+
+* Minor Bug Fix
+
 ### v3.1.7 released on July 10, 2018
 
 * Update Swift Version in Podspec to 4.1
@@ -175,6 +179,7 @@
 * Deprecated setUpOrganizationId: userToken: beaconUUID: beaconIdentifier method from Beaconstac class
 * Deprecated sharedInstance method in Beaconstac class
 * Modified initUserIdentity method to setUserIdentity in Beaconstac class
+
 
 
 
