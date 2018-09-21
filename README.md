@@ -20,7 +20,8 @@ Add the following to your Podfile in your project, we are supporting iOS 10.0+ m
 ```pod
 platform :ios, '10.0'
 target '<My-App-Target>''
-pod 'Beaconstac', '~> 3.1'
+  pod 'Beaconstac', '~> 3.2'
+end
 ```
 
 Run `pod install` in the project directory
@@ -72,6 +73,10 @@ If you are using the region monitoring API's from advanced location manager, mak
 import Beaconstac
 ```
 
+```objective-c
+import <Beaconstac/Beaconstac.h>
+```
+
 2. Initialize `Beaconstac` using __one-line initialization__, the initialization starts scanning for beacons immediately.
 
 ```swift
@@ -88,13 +93,23 @@ do {
 }
 ```
 
+```objective-c
+[Beaconstac sharedInstance:"" ibeaconOption:iBeaconOptionWhenInUseRange organization:123 delegate:self completion:^(Beaconstac * _Nullable beaconstacInstance, NSError * _Nullable error){
+    if (!error) {
+        //Successfull
+    } else {
+        NSLog("%@", error);
+    }
+}];
+```
+
 
 3. If you want to use the `advacnced integration`, use __iBeaconOption__ as defined below
 
 | iBeaconOption                  |    Location Authorization  | Monitoring                       | Ranging                   | Description                                       |
 |:------------------------------:|:--------------------------:|:--------------------------------:| :------------------------:|:----------------------------------------------:|
-|              WhenInUse         |  When In Use Authorization | CoreLocation API doesn't support | CoreLocation API supports | App should be in the foreground                |
-| BackgroundRangeOnDisplayWakeUp |  Always Authorization      | CoreLocation API supports        | CoreLocation API supports | App can be in the background but doesn't range |
+|              WhenInUse         |  When In Use Authorization | CoreLocation API doesn't support | CoreLocation API supports | SDK works only in the foreground               |
+| BackgroundRangeOnDisplayWakeUp |  Always Authorization      | CoreLocation API supports        | CoreLocation API supports | SDK works in the background as well            |
 
 ```swift
 do {
@@ -111,6 +126,17 @@ do {
 }
 ```
 
+```objective-c
+[Beaconstac sharedInstance:"" ibeaconOption:iBeaconOptionWhenInUseRange organization:123 delegate:self completion:^(Beaconstac * _Nullable beaconstacInstance, NSError * _Nullable error){
+    if (!error) {
+        //Successfull
+      [beaconstacInstance startScanningBeacons]; 
+    } else {
+        NSLog("%@", error);
+    }
+}];
+```
+
 4. If you wish to get the ___sharedInstance()___ of the Beaconstac SDK, after you initialize the Beaconstac SDK at any point in a single application life cycle
 
 ```swift
@@ -121,11 +147,21 @@ do {
 }
 ```
 
+```objective-c
+NSError *error = nil;
+[Beaconstac sharedInstanceAndReturnError:&error];
+```
+
 5. If you wish to control start and stop of scanning for beacons:
 
 ```swift
 beaconstac.startScanningBeacons() // Starts scanning for beacons...
 beaconstac.stopScanningBeacons() // Stops scanning for beacons...
+```
+
+```objective-c
+[beaconstacInstance startScanningBeacons];
+[beaconstacInstance stopScanningBeacons];
 ```
 
 6. Implement `BeaconDelegate` protocol methods to receive callbacks when beacons are scanned
@@ -163,6 +199,40 @@ func didExitRegion(_ beaconstac: Beaconstac, region: String) {
 }
 ```
 
+```objective-c
+
+// In the class where you want to listen to the beacon scanning events...
+NSError *error = nil;
+Beconstac *beaconstacInstance = [Beaconstac sharedInstanceAndReturnError:&error];
+beaconstacInstance.delegate = self;
+
+// required
+- (void)didFail:(Beaconstac * _Nonnull)beaconstac error:(NSError * _Nonnull)error {
+    NSLog("%@", error);
+}
+
+//Optional
+- (void)didEnterRegion:(Beaconstac * _Nonnull)beaconstac region:(NSString * _Nonnull)region {
+    NSLog("%@", region);
+}
+    
+- (void)didRangeBeacons:(Beaconstac * _Nonnull)beaconstac beacons:(NSArray<MBeacon *> * _Nonnull)beacons {
+    NSLog("%@", beacons);
+}
+    
+- (void)campOnBeacon:(Beaconstac * _Nonnull)beaconstac beacon:(MBeacon * _Nonnull)beacon {
+    NSLog("%@", beacon);
+}
+    
+- (void)exitBeacon:(Beaconstac *)beaconstac beacon:(MBeacon *)beacon {
+    NSLog("%@", beacon);
+}
+    
+- (void)didExitRegion:(Beaconstac * _Nonnull)beaconstac region:(NSString * _Nonnull)region {
+    NSLog("%@", region);
+}
+```
+
 7. Implement `RuleProcessorDelegate` protocol methods to receive callbacks when rules are triggered
 
 ```swift
@@ -180,6 +250,22 @@ func didTriggerRule(_ beaconstac: Beaconstac, rule: MRule) {
 }
 ```
 
+```objective-c
+
+// In the class where you want to listen to the rule triggering events...
+NSError *error = nil;
+Beconstac *beaconstacInstance = [Beaconstac sharedInstanceAndReturnError:&error];
+beaconstacInstance.ruleDelegate = self;
+
+- (void)willTriggerRule:(Beaconstac * _Nonnull)beaconstac rule:(MRule * _Nonnull)rule {
+    // read which rule is about to trigger and the actions, filters set by the marketers...
+}
+
+- (void)didTriggerRule:(Beaconstac * _Nonnull)beaconstac rule:(MRule * _Nonnull)rule {
+    // read which rule is triggered and the actions, filters set by the marketers...
+}
+```
+
 8. Implement `NotificationDelegate` protocol methods to override the display of the Local Notification.
 
 ```swift
@@ -193,6 +279,18 @@ func overrideNotification(_ beaconstac: Beaconstac, notification: MNotification)
 }
 ```
 
+```objective-c
+
+// In the class where you want to listen to notification events...
+NSError *error = nil;
+Beconstac *beaconstacInstance = [Beaconstac sharedInstanceAndReturnError:&error];
+beaconstacInstance.notificationDelegate = self;
+
+- (void)overrideNotification:(Beaconstac * _Nonnull)beaconstac notification:(MNotification * _Nonnull)notification {
+    // If you override, you should handle everything from configuring, triggering and displaying of the notification.
+}
+```
+
 9. Implement `WebhookDelegate` protocol methods to add additional parameters to be sent to the webhook.
 
 ```swift
@@ -201,7 +299,19 @@ beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.webhookDelegate = self
 
 func addParameters(_ beaconstac: Beaconstac, webhook: MWebhook) -> Dictionary<String, Any> {
-    // If you override, make sure the keys of the previously added
+    // If you override, make sure the keys of the previously added ones
+}
+```
+
+```objective-c
+
+// In the class where you want to listen to notification events...
+NSError *error = nil;
+Beconstac *beaconstacInstance = [Beaconstac sharedInstanceAndReturnError:&error];
+beaconstacInstance.webhookDelegate = self;
+
+- (NSDictionary<NSString *, id> * _Nonnull)addParameters:(Beaconstac * _Nonnull)beaconstac webhook:(MWebhook * _Nonnull)webhook {
+    // If you override, make sure the keys of the previously added ones
 }
 ```
 
@@ -210,6 +320,12 @@ func addParameters(_ beaconstac: Beaconstac, webhook: MWebhook) -> Dictionary<St
 ```swift
 beaconstacInstance = try! Beaconstac.sharedInstance()
 beaconstacInstance.latchLatency = HIGH
+```
+
+```objective-c
+NSError *error = nil;
+Beconstac *beaconstacInstance = [Beaconstac sharedInstanceAndReturnError:&error];
+beaconstacInstance.latchLatency = LatchLatencyHIGH;
 ```
 
 11. If you don't listen to the `NotificationDelegate` protocol, the SDK configures, triggers UNNotification. However to present the notification do the following.
@@ -239,6 +355,7 @@ public func showCardViewerForLocalNotification(_ notification: UNNotification) -
 
 // EXAMPLE:
 func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+    let notification = response.notification
     if beaconstac.showCardViewerForLocalNotification(notification) {
         // We will handle the notification...
     } else {
@@ -249,11 +366,58 @@ func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive respo
 
 ```
 
+```objective-c
+
+// Check if the notification is from SDK and provide UNNotificationPresentationOptions or nil by invoking the below method.
+- (UNNotificationPresentationOptions)notificationOptionsForBeaconstacNotification:(UNNotification *)notification;
+
+// EXAMPLE:
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+    UNNotificationPresentationOptions notificationPresentationOptions;
+    
+    NSError *error;
+    Beaconstac *i = [Beaconstac sharedInstanceAndReturnError:&error];
+    
+    int option = [i notificationOptionsForBeaconstacNotification:notification];
+    
+    if (option != 0) {
+        notificationPresentationOptions = (UNNotificationPresentationOptions)option;
+    } else {
+        // My Presenation options...
+    }
+    
+    completionHandler(notificationPresentationOptions);
+}
+
+
+
+// Check if SDK can handle the notification by invoking the below method.
+- (BOOL)showCardViewerForLocalNotification:(UNNotification * _Nonnull)notification;
+
+
+// EXAMPLE:
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler {
+    UNNotification *notification = response.notification;
+    if ([i showCardViewerForLocalNotification:notification]) {
+        // We will handle the notification...
+    } else {
+        // Handle it...
+    }
+    completionHandler();
+}
+
+```
+
 12. You are required to `add filters` regarding the app user, if the marketer has provided the filters. To do so
 
 ```swift
 // Provide the filters to the SDK as Key-Value pairs using dictionary. Note keys are case insensitive.
 func addFilters(_ filters: Dictionary<String, Any>)
+```
+
+```objective-c
+// Provide the filters to the SDK as Key-Value pairs using dictionary. Note keys are case insensitive.
+- (void)addFilters:(NSDictionary<NSString *, id> * _Nonnull)filters;
 ```
 __Note__: If the rule contains the filters and app doesn't provide it, the rule will be treated as a filter validation failed and we won't trigger that particular rule.
 
@@ -262,4 +426,9 @@ __Note__: If the rule contains the filters and app doesn't provide it, the rule 
 ```swift
 // If you know the your app visitor, create a Visitor object and call this on the Beaconstac instance.
 func setVisitor(_ visitor: MVisitor)
+```
+
+```objective-c
+// If you know the your app visitor, create a Visitor object and call this on the Beaconstac instance.
+- (void)setVisitor:(MVisitor * _Nonnull)visitor;
 ```
