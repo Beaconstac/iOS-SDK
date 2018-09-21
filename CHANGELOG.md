@@ -1,3 +1,7 @@
+### v3.2 released on September 21, 2018
+
+* Swift 4.2
+
 ### v3.1.8 released on September 11, 2018
 
 * Minor Bug Fix
@@ -179,6 +183,7 @@
 * Deprecated setUpOrganizationId: userToken: beaconUUID: beaconIdentifier method from Beaconstac class
 * Deprecated sharedInstance method in Beaconstac class
 * Modified initUserIdentity method to setUserIdentity in Beaconstac class
+
 
 
 

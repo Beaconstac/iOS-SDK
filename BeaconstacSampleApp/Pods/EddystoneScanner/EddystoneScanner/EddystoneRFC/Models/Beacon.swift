@@ -190,9 +190,9 @@ extension Beacon {
 
 extension Beacon {
     // MARK: Hashable protocol requirements
-    override public var hashValue: Int {
+    override public var hash: Int {
         get {
-            return self.description.hashValue
+            return self.description.hash
         }
     }
 }

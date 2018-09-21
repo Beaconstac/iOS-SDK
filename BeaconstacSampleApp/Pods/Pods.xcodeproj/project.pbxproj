@@ -7,35 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01DA36EDD849D39E3EFD3F26DDB71DB8 /* KalmanFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693D89590A319E4DAB688271F0852F3 /* KalmanFilter.swift */; };
-		2EE7C00A3562971B3E2A231E521C8C15 /* Pods-BeaconstacSampleApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 413CC0FA4E6A7CAD3477B99C79D31200 /* Pods-BeaconstacSampleApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		393762B095D0B08C505ADC0FC984759D /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 631DF0040F78759D1751322011D015DC /* CoreBluetooth.framework */; };
-		3A8F1443C3DFB18762BF089DBF7A0DFE /* ARMAFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120694870951AD230F4E81D981E47EBE /* ARMAFilter.swift */; };
-		4AAEFA8F924564C37D5885DD2EA4529B /* EddystoneScanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6180C0581C39889BF3F36103A3DB1 /* EddystoneScanner-dummy.m */; };
-		4D2C50307195165DB89503A4A18228C5 /* RunningAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD44E4C53ECD9E88DA453BC99962E07 /* RunningAverageFilter.swift */; };
-		4FC9E4BAF91AE2AA2E08E12EEFBC5DBF /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858A472E3282DC2CCADC6ED76BE34F8D /* Scanner.swift */; };
-		5BBA2FEF61AD0C140DEC65CD660B01C7 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D97DADDDD082B8DDE6DA03ACCA6588 /* Util.swift */; };
-		5F13570E62622543376D83A744EC72B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6F44D8FA7DD9CC299E348C1C4E5B4 /* Foundation.framework */; };
-		8E719490D50741D0F80B086DA69E4431 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6F44D8FA7DD9CC299E348C1C4E5B4 /* Foundation.framework */; };
-		997FFE90226795E81B72E3CEB9345BFC /* RSSIFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD1DEE50D6BD67E872033F69D44317 /* RSSIFilter.swift */; };
-		99861F4E4F37925D510ECF08EEDC41BD /* Pods-BeaconstacSampleApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C63C0E2977D26DDC7813A2EFDDFCBF /* Pods-BeaconstacSampleApp-dummy.m */; };
-		9AC963713856E440AC071F451A4618EF /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DD8429C7E8116E3EFAB4E0B1814F2 /* Telemetry.swift */; };
-		9D2F065CA9E7DD61ECFA0F07A98F7DCE /* Eddystone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7817719CC3C149A0A487284DCBC6061 /* Eddystone.swift */; };
-		AAD916A1234F899555D1A060548BAD6C /* SafeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7087401C641EA7172FF8316572C71F56 /* SafeSet.swift */; };
-		BA9B4C27BC1947350C07E6077A0B37DB /* BeaconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F36E6FD4E7178900AAA07260F16502 /* BeaconID.swift */; };
-		C0281788EBA0CB833B25B6375902329C /* EddystoneScanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B891CC896DA2C0C96762E607E56FE81 /* EddystoneScanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		E123200FEA77FD1D6CD31CA0800E59CD /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73BBEBA3C0D844B42291FF624A1AF3 /* Beacon.swift */; };
-		E15AB2AD411526B27A30A0231266A07A /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A5C3B0EF04741FE8FDFEDE166B3AC0 /* Constants.swift */; };
-		E82B71835785474B5F44EE92DF949D04 /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4789E24C5518285C678C89AB8F63EF /* DispatchTimer.swift */; };
-		FC49D2DCAE269FC4FEDF03EDC5E7140E /* GaussianFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED7A0F6FCC020FC0A7AD768269CDA2 /* GaussianFilter.swift */; };
+		03726408D47CEE5B00718DA790FED38A /* Beacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA73BBEBA3C0D844B42291FF624A1AF3 /* Beacon.swift */; };
+		10F7BD6FE26D30FDD58BE959C1BC406B /* BeaconID.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F36E6FD4E7178900AAA07260F16502 /* BeaconID.swift */; };
+		2758AF11ECA835BF0CB39AE9E3E35680 /* ARMAFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120694870951AD230F4E81D981E47EBE /* ARMAFilter.swift */; };
+		31E3F8FE830A4F4C7CE2E134260B7062 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47D97DADDDD082B8DDE6DA03ACCA6588 /* Util.swift */; };
+		3CEC6384B10FC43AF5DDB92C9D5568A3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6F44D8FA7DD9CC299E348C1C4E5B4 /* Foundation.framework */; };
+		3EAC4D8B70BA627C3239F562C25FB6C8 /* Telemetry.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3DD8429C7E8116E3EFAB4E0B1814F2 /* Telemetry.swift */; };
+		40FDBED8A90DD5CA5E72ABC5BFDC1A9C /* Scanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 858A472E3282DC2CCADC6ED76BE34F8D /* Scanner.swift */; };
+		4D0734706841712AF990975BF5EE4085 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58E6F44D8FA7DD9CC299E348C1C4E5B4 /* Foundation.framework */; };
+		6341900DF7F6AE2F883F1D19B7DB7C48 /* EddystoneScanner-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6180C0581C39889BF3F36103A3DB1 /* EddystoneScanner-dummy.m */; };
+		650AB0FA99C48F148AC6C12BB198493F /* KalmanFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8693D89590A319E4DAB688271F0852F3 /* KalmanFilter.swift */; };
+		68212BFEF03ACD5FA2796F44A75B1DD3 /* EddystoneScanner-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B891CC896DA2C0C96762E607E56FE81 /* EddystoneScanner-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6B43DC8B77EE72203D9FAE65C9EEA302 /* Pods-BeaconstacSampleApp-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D5C63C0E2977D26DDC7813A2EFDDFCBF /* Pods-BeaconstacSampleApp-dummy.m */; };
+		6E04BEEE4F9A8471481F8C4A160FEDE2 /* Eddystone.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7817719CC3C149A0A487284DCBC6061 /* Eddystone.swift */; };
+		73DF4EDB5621CDA99B1E947A4DAC0E54 /* Pods-BeaconstacSampleApp-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 413CC0FA4E6A7CAD3477B99C79D31200 /* Pods-BeaconstacSampleApp-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8AF6A8E8E4A1287D6CCD65FBF08795E0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A5C3B0EF04741FE8FDFEDE166B3AC0 /* Constants.swift */; };
+		94C1A8C99A18910DED59CBC924934DE2 /* RSSIFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAD1DEE50D6BD67E872033F69D44317 /* RSSIFilter.swift */; };
+		9A96DC0FD3D80650BA262C1BE7DB2F31 /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE4789E24C5518285C678C89AB8F63EF /* DispatchTimer.swift */; };
+		A1E10FE7852B60E7C91F71635AE21E9A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 631DF0040F78759D1751322011D015DC /* CoreBluetooth.framework */; };
+		D411D98F59CC6D9961070B4B619C5DB4 /* SafeSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7087401C641EA7172FF8316572C71F56 /* SafeSet.swift */; };
+		DD4B65A44680F33F8DFF291665D76628 /* RunningAverageFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EDD44E4C53ECD9E88DA453BC99962E07 /* RunningAverageFilter.swift */; };
+		FC153C2480B5FE01B6B72873921203BB /* GaussianFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ED7A0F6FCC020FC0A7AD768269CDA2 /* GaussianFilter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		1D3426D1CF22AC352FCFF46E88D2BAE0 /* PBXContainerItemProxy */ = {
+		F57AE690D625A87349EF3C52D154134B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B579049149ED7DA5EF0172D886178B14;
+			remoteGlobalIDString = 5484E01757914B9BEF1481B6AEA3A003;
 			remoteInfo = EddystoneScanner;
 		};
 /* End PBXContainerItemProxy section */
@@ -79,20 +79,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		1B4B437BFBEB727B7F900BB9BD02AB79 /* Frameworks */ = {
+		144D7F4CB9B684B575AEDA48203968CC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				393762B095D0B08C505ADC0FC984759D /* CoreBluetooth.framework in Frameworks */,
-				8E719490D50741D0F80B086DA69E4431 /* Foundation.framework in Frameworks */,
+				A1E10FE7852B60E7C91F71635AE21E9A /* CoreBluetooth.framework in Frameworks */,
+				4D0734706841712AF990975BF5EE4085 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		76B88D3CDDC9B7E31DD6D5535E19CCB3 /* Frameworks */ = {
+		EAE3FEC722B6D563DE39D980A072FA2C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5F13570E62622543376D83A744EC72B1 /* Foundation.framework in Frameworks */,
+				3CEC6384B10FC43AF5DDB92C9D5568A3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,50 +210,52 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1FAD7EFB1949BC2593C2D03ED41E34F4 /* Headers */ = {
+		45B7E5FDD60CF0B61E2F5211605BCF25 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C0281788EBA0CB833B25B6375902329C /* EddystoneScanner-umbrella.h in Headers */,
+				73DF4EDB5621CDA99B1E947A4DAC0E54 /* Pods-BeaconstacSampleApp-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		80E446EC4E016E27736CE86891791A73 /* Headers */ = {
+		96C0E76001F63475997D2D11FAFED840 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2EE7C00A3562971B3E2A231E521C8C15 /* Pods-BeaconstacSampleApp-umbrella.h in Headers */,
+				68212BFEF03ACD5FA2796F44A75B1DD3 /* EddystoneScanner-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0F311A251753A38AA49B13AF21CA5E38 /* Pods-BeaconstacSampleApp */ = {
+		1CA7ADA17363DFDF0998AE8C5520D282 /* Pods-BeaconstacSampleApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2A6692964D66B0D7EEFA73D7705EAFD2 /* Build configuration list for PBXNativeTarget "Pods-BeaconstacSampleApp" */;
+			buildConfigurationList = F5A336530D32E24FE9257E2384C55F93 /* Build configuration list for PBXNativeTarget "Pods-BeaconstacSampleApp" */;
 			buildPhases = (
-				D88E6C31A5CFE78B9BC97BDFCE10151D /* Sources */,
-				76B88D3CDDC9B7E31DD6D5535E19CCB3 /* Frameworks */,
-				80E446EC4E016E27736CE86891791A73 /* Headers */,
+				45B7E5FDD60CF0B61E2F5211605BCF25 /* Headers */,
+				D510128D492F35EB40AA460CA9FE1F2A /* Sources */,
+				EAE3FEC722B6D563DE39D980A072FA2C /* Frameworks */,
+				DBF56CE3002897E36CBB3E1D3BB60BB5 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				FFFA8F8A83560410A57920362CA6AB4D /* PBXTargetDependency */,
+				DD3F48C70595F4A34925C40FBDF915A0 /* PBXTargetDependency */,
 			);
 			name = "Pods-BeaconstacSampleApp";
 			productName = "Pods-BeaconstacSampleApp";
 			productReference = 7649CA1E7F4C6971DBDE695DFBA9701D /* Pods_BeaconstacSampleApp.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		B579049149ED7DA5EF0172D886178B14 /* EddystoneScanner */ = {
+		5484E01757914B9BEF1481B6AEA3A003 /* EddystoneScanner */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ADFEAB4FCBD2487DD32BF7DBD1CADE9B /* Build configuration list for PBXNativeTarget "EddystoneScanner" */;
+			buildConfigurationList = 0632D5FEEE0060D1F4CF6DC8873C974E /* Build configuration list for PBXNativeTarget "EddystoneScanner" */;
 			buildPhases = (
-				9790C71B49E82F0A879337F55DD8BBFB /* Sources */,
-				1B4B437BFBEB727B7F900BB9BD02AB79 /* Frameworks */,
-				1FAD7EFB1949BC2593C2D03ED41E34F4 /* Headers */,
+				96C0E76001F63475997D2D11FAFED840 /* Headers */,
+				0E2F8D25BE152E1CFACD20D95898165C /* Sources */,
+				144D7F4CB9B684B575AEDA48203968CC /* Frameworks */,
+				B46B7D10C2949A9367600E9A382D2537 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -285,56 +287,176 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B579049149ED7DA5EF0172D886178B14 /* EddystoneScanner */,
-				0F311A251753A38AA49B13AF21CA5E38 /* Pods-BeaconstacSampleApp */,
+				5484E01757914B9BEF1481B6AEA3A003 /* EddystoneScanner */,
+				1CA7ADA17363DFDF0998AE8C5520D282 /* Pods-BeaconstacSampleApp */,
 			);
 		};
 /* End PBXProject section */
 
-/* Begin PBXSourcesBuildPhase section */
-		9790C71B49E82F0A879337F55DD8BBFB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
+/* Begin PBXResourcesBuildPhase section */
+		B46B7D10C2949A9367600E9A382D2537 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3A8F1443C3DFB18762BF089DBF7A0DFE /* ARMAFilter.swift in Sources */,
-				E123200FEA77FD1D6CD31CA0800E59CD /* Beacon.swift in Sources */,
-				BA9B4C27BC1947350C07E6077A0B37DB /* BeaconID.swift in Sources */,
-				E15AB2AD411526B27A30A0231266A07A /* Constants.swift in Sources */,
-				E82B71835785474B5F44EE92DF949D04 /* DispatchTimer.swift in Sources */,
-				9D2F065CA9E7DD61ECFA0F07A98F7DCE /* Eddystone.swift in Sources */,
-				4AAEFA8F924564C37D5885DD2EA4529B /* EddystoneScanner-dummy.m in Sources */,
-				FC49D2DCAE269FC4FEDF03EDC5E7140E /* GaussianFilter.swift in Sources */,
-				01DA36EDD849D39E3EFD3F26DDB71DB8 /* KalmanFilter.swift in Sources */,
-				997FFE90226795E81B72E3CEB9345BFC /* RSSIFilter.swift in Sources */,
-				4D2C50307195165DB89503A4A18228C5 /* RunningAverageFilter.swift in Sources */,
-				AAD916A1234F899555D1A060548BAD6C /* SafeSet.swift in Sources */,
-				4FC9E4BAF91AE2AA2E08E12EEFBC5DBF /* Scanner.swift in Sources */,
-				9AC963713856E440AC071F451A4618EF /* Telemetry.swift in Sources */,
-				5BBA2FEF61AD0C140DEC65CD660B01C7 /* Util.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D88E6C31A5CFE78B9BC97BDFCE10151D /* Sources */ = {
+		DBF56CE3002897E36CBB3E1D3BB60BB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0E2F8D25BE152E1CFACD20D95898165C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99861F4E4F37925D510ECF08EEDC41BD /* Pods-BeaconstacSampleApp-dummy.m in Sources */,
+				2758AF11ECA835BF0CB39AE9E3E35680 /* ARMAFilter.swift in Sources */,
+				03726408D47CEE5B00718DA790FED38A /* Beacon.swift in Sources */,
+				10F7BD6FE26D30FDD58BE959C1BC406B /* BeaconID.swift in Sources */,
+				8AF6A8E8E4A1287D6CCD65FBF08795E0 /* Constants.swift in Sources */,
+				9A96DC0FD3D80650BA262C1BE7DB2F31 /* DispatchTimer.swift in Sources */,
+				6E04BEEE4F9A8471481F8C4A160FEDE2 /* Eddystone.swift in Sources */,
+				6341900DF7F6AE2F883F1D19B7DB7C48 /* EddystoneScanner-dummy.m in Sources */,
+				FC153C2480B5FE01B6B72873921203BB /* GaussianFilter.swift in Sources */,
+				650AB0FA99C48F148AC6C12BB198493F /* KalmanFilter.swift in Sources */,
+				94C1A8C99A18910DED59CBC924934DE2 /* RSSIFilter.swift in Sources */,
+				DD4B65A44680F33F8DFF291665D76628 /* RunningAverageFilter.swift in Sources */,
+				D411D98F59CC6D9961070B4B619C5DB4 /* SafeSet.swift in Sources */,
+				40FDBED8A90DD5CA5E72ABC5BFDC1A9C /* Scanner.swift in Sources */,
+				3EAC4D8B70BA627C3239F562C25FB6C8 /* Telemetry.swift in Sources */,
+				31E3F8FE830A4F4C7CE2E134260B7062 /* Util.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D510128D492F35EB40AA460CA9FE1F2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6B43DC8B77EE72203D9FAE65C9EEA302 /* Pods-BeaconstacSampleApp-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		FFFA8F8A83560410A57920362CA6AB4D /* PBXTargetDependency */ = {
+		DD3F48C70595F4A34925C40FBDF915A0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EddystoneScanner;
-			target = B579049149ED7DA5EF0172D886178B14 /* EddystoneScanner */;
-			targetProxy = 1D3426D1CF22AC352FCFF46E88D2BAE0 /* PBXContainerItemProxy */;
+			target = 5484E01757914B9BEF1481B6AEA3A003 /* EddystoneScanner */;
+			targetProxy = F57AE690D625A87349EF3C52D154134B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		553022A828EE1991F07D2D73F565AEF8 /* Debug */ = {
+		0AD5301BBC07797CD55031CD17928C73 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF6B7660EAFD1F790D2FEA68A565339A /* EddystoneScanner.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/EddystoneScanner/EddystoneScanner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EddystoneScanner/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EddystoneScanner/EddystoneScanner.modulemap";
+				PRODUCT_MODULE_NAME = EddystoneScanner;
+				PRODUCT_NAME = EddystoneScanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		3D6A77B003C73E71B1F50B8D8C1310C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CDBEA471807C7D72E51A39E8124AF57 /* Pods-BeaconstacSampleApp.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		7D178C1EBD2CCF8CA66D27AF69396BBD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF6B7660EAFD1F790D2FEA68A565339A /* EddystoneScanner.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/EddystoneScanner/EddystoneScanner-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/EddystoneScanner/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/EddystoneScanner/EddystoneScanner.modulemap";
+				PRODUCT_MODULE_NAME = EddystoneScanner;
+				PRODUCT_NAME = EddystoneScanner;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		C92782E717C52E3633C9A5F211E7987A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -388,7 +510,8 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -397,7 +520,43 @@
 			};
 			name = Debug;
 		};
-		58CE816B060A41D32CEC095441D0E3E0 /* Release */ = {
+		CBBD9A753393542EF02A6A0911ED2CEE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FB1767BF9926C826CB6B32E371DF832 /* Pods-BeaconstacSampleApp.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EA8C7AF90938697605468604B2A17B9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -449,157 +608,21 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		59548B73410DAFA696FF515C60003CA7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF6B7660EAFD1F790D2FEA68A565339A /* EddystoneScanner.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/EddystoneScanner/EddystoneScanner-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EddystoneScanner/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/EddystoneScanner/EddystoneScanner.modulemap";
-				PRODUCT_MODULE_NAME = EddystoneScanner;
-				PRODUCT_NAME = EddystoneScanner;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		6FD2D249B4022A04F45A719C2816E5D1 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5FB1767BF9926C826CB6B32E371DF832 /* Pods-BeaconstacSampleApp.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		D26613216924DB135EE6AA872137DE77 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF6B7660EAFD1F790D2FEA68A565339A /* EddystoneScanner.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				GCC_PREFIX_HEADER = "Target Support Files/EddystoneScanner/EddystoneScanner-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/EddystoneScanner/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/EddystoneScanner/EddystoneScanner.modulemap";
-				PRODUCT_MODULE_NAME = EddystoneScanner;
-				PRODUCT_NAME = EddystoneScanner;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.1;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		DF7F3AE40725BCD2A89D77DC256D913B /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8CDBEA471807C7D72E51A39E8124AF57 /* Pods-BeaconstacSampleApp.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2A6692964D66B0D7EEFA73D7705EAFD2 /* Build configuration list for PBXNativeTarget "Pods-BeaconstacSampleApp" */ = {
+		0632D5FEEE0060D1F4CF6DC8873C974E /* Build configuration list for PBXNativeTarget "EddystoneScanner" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6FD2D249B4022A04F45A719C2816E5D1 /* Debug */,
-				DF7F3AE40725BCD2A89D77DC256D913B /* Release */,
+				0AD5301BBC07797CD55031CD17928C73 /* Debug */,
+				7D178C1EBD2CCF8CA66D27AF69396BBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -607,17 +630,17 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				553022A828EE1991F07D2D73F565AEF8 /* Debug */,
-				58CE816B060A41D32CEC095441D0E3E0 /* Release */,
+				C92782E717C52E3633C9A5F211E7987A /* Debug */,
+				EA8C7AF90938697605468604B2A17B9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ADFEAB4FCBD2487DD32BF7DBD1CADE9B /* Build configuration list for PBXNativeTarget "EddystoneScanner" */ = {
+		F5A336530D32E24FE9257E2384C55F93 /* Build configuration list for PBXNativeTarget "Pods-BeaconstacSampleApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D26613216924DB135EE6AA872137DE77 /* Debug */,
-				59548B73410DAFA696FF515C60003CA7 /* Release */,
+				CBBD9A753393542EF02A6A0911ED2CEE /* Debug */,
+				3D6A77B003C73E71B1F50B8D8C1310C8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9703917A86781D416035340F"
+               BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
                BlueprintName = "BeaconstacSampleApp"
                ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
                BuildableName = "BeaconstacSampleApp.app">
@@ -32,7 +32,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9703917A86781D416035340F"
+            BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
             BlueprintName = "BeaconstacSampleApp"
             ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
             BuildableName = "BeaconstacSampleApp.app">
@@ -55,7 +55,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9703917A86781D416035340F"
+            BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
             BlueprintName = "BeaconstacSampleApp"
             ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
             BuildableName = "BeaconstacSampleApp.app">
@@ -71,7 +71,7 @@
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9703917A86781D416035340F"
+            BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
             BlueprintName = "BeaconstacSampleApp"
             ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
             BuildableName = "BeaconstacSampleApp.app">

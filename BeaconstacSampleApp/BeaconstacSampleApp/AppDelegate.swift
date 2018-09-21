@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBCentralManagerDelegate 
     
     var MY_DEVELOPER_TOKEN = "08ddda7aabcbecfa54b29f6d032d7d289eb241b5"
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         bluetoothManager = CBCentralManager(delegate: self, queue: nil, options: nil)
@@ -84,7 +84,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                         if let instance = beaconstacInstance {
                             self?.beaconstac = instance
                             self?.beaconstac?.startScanningBeacons()
-                            self?.beaconstac?.notificationDelegate = viewController
+//                            self?.beaconstac?.notificationDelegate = viewController
                             self?.beaconstac?.webhookDelegate = viewController
                             self?.beaconstac?.ruleDelegate = viewController
                         }

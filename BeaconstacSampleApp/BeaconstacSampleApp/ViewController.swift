@@ -123,11 +123,11 @@ extension ViewController: RuleProcessorDelegate {
     }
 }
 
-extension ViewController: NotificationDelegate {
-    func overrideNotification(_ beaconstac: Beaconstac, notification: MNotification) {
-        // Override the notification.
-    }
-}
+//extension ViewController: NotificationDelegate {
+//    func overrideNotification(_ beaconstac: Beaconstac, notification: MNotification) {
+//        // Override the notification.
+//    }
+//}
 
 extension ViewController: WebhookDelegate {
     func addParameters(_ beaconstac: Beaconstac, webhook: MWebhook) -> Dictionary<String, Any> {
