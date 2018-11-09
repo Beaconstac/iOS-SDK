@@ -50,11 +50,137 @@ Run `pod install` in the project directory
 
 __Location__
 
-The app should take care of handling the permissions as required by your set up.
+The app should take care of handling the permissions as required.
+
+1. To receive notifications in the background
+
+```swift
+var locationManager = CLLocationManager()
+locationManager.delegate = self
+locationManager.requestAlwaysAuthorization()
+
+func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if status == .authorizedAlways {
+        if beaconstac != nil {
+            beaconstac?.startScanningBeacons()
+        } else {
+            // Initialise Beaconstac SDK
+        }
+    } else {
+        beaconstac?.stopScanningBeacons()
+
+        // Show Alert to enable alwyas permission
+    }
+}
+
+// Make sure you retain the CLLocationManager for the callbacks
+// You need to handle the case where user doesn't provide `Always` permission
+```
+
+```objective-c
+CLLocationManager *locationmanager = [[CLLocationManager alloc] init];
+locationManager.delegate = self;
+[locationManager requestAlwaysAuthorization];
+
+- (void)locationManager:(CLLocationManager *)manager 
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedAlways) {
+        if beaconstac != nil {
+           [beaconstac startScanningBeacons];
+        } else {
+            // Initialise Beaconstac SDK
+        }
+    } else {
+        [beaconstac stopScanningBeacons];
+
+        // Show Alert to enable alwyas permission
+    }
+}
+// Make sure you retain the CLLocationManager for the callbacks
+// You need to handle the case where user doesn't provide `Always` permission
+```
+
+2. To receive notifications only in the foreground
+
+```swift
+var locationManager = CLLocationManager()
+locationManager.delegate = self
+locationManager.requestWhenInUseAuthorization()
+
+func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    if status == authorizedWhenInUse || status == .authorizedAlways {
+        if beaconstac != nil {
+            beaconstac?.startScanningBeacons()
+        } else {
+            // Initialise Beaconstac SDK
+        }
+    } else {
+        beaconstac?.stopScanningBeacons()
+
+        // Show Alert to enable permission
+    }
+}
+
+// Make sure you retain the CLLocationManager for the callbacks
+// You need to handle the case where user doesn't provide permission
+```
+
+```objective-c
+CLLocationManager *locationmanager = [[CLLocationManager alloc] init];
+locationManager.delegate = self;
+[locationManager requestWhenInUseAuthorization];
+
+- (void)locationManager:(CLLocationManager *)manager 
+didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
+    if (status == kCLAuthorizationStatusAuthorizedWhenInUse || status == kCLAuthorizationStatusAuthorizedAlways) {
+        if beaconstac != nil {
+           [beaconstac startScanningBeacons];
+        } else {
+            // Initialise Beaconstac SDK
+        }
+    } else {
+        [beaconstac stopScanningBeacons];
+
+        // Show Alert to enable alwyas permission
+    }
+}
+// Make sure you retain the CLLocationManager for the callbacks
+// You need to handle the case where user doesn't provide permission
+```
+
 
 __Bluetooth__
 
 The app should take care of enabling the bluetooth to range beacons.
+
+```swift
+var bluetoothManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+
+func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    if central.state == .poweredOn {
+        beaconstac?.startScanningBeacons()
+    } else {
+        beaconstac?.stopScanningBeacons()
+    }
+}
+
+// Make sure you retain the CBCentralManager for the callbacks
+// You need to handle the case where user doesn't provide permission
+```
+
+```objective-c
+CBCentralManager *bluetoothManager = [[CBCentralManager alloc] initWithDelegate:self queue:nil options:nil];
+
+- (void)centralManagerDidUpdateState:(CBCentralManager *)central {
+    if (central.state == CBManagerStatePoweredOn) {
+        [beaconstac startScanningBeacons];
+    } else {
+        [beaconstac stopScanningBeacons];
+    }
+}
+// Make sure you retain the CBCentralManager for the callbacks
+// You need to handle the case where user doesn't provide permission
+```
 
 __MY_DEVELOPER_TOKEN__
 
