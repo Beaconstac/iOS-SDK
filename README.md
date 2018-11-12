@@ -46,11 +46,11 @@ Run `pod install` in the project directory
 1. In Info.plist, add a new fields, `NSLocationAlwaysUsageDescription`, `NSLocationAlwaysAndWhenInUsageDescription`, `NSBluetoothPeripheralUsageDescription` with relevant values that you want to show to the user. This is mandatory for iOS 10 and above.
 <img src="images/usagedescription.png" alt="Build Phases" width="600">
 
-## Pre-requisite
+## Pre-requisites
 
-__Location__
+### Location
 
-The app should take care of handling the permissions as required.
+The app should take care of handling permissions as required.
 
 1. To receive notifications in the background you must first enable the `Location Updates` and `Uses Bluetooth LE accessories` Background Modes in the Capabilities tab of your app target.
 
@@ -95,7 +95,7 @@ didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     } else {
         [beaconstac stopScanningBeacons];
 
-        // Show Alert to enable alwyas permission
+        // Show Alert to enable always permission
     }
 }
 // Make sure you retain the CLLocationManager for the callbacks
