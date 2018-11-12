@@ -52,7 +52,9 @@ __Location__
 
 The app should take care of handling the permissions as required.
 
-1. To receive notifications in the background you need to first enable the `Location Updates` and `Uses Bluetooth LE accessories` Background Modes in the Capablities.
+1. To receive notifications in the background you must first enable the `Location Updates` and `Uses Bluetooth LE accessories` Background Modes in the Capabilities tab of your app target.
+
+
 
 ```swift
 var locationManager = CLLocationManager()
