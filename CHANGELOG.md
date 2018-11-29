@@ -1,3 +1,8 @@
+### v3.2.1 released on Novermber 29, 2018
+
+* Fix NSBatchDeleteRequest
+* Fix NSFetchRequest Crash
+
 ### v3.2 released on September 21, 2018
 
 * Swift 4.2
