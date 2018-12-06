@@ -1,3 +1,6 @@
+### v3.2.2 released on Decemer 6, 2018
+* Fix Merge Conflicts
+
 ### v3.2.1 released on Novermber 29, 2018
 
 * Fix NSBatchDeleteRequest
