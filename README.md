@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Beaconstac SDK is an easy way to enable proximity marketing and location analytics through an iBeacon-compliant BLE network.
+Beaconstac Advanced iOS SDK is meant only for specialized use cases. Please check with the support team before deciding to integrate this SDK.
 
 ## Documentation
 
