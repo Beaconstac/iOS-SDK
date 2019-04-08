@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = 'Beaconstac'
-  s.version      = '3.2.2'
-  s.swift_version = '4.2'
+  s.version      = '3.2.5'
+  s.swift_version = '5.0'
   s.summary      = 'iOS library for iBeacon devices'
 
   s.homepage     = 'https://github.com/Beaconstac/iOS-SDK'
