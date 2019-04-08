@@ -1,4 +1,7 @@
-### v3.2.2 released on Decemer 6, 2018
+### v3.2.5 released on April 8, 2019
+* Swift 5.0
+
+### v3.2.2 released on December 6, 2018
 * Fix Merge Conflicts
 
 ### v3.2.1 released on Novermber 29, 2018
