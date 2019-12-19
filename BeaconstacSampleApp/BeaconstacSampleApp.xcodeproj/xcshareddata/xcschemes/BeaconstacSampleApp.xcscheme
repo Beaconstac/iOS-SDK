@@ -7,39 +7,40 @@
       buildImplicitDependencies = "YES">
       <BuildActionEntries>
          <BuildActionEntry
-            buildForAnalyzing = "YES"
             buildForTesting = "YES"
             buildForRunning = "YES"
             buildForProfiling = "YES"
-            buildForArchiving = "YES">
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
+               BuildableName = "BeaconstacSampleApp.app"
                BlueprintName = "BeaconstacSampleApp"
-               ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
-               BuildableName = "BeaconstacSampleApp.app">
+               ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
+      buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Debug">
-      <AdditionalOptions>
-      </AdditionalOptions>
+      shouldUseLaunchSchemeArgsEnv = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
+            BuildableName = "BeaconstacSampleApp.app"
             BlueprintName = "BeaconstacSampleApp"
-            ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
-            BuildableName = "BeaconstacSampleApp.app">
+            ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <Testables>
+      </Testables>
    </TestAction>
    <LaunchAction
+      buildConfiguration = "Release"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       launchStyle = "0"
@@ -47,34 +48,32 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      buildConfiguration = "Debug"
       allowLocationSimulation = "YES">
-      <AdditionalOptions>
-      </AdditionalOptions>
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
+            BuildableName = "BeaconstacSampleApp.app"
             BlueprintName = "BeaconstacSampleApp"
-            ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
-            BuildableName = "BeaconstacSampleApp.app">
+            ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
-      debugDocumentVersioning = "YES"
-      buildConfiguration = "Release"
-      shouldUseLaunchSchemeArgsEnv = "YES">
-      <BuildableProductRunnable>
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A7DC4B6AB1BBA132BE3B25FF"
+            BuildableName = "BeaconstacSampleApp.app"
             BlueprintName = "BeaconstacSampleApp"
-            ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj"
-            BuildableName = "BeaconstacSampleApp.app">
+            ReferencedContainer = "container:BeaconstacSampleApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

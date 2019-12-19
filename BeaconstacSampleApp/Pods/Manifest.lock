@@ -5,7 +5,7 @@ DEPENDENCIES:
   - EddystoneScanner
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - EddystoneScanner
 
 SPEC CHECKSUMS:
@@ -13,4 +13,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: d8f102212049976c568b51a8d8c166fa89eaef53
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Beaconstac'
-  s.version      = '3.2.5'
+  s.version      = '3.2.6-beta0'
   s.swift_version = '5.0'
   s.summary      = 'iOS library for iBeacon devices'
 
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
 
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
 
-  s.source       = { :git => 'https://github.com/Beaconstac/iOS-SDK.git', :tag => "#{s.version}" }
+  s.source       = { :git => 'https://github.com/Beaconstac/iOS-SDK.git', :tag => "v#{s.version}" }
 
   s.vendored_frameworks = 'Beaconstac/Beaconstac.framework'
 

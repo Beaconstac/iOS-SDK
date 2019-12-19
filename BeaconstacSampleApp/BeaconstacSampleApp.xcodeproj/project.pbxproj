@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0C47BFF2D68F21962B38DC60 /* Pods_BeaconstacSampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6B704775F87221FA20D60EB /* Pods_BeaconstacSampleApp.framework */; };
 		0F8E66A7A060830CBD6EB496 /* Beaconstac.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9249F1C1FADB99468A0DF209 /* Beaconstac.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		1C604C6349ADFFEF5AF4B733 /* Pods_SampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50105343F2FE94D058C4492F /* Pods_SampleApp.framework */; };
 		3001A4AFC99267AEAB550F22 /* BeaconTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F60C4314DDF56341A4CB23 /* BeaconTableViewCell.swift */; };
 		3C2D0EC17D1FE4A35D64ABE4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3084945634E85E4E2417BF4 /* ViewController.swift */; };
 		4360F6CFC166A9EB16B10230 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A4DCCF93D578B8859BDB7B2 /* Assets.xcassets */; };
@@ -72,7 +71,6 @@
 				BBDF14B7E9D6D216D1A8ED6C /* CoreBluetooth.framework in Frameworks */,
 				DB58F27EA10C49B6CA6541C9 /* CoreData.framework in Frameworks */,
 				6C2281EA06893D8B84EB10C3 /* UserNotifications.framework in Frameworks */,
-				1C604C6349ADFFEF5AF4B733 /* Pods_SampleApp.framework in Frameworks */,
 				B2AD8E7E89EA173BD6F6D219 /* Beaconstac.framework in Frameworks */,
 				0C47BFF2D68F21962B38DC60 /* Pods_BeaconstacSampleApp.framework in Frameworks */,
 			);
@@ -236,21 +234,17 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/EddystoneScanner/EddystoneScanner.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EddystoneScanner.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BeaconstacSampleApp/Pods-BeaconstacSampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
