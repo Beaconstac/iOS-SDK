@@ -103,6 +103,7 @@ import CoreBluetooth
                                frameData: Data?,
                                rssi: Int,
                                name: String?,
+                               namespaceFilter: String?,
                                filterType: RSSIFilterType) {
         guard let frameData = frameData, frameData.count > 1 else {
             return nil
@@ -127,6 +128,15 @@ import CoreBluetooth
             }
             beaconID = BeaconID(beaconType: .eddystone,
                                     beaconID: Array(frameBytes[2..<18]))
+            if let filter = namespaceFilter {
+                if let namespace = beaconID.namespace?.hexString {
+                    if filter != namespace {
+                        return nil
+                    }
+                } else {
+                    return nil
+                }
+            }
         } else {
             guard frameBytes.count >= 10 else {
                 debugPrint("Frame Data for EID Frame unexpectedly truncated.")

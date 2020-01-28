@@ -1,6 +1,6 @@
 # EddystoneScanner-iOS-SDK
 
-Eddystone Scanner is a eddystone scanning library written in Swift that scans for eddystone beacons and maintains a list of all the nearby beacons.
+Eddystone Scanner is library written in Swift that scans for eddystone beacons and maintains a list of all the nearby beacons.
 
 ## Installation
 

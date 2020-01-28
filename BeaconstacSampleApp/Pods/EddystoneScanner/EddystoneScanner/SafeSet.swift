@@ -18,15 +18,17 @@ import Foundation
 public class SafeSet<E: Hashable> {
     private let queue: DispatchQueue
     private var set: Set<E> = []
+    var index: Set<E>.Index
     
     public init(identifier: String) {
         queue = DispatchQueue(label: "com.safeset.\(Date().timeIntervalSince1970).\(identifier)", attributes: .concurrent)
+        index = set.startIndex
     }
     
     public subscript(index: Set<E>.Index) -> E? {
         get {
             return queue.sync {
-                guard set.indices.contains(index) else {
+                guard index < set.endIndex else {
                     return nil
                 }
                 return set[index]
@@ -72,6 +74,26 @@ extension SafeSet {
         queue.async(flags: .barrier) {
             self.set.removeAll()
         }
+    }
+    
+    public func subtract(_ other: SafeSet<E>) {
+        queue.async(flags: .barrier) {
+            self.set = self.set.subtracting(other.set)
+        }
+    }
+    
+    public func union(_ safeSet: SafeSet<E>) {
+        queue.async(flags: .barrier) {
+            for element in safeSet.getSet() {
+                self.set.insert(element)
+            }
+        }
+    }
+}
+
+extension SafeSet: Sequence {
+    public func makeIterator() -> SafeSetIterator<E> {
+        return SafeSetIterator(Array(self.set))
     }
 }
 
@@ -124,19 +146,41 @@ extension SafeSet {
     
     public func index(of member: E) -> Set<E>.Index? {
         return queue.sync {
-            return set.index(of: member)
+            return set.firstIndex(of: member)
         }
     }
     
-    public func index(where predicate: (E) throws -> Bool) rethrows -> Set<E>.Index? {
+    public func first(where predicate: (E) throws -> Bool) rethrows -> E? {
         return try queue.sync {
-            return try self.set.index(where: predicate)
+            return try set.first(where: predicate)
         }
     }
+}
+
+public struct SafeSetIterator<E: Hashable>: IteratorProtocol {
     
-    public func index(_ i: Set<E>.Index, offsetBy offset: Int) -> Set<E>.Index {
-        return queue.sync {
-            return self.set.index(i, offsetBy: offset)
+    private let values: [E]
+    private var index: Int?
+    
+    init(_ values: [E]) {
+        self.values = values
+    }
+    
+    private func nextIndex(for index: Int?) -> Int? {
+        if let index = index, index < self.values.count - 1 {
+            return index + 1
         }
+        if index == nil, !self.values.isEmpty {
+            return 0
+        }
+        return nil
+    }
+    
+    mutating public func next() -> E? {
+        if let index = self.nextIndex(for: self.index) {
+            self.index = index
+            return self.values[index]
+        }
+        return nil
     }
 }

@@ -1,3 +1,6 @@
+### v3.2.6 released on January 28, 2020
+* Xcode 11
+
 ### v3.2.5 released on April 8, 2019
 * Swift 5.0
 

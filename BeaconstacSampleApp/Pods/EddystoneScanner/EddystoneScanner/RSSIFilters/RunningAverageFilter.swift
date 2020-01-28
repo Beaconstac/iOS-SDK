@@ -24,8 +24,9 @@ internal class RunningAverageFilter: RSSIFilter {
     // Measurement struct used by the RunningAverageFilter
     internal struct Measurement: Comparable, Hashable {
         
-        var hashValue: Int {
-            return rssi.hashValue ^ timeStamp.hashValue
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(rssi)
+            hasher.combine(timeStamp)
         }
         
         static func <(lhs: Measurement, rhs: Measurement) -> Bool {

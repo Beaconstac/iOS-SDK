@@ -1,16 +1,16 @@
 PODS:
-  - EddystoneScanner (1.1.6)
+  - EddystoneScanner (1.2.11)
 
 DEPENDENCIES:
-  - EddystoneScanner
+  - EddystoneScanner (~> 1.2.11)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  trunk:
     - EddystoneScanner
 
 SPEC CHECKSUMS:
-  EddystoneScanner: 4faf448a2a5a0f5dc442cc9a2324bdea1dcc7d4d
+  EddystoneScanner: ad0fd2fcc063db3a1a174d31e2eea0626b82adef
 
-PODFILE CHECKSUM: d8f102212049976c568b51a8d8c166fa89eaef53
+PODFILE CHECKSUM: 8fbbe08287ac2f7f131057a729340068df706cbe
 
 COCOAPODS: 1.8.4

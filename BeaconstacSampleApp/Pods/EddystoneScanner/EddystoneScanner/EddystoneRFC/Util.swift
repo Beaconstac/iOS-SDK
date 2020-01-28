@@ -13,14 +13,14 @@ public extension Collection where Iterator.Element == UInt8 {
     //
     // Converts the UInt8 array into a Data object
     //
-    public var data: Data {
+    var data: Data {
         return Data(self)
     }
     
     ///
     /// Converts the UInt8 array into its quvivalent hex string
     ///
-    public var hexString: String {
+    var hexString: String {
         return map{ String(format: "%02X", $0) }.joined()
     }
     

@@ -32,6 +32,7 @@ public class DispatchTimer: NSObject {
     // MARK: Private properties
     private var sourceTimer: DispatchSourceTimer?
     private let queue: DispatchQueue
+    private var isTimerRunning = false
     
     public init(repeatingInterval: Double, queueLabel: String) {
         queue = DispatchQueue(label: queueLabel)
@@ -44,7 +45,11 @@ public class DispatchTimer: NSObject {
     
     /// Start the timer
     public func startTimer() {
-        sourceTimer?.schedule(deadline: .now(), repeating: repeatingInterval, leeway: .seconds(10))
+        guard !isTimerRunning else {
+            return
+        }
+        isTimerRunning = true
+        sourceTimer?.schedule(deadline: .now() + repeatingInterval, repeating: repeatingInterval, leeway: .seconds(10))
         sourceTimer?.setEventHandler { [weak self] in
             self?.delegate?.timerCalled(timer: self)
         }
@@ -53,6 +58,10 @@ public class DispatchTimer: NSObject {
     
     /// Stop the timer
     public func stopTimer() {
+        guard isTimerRunning else {
+            return
+        }
+        isTimerRunning = false
         self.sourceTimer?.suspend()
     }
     
