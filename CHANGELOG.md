@@ -1,3 +1,6 @@
+### v3.2.7 released on March 18, 2020
+* Remove iPhoneSimulator from Info.plist
+
 ### v3.2.6 released on January 28, 2020
 * Xcode 11
 

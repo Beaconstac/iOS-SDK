@@ -19,7 +19,7 @@ Add the following to your Podfile in your project, we are supporting iOS 10.0+ m
 ```pod
 platform :ios, '10.0'
 target '<My-App-Target>''
-  pod 'Beaconstac', '~> 3.2.6'
+  pod 'Beaconstac', '~> 3.2.7'
 end
 ```
 
