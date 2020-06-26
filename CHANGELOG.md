@@ -1,3 +1,7 @@
+### v3.2.8 released on June 26, 2020
+* Swift 5.2.4
+
+
 ### v3.2.7 released on March 18, 2020
 * Remove iPhoneSimulator from Info.plist
 

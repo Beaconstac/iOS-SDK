@@ -32,6 +32,8 @@
 	<string>Beaconstac SDK Demo</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Beaconstac SDK Demo</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>Beaconstac SDK Demo</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>bluetooth-central</string>
