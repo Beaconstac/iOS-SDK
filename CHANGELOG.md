@@ -1,3 +1,7 @@
+### v3.2.9 released on June 26, 2020
+* Xcode 12.4
+
+
 ### v3.2.8 released on June 26, 2020
 * Swift 5.2.4
 
