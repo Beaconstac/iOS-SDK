@@ -1,3 +1,6 @@
+### v3.2.10 released on December 2, 2021
+* Xcode 13.1
+
 ### v3.2.9 released on June 26, 2020
 * Xcode 12.4
 
