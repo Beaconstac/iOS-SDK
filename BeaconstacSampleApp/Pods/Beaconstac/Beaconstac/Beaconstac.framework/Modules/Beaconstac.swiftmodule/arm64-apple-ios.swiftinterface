@@ -1,0 +1,469 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-module-flags: -target arm64-apple-ios10.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Beaconstac
+@_exported import Beaconstac
+import CoreBluetooth
+import CoreData
+import CoreLocation
+import CoreNFC
+import EddystoneScanner
+import Foundation
+import SafariServices
+import Swift
+import SystemConfiguration
+import UIKit
+import UserNotifications
+import _Concurrency
+public let BEACONSTAC_SDK_NOTIFICATION_IDENTIFIER: Swift.String
+public let BEACONSTAC_SDK_ERROR_DOMAIN: Swift.String
+public let BEACONSTAC_SDK_NOTIFICATION_URL_KEY: Swift.String
+public let BEACON_REGION_IDENTIFIER: Swift.String
+@objc public enum BeaconstacSDKError : Swift.Int {
+  case SDKNotInitialized = -1001
+  case BluetoothDisabled = -1002
+  case LocationPermissionDenied = -1003
+  case LocationTrackingWhenInUseDenied = -1004
+  case LocationTrackingAlwaysDenied = -1005
+  case CannotRangeBeacons = -1006
+  case UnableToConvertStringToDate = -1007
+  case UnableToConvertDateToString = -1008
+  case UnableToCreateURL = -1009
+  case UnableToCreateWebhookHTTPBody = -1010
+  case PostingToWebhookFailed = -1011
+  case NetworkErrorOccurred = -1012
+  case NotConnectedToInternet = -1013
+  case CachedDataNotFound = -1014
+  case UserNotFound = -1015
+  case InvalidRequest = -1016
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum iBeaconOption : Swift.Int {
+  case BackgroundRangeOnDisplayWakeUp
+  case WhenInUseRange
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum LatchLatency : Swift.Int64 {
+  case LOW = 3
+  case MEDIUM = 5
+  case HIGH = 7
+  public init?(rawValue: Swift.Int64)
+  public typealias RawValue = Swift.Int64
+  public var rawValue: Swift.Int64 {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class Beaconstac : ObjectiveC.NSObject {
+  @objc weak public var delegate: Beaconstac.BeaconDelegate? {
+    @objc get
+    @objc set
+  }
+  @objc weak public var ruleDelegate: Beaconstac.RuleProcessorDelegate? {
+    @objc get
+    @objc set
+  }
+  @objc weak public var notificationDelegate: Beaconstac.NotificationDelegate? {
+    @objc get
+    @objc set
+  }
+  @objc weak public var webhookDelegate: Beaconstac.WebhookDelegate? {
+    @objc get
+    @objc set
+  }
+  @objc public var latchLatency: Beaconstac.LatchLatency {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+  @objc public class func sharedInstance() throws -> Beaconstac.Beaconstac
+  @objc public class func sharedInstance(_ token: Swift.String, ibeaconOption: Beaconstac.iBeaconOption = .WhenInUseRange, organization: Foundation.NSNumber? = -1, offlineMode: Swift.Bool = true, delegate: Beaconstac.BeaconDelegate? = nil, completion: @escaping (Beaconstac.Beaconstac?, Swift.Error?) -> ())
+  @objc public func startScanningBeacons()
+  @objc public func stopScanningBeacons()
+}
+@objc extension Beaconstac.Beaconstac {
+  @objc dynamic public func notificationOptionsForBeaconstacNotification(_ notification: UserNotifications.UNNotification) -> UserNotifications.UNNotificationPresentationOptions
+  @objc dynamic public func showCardViewerForLocalNotification(_ notification: UserNotifications.UNNotification) -> Swift.Bool
+  @objc dynamic public func dismissCardViewer()
+}
+@objc extension Beaconstac.Beaconstac {
+  @objc dynamic public func addFilters(_ filters: Swift.Dictionary<Swift.String, Any>)
+  @objc dynamic public func setVisitor(_ visitor: Beaconstac.MVisitor)
+}
+@_hasMissingDesignatedInitializers @objc public class MRule : ObjectiveC.NSObject {
+  @objc public var id: Swift.Int64 {
+    get
+  }
+  @objc public var name: Swift.String {
+    get
+  }
+  @objc public var dwellTime: Swift.Int64 {
+    get
+  }
+  @objc public var ruleBy: Swift.String {
+    get
+  }
+  @objc public var triggerEvent: Swift.Int64 {
+    get
+  }
+  @objc public var actions: Swift.Array<Beaconstac.MAction> {
+    get
+  }
+  @objc public var placeNames: [Swift.String]? {
+    get
+  }
+  @objc public func isActive() -> Swift.Bool
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @objc(NFCTagEntity) public class NFCTagEntity : CoreData.NSManagedObject {
+  @objc override dynamic public init(entity: CoreData.NSEntityDescription, insertInto context: CoreData.NSManagedObjectContext?)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class MNotification : Beaconstac.MAction {
+  @objc public var id: Swift.Int64 {
+    get
+  }
+  @objc public var title: Swift.String {
+    get
+  }
+  @objc public var body: Swift.String {
+    get
+  }
+  @objc public var okActionURL: Swift.String? {
+    get
+  }
+  @objc public var markdownCard: Beaconstac.MMarkdownCard? {
+    get
+  }
+  @objc deinit
+}
+@objc public class MVisitor : ObjectiveC.NSObject {
+  @objc public var firstName: Swift.String {
+    get
+  }
+  @objc public var lastName: Swift.String {
+    get
+  }
+  @objc public var email: Swift.String? {
+    get
+  }
+  @objc public var age: Foundation.NSNumber? {
+    get
+  }
+  @objc public var gender: Swift.String? {
+    get
+  }
+  @objc public init(_ firstName: Swift.String, lastName: Swift.String, email: Swift.String? = nil, age: Foundation.NSNumber? = nil, gender: Swift.String? = nil)
+  @objc deinit
+}
+@objc public protocol BeaconDelegate {
+  @objc func didFail(_ beaconstac: Beaconstac.Beaconstac, error: Swift.Error)
+  @objc optional func didEnterRegion(_ beaconstac: Beaconstac.Beaconstac, region: Swift.String)
+  @objc optional func didRangeBeacons(_ beaconstac: Beaconstac.Beaconstac, beacons: [Beaconstac.MBeacon])
+  @objc optional func campOnBeacon(_ beaconstac: Beaconstac.Beaconstac, beacon: Beaconstac.MBeacon)
+  @objc optional func exitBeacon(_ beaconstac: Beaconstac.Beaconstac, beacon: Beaconstac.MBeacon)
+  @objc optional func didExitRegion(_ beaconstac: Beaconstac.Beaconstac, region: Swift.String)
+}
+@objc public protocol NotificationDelegate {
+  @objc func overrideNotification(_ beaconstac: Beaconstac.Beaconstac, notification: Beaconstac.MNotification)
+}
+@objc public protocol WebhookDelegate {
+  @objc func addParameters(_ beaconstac: Beaconstac.Beaconstac, webhook: Beaconstac.MWebhook) -> Swift.Dictionary<Swift.String, Any>
+}
+@objc public protocol RuleProcessorDelegate {
+  @objc func willTriggerRule(_ beaconstac: Beaconstac.Beaconstac, rule: Beaconstac.MRule)
+  @objc func didTriggerRule(_ beaconstac: Beaconstac.Beaconstac, rule: Beaconstac.MRule)
+}
+@_inheritsConvenienceInitializers @objc public class MAction : ObjectiveC.NSObject {
+  @objc override dynamic public init()
+  @objc deinit
+}
+public enum ReachabilityError : Swift.Error {
+  case FailedToCreateWithAddress(Darwin.sockaddr_in)
+  case FailedToCreateWithHostname(Swift.String)
+  case UnableToSetCallback
+  case UnableToSetDispatchQueue
+}
+@available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
+public let ReachabilityChangedNotification: Foundation.NSNotification.Name
+extension Foundation.NSNotification.Name {
+  public static let reachabilityChanged: Foundation.NSNotification.Name
+}
+public class Reachability {
+  public typealias NetworkReachable = (Beaconstac.Reachability) -> ()
+  public typealias NetworkUnreachable = (Beaconstac.Reachability) -> ()
+  @available(*, unavailable, renamed: "Conection")
+  public enum NetworkStatus : Swift.CustomStringConvertible {
+    case notReachable, reachableViaWiFi, reachableViaWWAN
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: Beaconstac.Reachability.NetworkStatus, b: Beaconstac.Reachability.NetworkStatus) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Connection : Swift.CustomStringConvertible {
+    case none, wifi, cellular
+    public var description: Swift.String {
+      get
+    }
+    public static func == (a: Beaconstac.Reachability.Connection, b: Beaconstac.Reachability.Connection) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public var whenReachable: Beaconstac.Reachability.NetworkReachable?
+  public var whenUnreachable: Beaconstac.Reachability.NetworkUnreachable?
+  @available(*, deprecated, renamed: "allowsCellularConnection")
+  final public let reachableOnWWAN: Swift.Bool
+  public var allowsCellularConnection: Swift.Bool
+  public var notificationCenter: Foundation.NotificationCenter
+  @available(*, deprecated, renamed: "connection.description")
+  public var currentReachabilityString: Swift.String {
+    get
+  }
+  @available(*, unavailable, renamed: "connection")
+  public var currentReachabilityStatus: Beaconstac.Reachability.Connection {
+    get
+  }
+  public var connection: Beaconstac.Reachability.Connection {
+    get
+  }
+  required public init(reachabilityRef: SystemConfiguration.SCNetworkReachability)
+  convenience public init?(hostname: Swift.String)
+  convenience public init?()
+  @objc deinit
+}
+extension Beaconstac.Reachability {
+  public func startNotifier() throws
+  public func stopNotifier()
+  @available(*, deprecated, message: "Please use `connection != .none`")
+  public var isReachable: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .cellular`")
+  public var isReachableViaWWAN: Swift.Bool {
+    get
+  }
+  @available(*, deprecated, message: "Please use `connection == .wifi`")
+  public var isReachableViaWiFi: Swift.Bool {
+    get
+  }
+  public var description: Swift.String {
+    get
+  }
+}
+@objc public enum MNFCTagType : Swift.Int {
+  case unknown = 0
+  case sticker = 7
+  case keycard = 8
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers @objc public class MNFCTag : ObjectiveC.NSObject {
+  @objc public var id: Swift.Int64 {
+    get
+  }
+  @objc public var name: Swift.String {
+    get
+  }
+  @objc public var url: Swift.String {
+    get
+  }
+  @objc public var uid: Swift.String {
+    get
+  }
+  @objc public var counter: Swift.Int64 {
+    get
+  }
+  @objc public var state: Beaconstac.HardwareState {
+    get
+  }
+  @objc public var place: Swift.Int64 {
+    get
+  }
+  @objc public var placeName: Swift.String {
+    get
+  }
+  @objc public var tags: [Swift.String] {
+    get
+  }
+  @objc public var type: Beaconstac.MNFCTagType {
+    get
+  }
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class MWebhook : Beaconstac.MAction {
+  @objc public var id: Swift.Int64 {
+    get
+  }
+  @objc public var name: Swift.String {
+    get
+  }
+  @objc public var url: Swift.String {
+    get
+  }
+  @objc public var status: Swift.String {
+    get
+  }
+  @objc public var params: Swift.Dictionary<Swift.String, Any>? {
+    get
+  }
+  @objc deinit
+}
+@objc public enum HardwareState : Swift.Int {
+  case active
+  case sleeping
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc public enum BeaconHardwareType : Swift.Int {
+  case unknown
+  case indoor
+  case outdoor
+  case pocket
+  case keychain
+  case longrange
+  case usb
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class MEddystone : ObjectiveC.NSObject {
+  @objc public var nid: Swift.String {
+    get
+  }
+  @objc public var bid: Swift.String {
+    get
+  }
+  @objc public var url: Swift.String {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class MHardware : ObjectiveC.NSObject {
+  @objc public var UUID: Swift.String {
+    get
+  }
+  @objc public var major: Swift.Int64 {
+    get
+  }
+  @objc public var minor: Swift.Int64 {
+    get
+  }
+  @objc public var serialNumber: Swift.String {
+    get
+  }
+  @objc public var mode: Swift.String {
+    get
+  }
+  @objc public var temperature: Swift.Int64 {
+    get
+  }
+  @objc public var battery: Swift.Int64 {
+    get
+  }
+  @objc public var advertisingInterval: Swift.Int64 {
+    get
+  }
+  @objc public var transmissionPower: Swift.Int64 {
+    get
+  }
+  @objc public var firmwareVersion: Swift.String {
+    get
+  }
+  @objc public var type: Beaconstac.BeaconHardwareType {
+    get
+  }
+  @objc public var eddystone: Beaconstac.MEddystone {
+    get
+  }
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objc public class MBeacon : ObjectiveC.NSObject {
+  @objc public var id: Swift.Int64 {
+    get
+  }
+  @objc public var name: Swift.String {
+    get
+  }
+  @objc public var isCampedOn: Swift.Bool {
+    get
+  }
+  @objc public var state: Beaconstac.HardwareState {
+    get
+  }
+  @objc public var place: Swift.Int64 {
+    get
+  }
+  @objc public var placeName: Swift.String {
+    get
+  }
+  @objc public var latitude: Swift.Double {
+    get
+  }
+  @objc public var longitude: Swift.Double {
+    get
+  }
+  @objc public var tags: [Swift.String] {
+    get
+  }
+  @objc public var hardware: Beaconstac.MHardware {
+    get
+  }
+  @objc public var latestRSSI: Swift.Int64
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers @objc public class MMarkdownCard : ObjectiveC.NSObject {
+  @objc public var id: Swift.Int64 {
+    get
+  }
+  @objc public var title: Swift.String {
+    get
+  }
+  @objc public var url: Swift.String {
+    get
+  }
+  @objc deinit
+}
+extension Beaconstac.BeaconstacSDKError : Swift.Equatable {}
+extension Beaconstac.BeaconstacSDKError : Swift.Hashable {}
+extension Beaconstac.BeaconstacSDKError : Swift.RawRepresentable {}
+extension Beaconstac.iBeaconOption : Swift.Equatable {}
+extension Beaconstac.iBeaconOption : Swift.Hashable {}
+extension Beaconstac.iBeaconOption : Swift.RawRepresentable {}
+extension Beaconstac.LatchLatency : Swift.Equatable {}
+extension Beaconstac.LatchLatency : Swift.Hashable {}
+extension Beaconstac.LatchLatency : Swift.RawRepresentable {}
+@available(*, unavailable, renamed: "Conection")
+extension Beaconstac.Reachability.NetworkStatus : Swift.Equatable {}
+@available(*, unavailable, renamed: "Conection")
+extension Beaconstac.Reachability.NetworkStatus : Swift.Hashable {}
+extension Beaconstac.Reachability.Connection : Swift.Equatable {}
+extension Beaconstac.Reachability.Connection : Swift.Hashable {}
+extension Beaconstac.MNFCTagType : Swift.Equatable {}
+extension Beaconstac.MNFCTagType : Swift.Hashable {}
+extension Beaconstac.MNFCTagType : Swift.RawRepresentable {}
+extension Beaconstac.HardwareState : Swift.Equatable {}
+extension Beaconstac.HardwareState : Swift.Hashable {}
+extension Beaconstac.HardwareState : Swift.RawRepresentable {}
+extension Beaconstac.BeaconHardwareType : Swift.Equatable {}
+extension Beaconstac.BeaconHardwareType : Swift.Hashable {}
+extension Beaconstac.BeaconHardwareType : Swift.RawRepresentable {}
