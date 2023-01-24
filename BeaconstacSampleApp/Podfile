@@ -1,6 +1,6 @@
-platform :ios, '10.0'
+platform :ios, '11.0'
 
 target 'BeaconstacSampleApp' do
   use_frameworks!
-  pod 'EddystoneScanner', '~> 1.2.11'
+  pod 'EddystoneScanner', '~> 1.2.14'
 end
