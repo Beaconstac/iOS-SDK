@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'Beaconstac'
-  s.version      = '3.2.11'
+  s.version      = '3.2.12'
   s.swift_version = '5.0'
   s.summary      = 'iOS library for iBeacon devices'
 
@@ -24,5 +24,5 @@ Pod::Spec.new do |s|
   s.frameworks   = 'CoreData', 'SystemConfiguration', 'CoreBluetooth', 'CoreLocation', 'UserNotifications', 'SafariServices'
 
   s.requires_arc = true
-  s.ios.deployment_target = "10.0"
+  s.ios.deployment_target = "11.0"
 end

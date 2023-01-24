@@ -6,6 +6,6 @@ framework module Beaconstac {
 }
 
 module Beaconstac.Swift {
-    header "Beaconstac-Swift.h"
-    requires objc
+  header "Beaconstac-Swift.h"
+  requires objc
 }

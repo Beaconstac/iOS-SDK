@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
 // swift-module-flags: -target x86_64-apple-ios10.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name Beaconstac
+// swift-module-flags-ignorable: -enable-bare-slash-regex
 @_exported import Beaconstac
 import CoreBluetooth
 import CoreData
@@ -14,6 +15,7 @@ import SystemConfiguration
 import UIKit
 import UserNotifications
 import _Concurrency
+import _StringProcessing
 public let BEACONSTAC_SDK_NOTIFICATION_IDENTIFIER: Swift.String
 public let BEACONSTAC_SDK_ERROR_DOMAIN: Swift.String
 public let BEACONSTAC_SDK_NOTIFICATION_URL_KEY: Swift.String
