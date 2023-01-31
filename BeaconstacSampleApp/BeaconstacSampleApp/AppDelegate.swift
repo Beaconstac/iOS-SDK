@@ -17,8 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBCentralManagerDelegate 
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
+            print("on")
             beaconstac?.startScanningBeacons()
         } else {
+            print("off")
             beaconstac?.stopScanningBeacons()
         }
     }
@@ -28,7 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CBCentralManagerDelegate 
     var locationManager: CLLocationManager!
     var bluetoothManager: CBCentralManager!
     
-    var MY_DEVELOPER_TOKEN = "08ddda7aabcbecfa54b29f6d032d7d289eb241b5"
+    var MY_DEVELOPER_TOKEN = ""
+    var MY_ORG_ID = 0
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -80,9 +83,10 @@ extension AppDelegate: CLLocationManagerDelegate {
                 beaconstac?.startScanningBeacons()
             } else {
                 if let viewController = (self.window?.rootViewController as? UINavigationController)?.topViewController as? ViewController {
-                    Beaconstac.sharedInstance(MY_DEVELOPER_TOKEN, delegate: viewController, completion: {[weak self] (beaconstacInstance, error) in
+                    Beaconstac.sharedInstance(MY_DEVELOPER_TOKEN, organization: MY_ORG_ID as NSNumber, delegate: viewController, completion: {[weak self] (beaconstacInstance, error) in
                         if let instance = beaconstacInstance {
                             self?.beaconstac = instance
+                            self?.beaconstac?.stopScanningBeacons()
                             self?.beaconstac?.startScanningBeacons()
 //                            self?.beaconstac?.notificationDelegate = viewController
                             self?.beaconstac?.webhookDelegate = viewController

@@ -92,17 +92,17 @@ import CoreBluetooth
     /// Stops scanning for beacons
     ///
     @objc public func stopScanning() {
-        if shouldBeScanning {
-            shouldBeScanning = false
-            centralManager.stopScan()
-            timer?.stopTimer()
-            DispatchQueue.main.async {
-                for beacon in self.nearbyBeacons.getSet() {
-                    self.delegate?.didLoseBeacon(scanner: self, beacon: beacon)
-                }
-                self.nearbyBeacons.removeAll()
-            }
-        }
+//        if shouldBeScanning {
+//            shouldBeScanning = false
+//            centralManager.stopScan()
+//            timer?.stopTimer()
+//            DispatchQueue.main.async {
+////                for beacon in self.nearbyBeacons.getSet() {
+////                    self.delegate?.didLoseBeacon(scanner: self, beacon: beacon)
+////                }
+//                self.nearbyBeacons.removeAll()
+//            }
+//        }
     }
     
     
